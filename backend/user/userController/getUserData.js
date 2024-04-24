@@ -9,7 +9,7 @@ export const getUserData = async (req, res) =>{
         const user = await User.findOne({ username }).lean();
         res.json(user);
     } catch (error) {
-        //!addErrorStatus
-        // res.status(401).send("Authentification needed");
+        console.log(error);
+        res.sendStatus(500)
     }
 }

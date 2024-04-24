@@ -29,8 +29,8 @@ export const login = async(req, res) => {
     }
 
   } catch (error) {
-      //!addErrorStatus
-      res.status(401).send("login failed");
+    console.log(error);
+    res.sendStatus(500)
   }
 }
 

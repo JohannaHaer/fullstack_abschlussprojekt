@@ -18,8 +18,8 @@ export const register = async (req,res)=>{
         const user = await User.create({ username, passwordHash: hash, email });
         res.json(user);
     } catch (error) {
-        //!addErrorStatus
-        res.status(401).send("Authentification needed");
+        console.error(error);
+        res.status(500).json({ error: "Internal server error" });
     }
 }
 

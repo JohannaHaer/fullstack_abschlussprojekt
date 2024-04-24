@@ -24,7 +24,6 @@ export const login = async(req, res) => {
       res.json({ status: "failed" });
     } else {
       const token = jwt.sign({ id: user._id, username }, process.env.JWT_SECRET);
-      console.log(token)
       res.cookie("token", token, { httpOnly: true });
       res.json({ status: "ok", token: token });
     }

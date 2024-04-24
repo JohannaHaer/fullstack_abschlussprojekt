@@ -9,7 +9,7 @@ export const getUserData = async (req, res) =>{
         const user = await User.findOne({ username }).lean();
         res.json(user);
     } catch (error) {
-        console.log(error);
-        res.sendStatus(500)
+        console.error(error);
+        res.status(500).json({ error: "Internal server error" });
     }
 }

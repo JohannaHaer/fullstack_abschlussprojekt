@@ -26,8 +26,8 @@ export const addIncome = async (req,res)=>{
     const writeResult = await user.save();
       res.json(writeResult);
   }
-  catch(error){
-    console.log(error);
-    res.sendStatus(500)
-  }
+  catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+}
 }

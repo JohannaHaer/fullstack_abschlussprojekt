@@ -2,19 +2,20 @@ import { User } from "../userModel/user.model.js";
 
 
 
-export const addExpense = async (req,res)=>{
+export const addIncomeCategory = async (req,res)=>{
   //!username muss noch abgefragt werden
   const username = 'test'
-  const {amount, category, description} = req.body
+  const {categoryName, color, imgUrl} = req.body
+  console.log('bitte')
   try{
     const user = await User.findOne({username})
     if (!user) {
       throw new Error("User not found");
     }
-    user.transactions.expenses.push({
-      amount: amount,
-      category: category,
-      description: description
+    user.incomeCategories.push({
+      categoryName: categoryName,
+      color: color,
+      imgUrl: imgUrl
     })
     const writeResult = await user.save();
       res.json(writeResult);

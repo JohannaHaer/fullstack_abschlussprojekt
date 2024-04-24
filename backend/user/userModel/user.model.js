@@ -1,5 +1,22 @@
 import mongoose, { Schema } from "mongoose";
 
+const defaultExpenseCategories = [
+    {categoryName:'essen',color:'red', imgUrl:'www.blödertest.de'},
+    {categoryName:'technik',color:'blue', imgUrl:'www.blödertest.de'},
+    {categoryName:'kleidung',color:'green', imgUrl:'www.blödertest.de'},
+    {categoryName:'miete',color:'violet', imgUrl:'www.blödertest.de'},
+    {categoryName:'versicherung',color:'yellow', imgUrl:'www.blödertest.de'},
+    {categoryName:'freizeit',color:'orange', imgUrl:'www.blödertest.de'},
+]
+
+const defaultIncomeCategories = [
+    {categoryName:'Gehalt',color:'red', imgUrl:'www.blödertest.de'},
+    {categoryName:'Bonus',color:'blue', imgUrl:'www.blödertest.de'},
+    {categoryName:'Taschengeld',color:'green', imgUrl:'www.blödertest.de'},
+    {categoryName:'Rückzahlung',color:'violet', imgUrl:'www.blödertest.de'},
+    {categoryName:'Nebenjob',color:'yellow', imgUrl:'www.blödertest.de'},
+    {categoryName:'Verkäufe',color:'orange', imgUrl:'www.blödertest.de'},
+]
 
 const userSchema =new Schema({
     username:{
@@ -39,7 +56,8 @@ const userSchema =new Schema({
                 type: String,
                 // required: true,
             }
-        }],
+        }
+],
         income:[{
             id:{
                 type: String
@@ -57,7 +75,37 @@ const userSchema =new Schema({
                 // required: true,
             }
         }]
-    }
+    },
+    expenseCategories:{
+        type:[{
+            categoryName:{
+                type:String,
+            },
+            color:{
+                type:String,
+                default:"green",
+            },
+            imgUrl:{
+                type:String,
+            }
+        }],
+        default:defaultExpenseCategories
+},
+incomeCategories:{
+    type:[{
+        categoryName:{
+            type:String,
+        },
+        color:{
+            type:String,
+            default:"green",
+        },
+        imgUrl:{
+            type:String,
+        }
+    }],
+    default:defaultIncomeCategories
+}
 })
 
 export const User = mongoose.model("User", userSchema, "Users");

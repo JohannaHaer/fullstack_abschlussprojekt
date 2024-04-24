@@ -7,6 +7,8 @@ import { getUserData } from "../userController/getUserData.js";
 import { logout } from "../userController/userLogout.js";
 import { addExpense } from "../userController/addExpense.js";
 import { addIncome } from "../userController/addIncome.js";
+import { addExpenseCategory } from "../userController/addExpenseCategory.js";
+import { addIncomeCategory } from "../userController/addIncomeCategory.js";
 
 const userRouter = express.Router()
 const mult = multer()
@@ -17,7 +19,9 @@ userRouter.post('/checkRepeatEmail', mult.none(), checkRepeatEmail)
 userRouter.post('/login', mult.none(), login)
 userRouter.get('/:username', checkAuth, getUserData)
 userRouter.get('/logout', logout)
-userRouter.post('/addExpense', mult.none(),  addExpense)
+userRouter.post('/addExpense', mult.none(), addExpense)
 userRouter.post('/addIncome', mult.none(), addIncome)
+userRouter.post('/addExpenseCategory', mult.none(), addExpenseCategory)
+userRouter.post('/addIncomeCategory', mult.none(), addIncomeCategory)
 
 export default userRouter

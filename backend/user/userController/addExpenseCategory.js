@@ -1,10 +1,12 @@
 import { User } from "../userModel/user.model.js";
+import jwt from 'jsonwebtoken'
 
 
 
 export const addExpenseCategory = async (req,res)=>{
-  //!username muss noch abgefragt werden
-  const username = 'test'
+  //!username muss noch getestet werden
+  // const username = 'test'
+  const username = jwt.decode(res.cookie.token).payload.username
   const {categoryName, color, imgUrl} = req.body
   console.log('bitte')
   try{

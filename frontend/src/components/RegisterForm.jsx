@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { z } from 'zod'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { toast } from "@/components/ui/use-toast"
+import { Checkbox } from "@/components/ui/checkbox"
 // import { register } from '@/functions/registerFetch'
 
 const formSchema = z.object({
@@ -24,6 +25,24 @@ const formSchema = z.object({
 })
 
 const RegisterForm = () => {
+
+    const [isChecked, setIsChecked] = useState(false)
+
+
+    let toggle = () => {
+        let registerButton = document.querySelector('#registerButton')
+        if(isChecked == false) {
+            registerButton.setAttribute("disabled", "disabled")
+        } else {
+            registerButton.removeAttribute("disabled")
+        }
+    }
+
+    console.log(isChecked);
+    const handleCheckbox = () => {
+        setIsChecked(!isChecked)
+        toggle()
+    }
 
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -42,20 +61,16 @@ const RegisterForm = () => {
     return (
         <>
             <Form {...form}>
-                <form  className="space-y-8">
+                <form  className="space-y-8 flex flex-col">
                     {/* onSubmit={form.handleSubmit(onSubmit)} */}
                     <FormField
                         control={form.control}
                         name="username"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Username</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Username" {...field} />
+                                    <Input placeholder="Username" {...field} required/>
                                 </FormControl>
-                                <FormDescription>
-                                    This is your public display name.
-                                </FormDescription>
                                 <FormMessage />
                             </FormItem>
                         )}
@@ -65,13 +80,9 @@ const RegisterForm = () => {
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Email</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Email" {...field} />
+                                    <Input placeholder="Email" {...field} required/>
                                 </FormControl>
-                                <FormDescription>
-                                    This is your email.
-                                </FormDescription>
                                 <FormMessage />
                             </FormItem>
                         )}
@@ -81,18 +92,18 @@ const RegisterForm = () => {
                         name="password"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Password</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Password" {...field} />
+                                    <Input placeholder="Password" {...field} required/>
                                 </FormControl>
-                                <FormDescription>
-                                    This is your password.
-                                </FormDescription>
                                 <FormMessage />
                             </FormItem>
                         )}
                     />
-                    <Button type="submit">Submit</Button>
+                    <div className='flex items-center gap-1'>
+                        <Checkbox onCheckedChange={handleCheckbox}/>
+                        <p>Agree to our <span className='font-bold'>Terms and Services</span></p>
+                    </div>
+                    <Button type="submit" id='registerButton'>Register now</Button>
                 </form>
             </Form>
         </>

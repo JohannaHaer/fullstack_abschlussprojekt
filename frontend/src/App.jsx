@@ -1,6 +1,7 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import Register from './pages/Register'
+import Login from './pages/Login'
 import NavBar from './components/navBar/NavBar'
 import { Home } from 'lucide-react'
 import Reports from './pages/Reports'
@@ -17,6 +18,7 @@ function App() {
         <Route path='/Add' element={<Add />} />
         <Route path='/Reports' element={<Reports/>} />
         <Route path='/Transaction' element={<Transaction />} />
+        <Route path='/login' element={<Login/>}/>
       </Routes>
         <NavBar />
     </>

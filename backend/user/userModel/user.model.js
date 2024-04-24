@@ -55,6 +55,15 @@ const userSchema =new Schema({
             description:{
                 type: String,
                 // required: true,
+            },
+            //!tapes korrekt?
+            date:{
+                type:String,
+                // type: Date,
+            },
+            time:{
+                type:String
+                // type:Date,
             }
         }
 ],

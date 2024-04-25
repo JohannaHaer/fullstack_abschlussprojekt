@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { z } from 'zod'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-
+import {useNavigate} from 'react-router-dom'
 import { Button } from "@/components/ui/button"
 import {
     Form,
@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { toast } from "@/components/ui/use-toast"
-// import { login } from '@/functions/loginFetch'
+import { login } from '@/functions/loginFetch'
 
 const formSchema = z.object({
     email: z.string(),
@@ -22,6 +22,8 @@ const formSchema = z.object({
 
 
 const LoginForm = () => {
+
+    const navigate = useNavigate()
 
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -36,16 +38,15 @@ const LoginForm = () => {
         navigate('/')
     }
 
-    // function onSubmit(values) {
-    //     return login(values) && navigateHome
-    //     console.log(values)
-    // }
+    function onSubmit(values) {
+        login(values) 
+        navigateHome()
+    }
 
     return (
         <>
             <Form {...form}>
-                <form className="space-y-8 flex flex-col">
-                    {/* onSubmit={form.handleSubmit(onSubmit)} */}
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 flex flex-col">
                     <FormField
                         control={form.control}
                         name="email"

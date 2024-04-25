@@ -5,10 +5,10 @@ import { User } from "../userModel/user.model.js";
 export const addExpense = async (req,res)=>{
   //!username muss noch getestet werden
   // const username = 'test'
-  const username = jwt.decode(res.cookie.token).payload.username
+  const id = jwt.decode(res.cookie.token).payload.id
   const {amount, category, description, date, time} = req.body
   try{
-    const user = await User.findOne({username})
+    const user = await User.findOne({id})
     if (!user) {
       throw new Error("User not found");
     }

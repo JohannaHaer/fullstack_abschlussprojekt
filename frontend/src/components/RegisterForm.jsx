@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input"
 import { toast } from "@/components/ui/use-toast"
 import { Checkbox } from "@/components/ui/checkbox"
 import { useNavigate } from 'react-router-dom'
-// import { register } from '@/functions/registerFetch'
+import { register } from '@/functions/registerFetch'
 
 const formSchema = z.object({
     username: z.string().min(2).max(50),
@@ -56,17 +56,15 @@ const RegisterForm = () => {
         navigate('/setup-account')
     }
 
-    // function onSubmit(values) {
-    //     return register(values) && navigateSetupAccount()
-    //! Müssen prüfen ob die Weiterleitung so schon mit dem return funktioniert
-    //     console.log(values)
-    // }
+    function onSubmit(values) {
+        register(values) 
+        navigateSetupAccount()
+    }
 
     return (
         <>
             <Form {...form} >
-                <form className="space-y-8 flex flex-col">
-                    {/* onSubmit={form.handleSubmit(onSubmit)} */}
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 flex flex-col">
                     <FormField
                         control={form.control}
                         name="username"

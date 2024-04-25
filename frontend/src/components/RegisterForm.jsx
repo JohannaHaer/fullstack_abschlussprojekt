@@ -7,15 +7,14 @@ import { Button } from "@/components/ui/button"
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
-    FormLabel,
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { toast } from "@/components/ui/use-toast"
 import { Checkbox } from "@/components/ui/checkbox"
+import { useNavigate } from 'react-router-dom'
 // import { register } from '@/functions/registerFetch'
 
 const formSchema = z.object({
@@ -25,20 +24,20 @@ const formSchema = z.object({
 })
 
 const RegisterForm = () => {
-
+    
     const [isChecked, setIsChecked] = useState(false)
-
+    const navigate = useNavigate()
 
     let toggle = () => {
         let registerButton = document.querySelector('#registerButton')
-        if(isChecked == false) {
+        if(isChecked === true) {
             registerButton.setAttribute("disabled", "disabled")
+            
         } else {
             registerButton.removeAttribute("disabled")
         }
     }
 
-    console.log(isChecked);
     const handleCheckbox = () => {
         setIsChecked(!isChecked)
         toggle()
@@ -52,16 +51,21 @@ const RegisterForm = () => {
             password: ""
         },
     })
-    
+
+    const navigateSetupAccount = () => {
+        navigate('/setup-account')
+    }
+
     // function onSubmit(values) {
-    //     register(values)
+    //     return register(values) && navigateSetupAccount()
+    //! Müssen prüfen ob die Weiterleitung so schon mit dem return funktioniert
     //     console.log(values)
     // }
 
     return (
         <>
-            <Form {...form}>
-                <form  className="space-y-8 flex flex-col">
+            <Form {...form} >
+                <form className="space-y-8 flex flex-col">
                     {/* onSubmit={form.handleSubmit(onSubmit)} */}
                     <FormField
                         control={form.control}
@@ -103,7 +107,7 @@ const RegisterForm = () => {
                         <Checkbox onCheckedChange={handleCheckbox}/>
                         <p>Agree to our <span className='font-bold'>Terms and Services</span></p>
                     </div>
-                    <Button type="submit" id='registerButton'>Register now</Button>
+                    <Button type="submit" id='registerButton' disabled={!isChecked} className='text-lg'>Register now</Button>
                 </form>
             </Form>
         </>

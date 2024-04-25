@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
 import { useNavigate } from 'react-router-dom'
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 // import { register } from '@/functions/registerFetch'
 
 
@@ -16,24 +17,30 @@ const SetupAccountForm = () => {
     const [imageSelected, setImageSelected] = useState(null)
     const navigate = useNavigate()
 
+   
+
+    const getImage = (event) => {
+        const image = event.target.files[0]
+        setImageSelected(URL.createObjectURL(image))
+    }
+    console.log(imageSelected);
+
     const navigateHome = () => {
         if(imageSelected != null){
         navigate('/')
     }
     }
-
-    const getImage = (event) => {
-        const image = event.target.files
-        setImageSelected(image)
-        console.log('klappt');
-    }
     
     return (
         <>
-            <Form className="space-y-8 flex flex-col">
-                <form onSubmit={navigateHome}>
-                    <div className="grid w-full max-w-sm items-center gap-1.5">
-                        <Label htmlFor="picture">Picture</Label>
+            <Form>
+                <form onSubmit={navigateHome} className="space-y-8 flex flex-col items-center">
+                    <div className="grid w-full max-w-sm items-center justify-center gap-1.5">
+                        <Avatar>
+                            <AvatarImage id='avatar' src={imageSelected}/>
+                            <AvatarFallback>CN</AvatarFallback>
+                        </Avatar>
+                        <Label htmlFor="picture" className='text-start'>Profile picture</Label>
                         <Input id="picture" type="file" onChange={getImage}/>
                     </div>
                     <div className='flex gap-5'>

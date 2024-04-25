@@ -10,4 +10,4 @@
 
 ## Logo
 
-![](fullstack_abschlussprojekt/frontend/src/assets/img/Logo Backend Abschlussprojekt_dark.png)
+![](./frontend/src/assets/img/Logo Backend Abschlussprojekt_dark.png)

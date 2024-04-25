@@ -10,4 +10,4 @@
 
 ## Logo
 
-![](./frontend/src/assets/img/Logo Backend Abschlussprojekt_dark.png)
+![](./frontend/src/assets/img/Logo_Backend_Abschlussprojekt_dark.png)

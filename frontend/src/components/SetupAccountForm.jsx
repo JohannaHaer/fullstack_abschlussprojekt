@@ -17,13 +17,10 @@ const SetupAccountForm = () => {
     const [imageSelected, setImageSelected] = useState(null)
     const navigate = useNavigate()
 
-   
-
     const getImage = (event) => {
         const image = event.target.files[0]
         setImageSelected(URL.createObjectURL(image))
     }
-    console.log(imageSelected);
 
     const navigateHome = () => {
         if(imageSelected != null){
@@ -36,8 +33,8 @@ const SetupAccountForm = () => {
             <Form>
                 <form onSubmit={navigateHome} className="space-y-8 flex flex-col items-center">
                     <div className="grid w-full max-w-sm items-center justify-center gap-1.5">
-                        <Avatar>
-                            <AvatarImage id='avatar' src={imageSelected}/>
+                        <Avatar variant='preview'>
+                            <AvatarImage id='avatar' src={imageSelected} />
                             <AvatarFallback>CN</AvatarFallback>
                         </Avatar>
                         <Label htmlFor="picture" className='text-start'>Profile picture</Label>

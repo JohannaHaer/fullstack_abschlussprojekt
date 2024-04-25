@@ -1,5 +1,6 @@
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
+import "./NavBar.css"
 import {
     NavigationMenu,
     NavigationMenuContent,
@@ -14,16 +15,36 @@ import {
   
 
 const NavBar = () => {
+
+const navigate = useNavigate()
+
+const goToHome = () => {
+    navigate("/")
+}
+
+const goToAdd = () => {
+    navigate("/Add")
+}
+
+const goToReports = () => {
+    navigate("/Reports")
+}
+
+const goToTransaction= () => {
+    navigate("/Transaction")
+}
+
+
     return ( 
         <>
-        <div className="navBar">
+        <div className="">
         <NavigationMenu>
             <NavigationMenuList>
                 <NavigationMenuItem>
-                <NavLink to="/"><Button variant="ghost">Home</Button></NavLink>
-                <NavLink to="/"><Button variant="ghost">Add</Button></NavLink>
-                <NavLink to="/"><Button variant="ghost">Reports</Button></NavLink>
-                <NavLink to="/"><Button variant="ghost">Transactions</Button></NavLink>
+                <Button variant="ghost" onClick={goToHome}><img src="../src/assets/img/home.png"/></Button>
+                <Button variant="ghost" onClick={goToAdd}><img src="../src/assets/img/add.png"/></Button>
+                <Button variant="ghost" onClick={goToReports}><img src="../src/assets/img/credit-card.png"/></Button>
+                <Button variant="ghost" onClick={goToTransaction}><img src="../src/assets/img/circular-diagram.png"/></Button>
                 </NavigationMenuItem>
             </NavigationMenuList>
         </NavigationMenu>

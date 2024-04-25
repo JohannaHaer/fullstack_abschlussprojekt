@@ -10,6 +10,4 @@
 
 ## Logo
 
-![Logo](./frontend/src/assets/img/Logo_Backend_Abschlussprojekt_dark.png)
-
 <img src="./frontend/src/assets/img/Logo_Backend_Abschlussprojekt_dark.png" width='100px' height='100px'/>

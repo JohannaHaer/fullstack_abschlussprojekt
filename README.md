@@ -12,4 +12,4 @@
 
 ![Logo](./frontend/src/assets/img/Logo_Backend_Abschlussprojekt_dark.png)
 
-<img src="./frontend/src/assets/img/Logo_Backend_Abschlussprojekt_dark.png" className='w-10 h-10'/>
+<img src="./frontend/src/assets/img/Logo_Backend_Abschlussprojekt_dark.png" width='10px' height='10px'/>

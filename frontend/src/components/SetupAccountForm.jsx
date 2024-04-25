@@ -25,7 +25,11 @@ const SetupAccountForm = () => {
     const navigateHome = () => {
         if(imageSelected != null){
         navigate('/')
+        }
     }
+
+    const skip = () => {
+        navigate('/')
     }
     
     return (
@@ -35,13 +39,13 @@ const SetupAccountForm = () => {
                     <div className="grid w-full max-w-sm items-center justify-center gap-1.5">
                         <Avatar variant='preview'>
                             <AvatarImage id='avatar' src={imageSelected} />
-                            <AvatarFallback>CN</AvatarFallback>
+                            <AvatarFallback><img src='https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg' alt="" className='w-20 h-20'/></AvatarFallback>
                         </Avatar>
                         <Label htmlFor="picture" className='text-start'>Profile picture</Label>
                         <Input id="picture" type="file" onChange={getImage}/>
                     </div>
                     <div className='flex gap-5'>
-                        <Button type="submit" variant='secondary' className='text-lg' onClick={navigateHome}>Skip</Button>
+                        <Button type="submit" variant='secondary' className='text-lg' onClick={skip}>Skip</Button>
                         <Button type="submit" className='text-lg'>Add Image</Button>
                     </div>
                 </form>

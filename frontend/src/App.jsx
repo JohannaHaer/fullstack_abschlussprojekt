@@ -8,7 +8,6 @@ import Reports from './pages/Reports'
 import Transaction from './pages/Transaction'
 import Add from './pages/Add'
 import SetupAccount from './pages/SetupAccount'
-import Home from './pages/Home'
 
 function App() {
 

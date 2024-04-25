@@ -7,6 +7,5 @@ export const register = async (values) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(values),
-        credentials: 'include'
     })
 }

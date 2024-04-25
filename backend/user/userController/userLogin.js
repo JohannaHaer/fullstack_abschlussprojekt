@@ -8,11 +8,11 @@ export const userRouter = express.Router();
 export const login = async(req, res) => {
   try {
     const { username, password, email } = req.body;
-    if (!username || !password) {
+    if (!email || !password) {
       res.sendStatus(403);
       return;
     }
-    const user = await User.findOne({ username }).lean();
+    const user = await User.findOne({ email}).lean();
     if (user === null) {
       res.status(401).send("user doesn`t exist");
       return;

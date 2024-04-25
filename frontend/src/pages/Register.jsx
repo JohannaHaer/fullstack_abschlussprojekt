@@ -14,7 +14,7 @@ const Register = () => {
             <h1 className='text-center text-2xl font-bold mt-10'>Create an Account</h1>
             <p className='text-center'>Fill out the following form to create your account.</p>
             <RegisterForm/>
-            <p className='text-lg mt-5'>Already have an Account? <span onClick={navigateLogin} className='text-blue-600 font-bold'>Login</span></p>
+            <p className='text-lg mt-5'>Already have an Account? <span onClick={navigateLogin} className='text-[#06434E] dark:text-[#FFDE59] font-bold'>Login</span></p>
         </section>
     )
 }

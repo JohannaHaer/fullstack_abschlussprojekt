@@ -9,6 +9,7 @@ import Transaction from './pages/Transaction'
 import SetupAccount from './pages/SetupAccount'
 import AddIncome from './pages/AddIncome'
 import AddExpenses from './pages/AddExpenses'
+import Pitch from './pages/Pitch'
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path='/addExpenses' element={<AddExpenses />} />
         <Route path='/login' element={<Login/>}/>
         <Route path='/setup-account' element={<SetupAccount/>}/>
+        <Route path='/pitch' element={<Pitch/>}/>
       </Routes>
         <NavBar />
     </>

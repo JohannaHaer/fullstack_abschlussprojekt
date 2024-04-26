@@ -27,7 +27,7 @@ const Home = () => {
                             <AvatarFallback>CN</AvatarFallback>
                         </Avatar>
                     </div>
-                    <Card className=" bg-slate-200 rounded-lg h-3/6 " >
+                    <Card className="  rounded-lg h-3/6 " >
                         <p className='px-4 py-4'>your Card or whatever</p>
                     </Card>
                 </CardHeader>
@@ -35,7 +35,7 @@ const Home = () => {
                     <h3 className='pb-8 text-2xl'>Total wallet</h3>
                         <div>
                             <div className='flex w-full gap-x-8 justify-center'>
-                                <div className='bg-slate-200 rounded-lg w-3/6 h-36'>
+                                <div className=' rounded-lg w-3/6 h-36'>
                                     <div className='py-4 px-4'>
                                         <div className='w-12 h-12 bg-red-200 rounded-full flex justify-center items-center'>
                                             <img src="./src/assets/img/trending-up.png" alt="trending up icon" />
@@ -44,7 +44,7 @@ const Home = () => {
                                         <p>+ $</p>
                                     </div>
                                 </div>
-                                <div className='bg-slate-200 rounded-lg w-3/6 h-36 '>
+                                <div className=' rounded-lg w-3/6 h-36 '>
                                     <div className='px-4 py-4'>
                                         <div className='w-12 h-12 bg-red-200 rounded-full flex justify-center items-center '>
                                             <img src="./src/assets/img/trending-down.png" alt="trending down icon" />
@@ -55,7 +55,7 @@ const Home = () => {
                                 </div>
                             </div>
                         </div>
-                    <div className='bg-slate-200 rounded-full px-4 py-4'>
+                    <div className='rounded-full px-4 py-4'>
                         <div className='flex items-center  justify-between'>
                             <div className='flex items-center gap-4'>
                                 <div className='w-12 h-12 bg-red-200 rounded-full flex justify-center items-center '>

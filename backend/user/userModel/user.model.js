@@ -50,7 +50,7 @@ const userSchema =new Schema({
             type:String
         },
         amount:{
-            type:String
+            type:Number
         },
         description:{
             type:String

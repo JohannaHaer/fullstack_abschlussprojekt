@@ -34,24 +34,21 @@ const goToHome = () => {
     navigate("/")
 }
 
-const goToAdd = () => {
-    navigate("/Add")
-}
 
 const goToReports = () => {
-    navigate("/Reports")
+    navigate("/reports")
 }
 
 const goToTransaction = () => {
-    navigate("/Transaction")
+    navigate("/transaction")
 }
 
 const goToAddIncome = () => {
-    navigate("/AddIncome")
+    navigate("/addIncome")
 }
 
 const goToAddExpenses = () => {
-    navigate("/AddExpenses")
+    navigate("/addExpenses")
 }
 
     return ( 

@@ -56,6 +56,10 @@ const RegisterForm = () => {
         navigate('/setup-account')
     }
 
+    const navigateTermsServices = () => {
+        navigate('/terms-and-services')
+    }
+
     function onSubmit(values) {
         register(values) 
         navigateSetupAccount()
@@ -103,7 +107,7 @@ const RegisterForm = () => {
                     />
                     <div className='flex items-center gap-1'>
                         <Checkbox onCheckedChange={handleCheckbox}/>
-                        <p>Agree to our <span className='font-bold'>Terms and Services</span></p>
+                        <p>Agree to our <span className='font-bold' onClick={navigateTermsServices}>Terms and Services</span></p>
                     </div>
                     <Button type="submit" id='registerButton' disabled={!isChecked} className='text-lg'>Register now</Button>
                 </form>

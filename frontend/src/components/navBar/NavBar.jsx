@@ -59,7 +59,7 @@ const goToAddExpenses = () => {
                 <Button variant="ghost" onClick={goToTransaction}><img src="../src/assets/img/credit-card.png" className="w-6 h-6"/></Button>
                
                 <DropdownMenu>
-                    <DropdownMenuTrigger><Button variant="ghost" onClick={goToAdd}><img src="../src/assets/img/add.png" className="w-6 h-6"/></Button></DropdownMenuTrigger>
+                    <DropdownMenuTrigger><Button variant="ghost"><img src="../src/assets/img/add.png" className="w-6 h-6"/></Button></DropdownMenuTrigger>
                         <DropdownMenuContent>
                         <DropdownMenuItem><button onClick={goToAddIncome}>Income</button></DropdownMenuItem>
                         <DropdownMenuSeparator />

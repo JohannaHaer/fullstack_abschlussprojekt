@@ -11,6 +11,7 @@ import { addExpenseCategory } from "../userController/addExpenseCategory.js";
 import { addIncomeCategory } from "../userController/addIncomeCategory.js";
 import { v2 as cloudinary } from "cloudinary";
 import { checkRepeatEmail, checkRepeatName } from "../../middleware/checkRepeat.js";
+import { editUser } from "../userController/editUser.js";
 
 const userRouter = express.Router()
 const mult = multer({ storage: multer.memoryStorage() })
@@ -29,5 +30,6 @@ userRouter.post('/addExpense', mult.none(), checkAuth, addExpense)
 userRouter.post('/addIncome', mult.none(), checkAuth, addIncome)
 userRouter.post('/addExpenseCategory', mult.none(), checkAuth, addExpenseCategory)
 userRouter.post('/addIncomeCategory', mult.none(), checkAuth, addIncomeCategory)
+userRouter.patch('/editUser', mult.none(), editUser)
 
 export default userRouter

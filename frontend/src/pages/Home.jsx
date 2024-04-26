@@ -56,8 +56,17 @@ const Home = () => {
                             </div>
                         </div>
                     <div className='bg-slate-200 rounded-full px-4 py-4'>
-                        <div className='w-12 h-12 bg-red-200 rounded-full flex justify-center items-center '>
-                            <img className='m-2' src="./src/assets/img/alert-triangle.png" alt="trending down icon" />
+                        <div className='flex items-center  justify-between'>
+                            <div className='flex items-center gap-4'>
+                                <div className='w-12 h-12 bg-red-200 rounded-full flex justify-center items-center '>
+                                    <img className='m-2' src="./src/assets/img/alert-triangle.png" alt="trending down icon" />
+                                </div>
+                                <div>
+                                    <p>Monthly spending limit</p>
+                                    <p>$ 6.000</p>
+                                </div>
+                            </div>
+                            <img className='m-2' src="./src/assets/img/more-horizontal.png" alt="" />
                         </div>
                     </div>
                 </CardContent>

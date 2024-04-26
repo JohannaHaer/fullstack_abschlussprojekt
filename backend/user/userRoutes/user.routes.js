@@ -22,8 +22,6 @@ cloudinary.config({
   });
 
 userRouter.post("/register",mult.none(),checkRepeatName, checkRepeatEmail, register)
-// userRouter.post('/checkRepeatName', mult.none(), checkRepeatName)
-// userRouter.post('/checkRepeatEmail', mult.none(), checkRepeatEmail)
 userRouter.post('/login', mult.none(), login)
 userRouter.get('/:username', checkAuth, getUserData)
 userRouter.get('/logout', logout)

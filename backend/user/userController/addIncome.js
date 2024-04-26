@@ -1,8 +1,4 @@
-import express from "express";
 import { User } from "../userModel/user.model.js";
-
-
-export const userRouter = express.Router();
 
 
 
@@ -20,8 +16,9 @@ export const addIncome = async (req,res)=>{
       amount: amount,
       category: category,
       description: description,
-      date:date,
-      time:time
+      date: date,
+      time: time,
+      type:"income"
     })
     const writeResult = await user.save();
       res.json(writeResult);

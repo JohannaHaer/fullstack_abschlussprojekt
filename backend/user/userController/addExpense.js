@@ -15,7 +15,10 @@ export const addExpense = async (req,res)=>{
     user.transactions.expenses.push({
       amount: amount,
       category: category,
-      description: description
+      description: description,
+      date: date,
+      time: time,
+      type: "expense"
     })
     const writeResult = await user.save();
       res.json(writeResult);

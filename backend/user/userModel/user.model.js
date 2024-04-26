@@ -39,52 +39,77 @@ const userSchema =new Schema({
         type: String,
         default:'https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg',
     },
-    transactions:{
-        expenses:[{
-            id:{
-                type: String
-            },
-            amount:{
-                type: Number,
-                // required: true,
-            },
-            category:{
-                type: String,
-                // required: true,
-            },
-            description:{
-                type: String,
-                // required: true,
-            },
-            //!tapes korrekt?
-            date:{
-                type:String,
-                // type: Date,
-            },
-            time:{
-                type:String
-                // type:Date,
-            }
-        }
-],
-        income:[{
-            id:{
-                type: String
-            },
-            amount:{
-                type: Number,
-                // required: true,
-            },
-            category:{
-                type: String,
-                // required: true,
-            },
-            description:{
-                type: String,
-                // required: true,
-            }
-        }]
-    },
+    transactions:[{
+        id:{
+            type:String
+        },
+        type:{
+            type:String
+        },
+        category:{
+            type:String
+        },
+        amount:{
+            type:String
+        },
+        description:{
+            type:String
+        },
+        date:{
+            type:String
+            //type:Date
+        },
+        time:{
+            type:String
+            //tpye:Date
+        },
+    }],
+//     transactions:{
+//         expenses:[{
+//             id:{
+//                 type: String
+//             },
+//             amount:{
+//                 type: Number,
+//                 // required: true,
+//             },
+//             category:{
+//                 type: String,
+//                 // required: true,
+//             },
+//             description:{
+//                 type: String,
+//                 // required: true,
+//             },
+//             //!tapes korrekt?
+//             date:{
+//                 type:String,
+//                 // type: Date,
+//             },
+//             time:{
+//                 type:String
+//                 // type:Date,
+//             }
+//         }
+// ],
+//         income:[{
+//             id:{
+//                 type: String
+//             },
+//             amount:{
+//                 type: Number,
+//                 // required: true,
+//             },
+//             category:{
+//                 type: String,
+//                 // required: true,
+//             },
+//             description:{
+//                 type: String,
+//                 // required: true,
+//             }
+//         }]
+//     },
     expenseCategories:{
         type:[{
             categoryName:{

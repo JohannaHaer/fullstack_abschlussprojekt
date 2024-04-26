@@ -10,6 +10,7 @@ import {
     CardHeader,
     CardTitle,
   } from "@/components/ui/card"
+import Toggle from '@/components/Toggle'
 
 const Home = () => {
     return (
@@ -72,6 +73,7 @@ const Home = () => {
                 </CardContent>
             </Card>
         </section>
+        <Toggle/>
     </>
     )
 }

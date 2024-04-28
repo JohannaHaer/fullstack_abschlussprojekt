@@ -81,34 +81,34 @@ const NavBar = () => {
         <>
         <NavigationMenu >
                 <NavigationMenuItem className="flex justify-around w-full  list-none shadow-inner border-t-2 bottom-0 fixed bg-white  h-12 ">
-                {showText ? (
-                    <Button variant="ghost" onClick={goToHome} className="text-black underline">Home</Button>
-                ) : (
-                    <Button variant="ghost" onClick={goToHome}><img src="../src/assets/img/home.png" className="w-6 h-6"/></Button>
-                )}
-                 {showTransactionText ? (
-                    <Button variant="ghost" onClick={goToTransaction} className="underline text-black">Transaction</Button>
-                ) : (
-                    <Button variant="ghost" onClick={goToTransaction}><img src="../src/assets/img/credit-card.png" className="w-6 h-6"/></Button>
-                )}
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild><Button variant="ghost"><img src="../src/assets/img/add.png" className="w-6 h-6"/></Button></DropdownMenuTrigger>
-                    <DropdownMenuContent>
-                        <DropdownMenuItem><span onClick={goToAddIncome}>Income</span></DropdownMenuItem>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem><span onClick={goToAddExpenses}>Expenses</span></DropdownMenuItem>
-                    </DropdownMenuContent>
-                </DropdownMenu>
-                {showReports ? (
-                    <Button variant="ghost" onClick={goToReports} className="underline text-black">Reports</Button>
-                ) : (
-                    <Button variant="ghost" onClick={goToReports}><img src="../src/assets/img/circular-diagram.png" className="w-6 h-6"/></Button>
-                )}
+                    {showText ? (
+                        <Button variant="ghost" onClick={goToHome} className="text-black underline">Home</Button>
+                    ) : (
+                        <Button variant="ghost" onClick={goToHome}><img src="../src/assets/img/home.png" className="w-6 h-6"/></Button>
+                    )}
+                    {showTransactionText ? (
+                        <Button variant="ghost" onClick={goToTransaction} className="underline text-black">Transaction</Button>
+                    ) : (
+                        <Button variant="ghost" onClick={goToTransaction}><img src="../src/assets/img/credit-card.png" className="w-6 h-6"/></Button>
+                    )}
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild><Button variant="ghost"><img src="../src/assets/img/add.png" className="w-6 h-6"/></Button></DropdownMenuTrigger>
+                        <DropdownMenuContent>
+                            <DropdownMenuItem><span onClick={goToAddIncome}>Income</span></DropdownMenuItem>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem><span onClick={goToAddExpenses}>Expenses</span></DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                    {showReports ? (
+                        <Button variant="ghost" onClick={goToReports} className="underline text-black">Reports</Button>
+                    ) : (
+                        <Button variant="ghost" onClick={goToReports}><img src="../src/assets/img/circular-diagram.png" className="w-6 h-6"/></Button>
+                    )}
                 </NavigationMenuItem>
         </NavigationMenu>
 
         </>
-     );
+    );
 }
- 
+
 export default NavBar;

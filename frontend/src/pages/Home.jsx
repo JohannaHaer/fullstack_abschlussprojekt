@@ -12,7 +12,7 @@ import {
   } from "@/components/ui/card"
 import Toggle from '@/components/Toggle'
 import Header from '@/components/Header'
-import NavBar from '@/components/navBar/NavBar'
+import NavBar from '@/components/NavBar'
 
 const Home = () => {
     return (

@@ -121,6 +121,7 @@ const userSchema =new Schema({
             },
             imgUrl:{
                 type:String,
+                default: 'www.blödertest.de'
             }
         }],
         default:defaultExpenseCategories
@@ -136,6 +137,7 @@ incomeCategories:{
         },
         imgUrl:{
             type:String,
+            default: 'www.blödertest.de'
         }
     }],
     default:defaultIncomeCategories

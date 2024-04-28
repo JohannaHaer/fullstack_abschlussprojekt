@@ -11,11 +11,14 @@ import {
     CardTitle,
   } from "@/components/ui/card"
 import Toggle from '@/components/Toggle'
+import Header from '@/components/Header'
+import NavBar from '@/components/navBar/NavBar'
 
 const Home = () => {
     return (
         <>
-        <section className='px-4 h-dvh'>
+        <section className='py-10 px-4 h-dvh'>
+            <Header/>
             <Card className="py-14 h-dvh w-full " >
                 <CardHeader className="h-3/6 w-full flex flex-col gap-12">
                     <div className="flex justify-between">
@@ -74,6 +77,7 @@ const Home = () => {
             </Card>
         </section>
         <Toggle/>
+        <NavBar/>
     </>
     )
 }

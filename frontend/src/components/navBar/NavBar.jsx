@@ -1,6 +1,6 @@
 
 import { useNavigate, useLocation } from "react-router-dom";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import "./NavBar.css"
 import {
     NavigationMenu,
@@ -92,11 +92,11 @@ const NavBar = () => {
                     <Button variant="ghost" onClick={goToTransaction}><img src="../src/assets/img/credit-card.png" className="w-6 h-6"/></Button>
                 )}
                 <DropdownMenu>
-                    <DropdownMenuTrigger><Button variant="ghost"><img src="../src/assets/img/add.png" className="w-6 h-6"/></Button></DropdownMenuTrigger>
-                        <DropdownMenuContent>
-                        <DropdownMenuItem><button onClick={goToAddIncome}>Income</button></DropdownMenuItem>
+                    <DropdownMenuTrigger asChild><Button variant="ghost"><img src="../src/assets/img/add.png" className="w-6 h-6"/></Button></DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                        <DropdownMenuItem><span onClick={goToAddIncome}>Income</span></DropdownMenuItem>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem><button onClick={goToAddExpenses}>Expenses</button></DropdownMenuItem>
+                        <DropdownMenuItem><span onClick={goToAddExpenses}>Expenses</span></DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
                 {showReports ? (

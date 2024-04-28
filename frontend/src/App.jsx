@@ -10,7 +10,7 @@ import SetupAccount from './pages/SetupAccount'
 import AddIncome from './pages/AddIncome'
 import AddExpenses from './pages/AddExpenses'
 import Pitch from './pages/Pitch'
-import Startpage from './pages/Startpage'
+import Landingpage from './pages/Landingpage'
 
 
 function App() {
@@ -18,8 +18,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/start' element={<Startpage/>}/>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Landingpage/>}/>
+        <Route path='/home' element={<Home />} />
         <Route path='/login' element={<Login/>}/>
         <Route path='/pitch' element={<Pitch/>}/>
         <Route path='/register' element={<Register />} />

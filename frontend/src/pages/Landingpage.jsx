@@ -1,9 +1,11 @@
 import { useTheme } from '@/components/theme-provider';
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
-const Startpage = () => {
+const Landingpage = () => {
 
     const { theme } = useTheme();
+    const navigate = useNavigate()
 
     const logoDarkPath = "../src/assets/img/Logo-wechsel_dark.gif";
     const logoLightPath = "../src/assets/img/Logo-wechsel.gif";
@@ -12,6 +14,13 @@ const Startpage = () => {
         return theme === "dark" ? logoDarkPath : logoLightPath;
     }, [theme]);
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            navigate('/home')
+        }, 4200);
+        return () => clearTimeout(timer)
+    }, [])
+
     return (
         <section className='h-dvh flex justify-center items-center'>
             <img src={logoPath} alt="" className='w-30 h-30'/>
@@ -19,4 +28,4 @@ const Startpage = () => {
     )
 }
 
-export default Startpage
+export default Landingpage

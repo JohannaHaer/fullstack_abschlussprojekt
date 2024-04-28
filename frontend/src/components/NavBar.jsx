@@ -33,7 +33,7 @@ const NavBar = () => {
     const navigate = useNavigate()
 
     const goToHome = () => {
-        navigate("/")
+        navigate("/home")
     }
 
     const goToReports = () => {

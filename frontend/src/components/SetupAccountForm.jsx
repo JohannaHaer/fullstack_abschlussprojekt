@@ -24,12 +24,12 @@ const SetupAccountForm = () => {
 
     const navigateHome = () => {
         if(imageSelected != null){
-        navigate('/')
+        navigate('/home')
         }
     }
 
     const skip = () => {
-        navigate('/')
+        navigate('/home')
     }
     
     return (

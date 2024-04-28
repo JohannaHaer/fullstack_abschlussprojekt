@@ -35,7 +35,7 @@ const LoginForm = () => {
     })
 
     const navigateHome = () => {
-        navigate('/')
+        navigate('/home')
     }
 
     function onSubmit(values) {

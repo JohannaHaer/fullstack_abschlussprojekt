@@ -1,5 +1,5 @@
 import { useTheme } from '@/components/theme-provider';
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const Landingpage = () => {
@@ -16,7 +16,7 @@ const Landingpage = () => {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            navigate('/home')
+            navigate('/login')
         }, 4200);
         return () => clearTimeout(timer)
     }, [])

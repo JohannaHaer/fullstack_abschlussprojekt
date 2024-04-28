@@ -2,7 +2,6 @@ import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import Register from './pages/Register'
 import Login from './pages/Login'
-import NavBar from '@/components/NavBar'
 import Home from './pages/Home'
 import Reports from './pages/Reports'
 import Transaction from './pages/Transaction'
@@ -11,6 +10,7 @@ import AddIncome from './pages/AddIncome'
 import AddExpenses from './pages/AddExpenses'
 import Pitch from './pages/Pitch'
 import Landingpage from './pages/Landingpage'
+import Settings from './components/Settings'
 
 
 function App() {
@@ -28,6 +28,7 @@ function App() {
         <Route path='/addIncome' element={<AddIncome />} />
         <Route path='/addExpenses' element={<AddExpenses />} />
         <Route path='/reports' element={<Reports/>} />
+        <Route path='/settings' element={<Settings/>}/>
       </Routes>
         
     </>

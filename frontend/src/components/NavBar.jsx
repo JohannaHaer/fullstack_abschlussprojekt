@@ -1,7 +1,6 @@
 
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import "./NavBar.css"
 import {
     NavigationMenu,
     NavigationMenuContent,

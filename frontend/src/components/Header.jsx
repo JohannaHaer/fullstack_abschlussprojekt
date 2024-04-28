@@ -25,7 +25,7 @@ const Header = () => {
 
     return (
         <section className='flex justify-between items-center'>
-            <h1 className='text-2xl font-bold'>Hey {user?.username}</h1>
+            <p className='text-2xl font-bold'>Hey {user?.username}</p>
             <div className='flex gap-4 items-center'>
                 <p className='text-l font-medium'>Saldo</p>
                 <Avatar variant='default' onClick={navigateSettings}>

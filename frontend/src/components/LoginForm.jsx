@@ -39,6 +39,10 @@ const LoginForm = () => {
 
     const onSubmit = (values) => {
         login(values) 
+        const checkLogin = async()=>{
+            console.log(await login(values))
+        }
+        checkLogin()
         navigateHome()
     }
 

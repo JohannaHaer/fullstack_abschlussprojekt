@@ -72,52 +72,6 @@ const userSchema =new Schema({
             //tpye:Date
         },
     }],
-//     transactions:{
-//         expenses:[{
-//             id:{
-//                 type: String
-//             },
-//             amount:{
-//                 type: Number,
-//                 // required: true,
-//             },
-//             category:{
-//                 type: String,
-//                 // required: true,
-//             },
-//             description:{
-//                 type: String,
-//                 // required: true,
-//             },
-//             //!tapes korrekt?
-//             date:{
-//                 type:String,
-//                 // type: Date,
-//             },
-//             time:{
-//                 type:String
-//                 // type:Date,
-//             }
-//         }
-// ],
-//         income:[{
-//             id:{
-//                 type: String
-//             },
-//             amount:{
-//                 type: Number,
-//                 // required: true,
-//             },
-//             category:{
-//                 type: String,
-//                 // required: true,
-//             },
-//             description:{
-//                 type: String,
-//                 // required: true,
-//             }
-//         }]
-//     },
     expenseCategories:{
         type:[{
             categoryName:{
@@ -134,21 +88,21 @@ const userSchema =new Schema({
         }],
         default:defaultExpenseCategories
 },
-incomeCategories:{
-    type:[{
-        categoryName:{
-            type:String,
-        },
-        color:{
-            type:String,
-            default:"green",
-        },
-        imgUrl:{
-            type:String,
-            default: 'www.blödertest.de'
-        }
-    }],
-    default:defaultIncomeCategories
+    incomeCategories:{
+        type:[{
+            categoryName:{
+                type:String,
+            },
+            color:{
+                type:String,
+                default:"green",
+            },
+            imgUrl:{
+                type:String,
+                default: 'www.blödertest.de'
+            }
+        }],
+        default:defaultIncomeCategories
 }
 })
 

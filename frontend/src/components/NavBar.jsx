@@ -103,7 +103,7 @@ const NavBar = () => {
                         <Button variant="ghost" onClick={goToTransaction}><img src="../src/assets/img/credit-card.png" className="w-6 h-6"/></Button>
                     )}
                     <DropdownMenu>
-                        <DropdownMenuTrigger >
+                        <DropdownMenuTrigger asChild>
                         <Button variant="ghost" className="text-black underline">
                             {showAddText || showAddExpensesText ? "Add" : <img src="../src/assets/img/add.png" className="w-6 h-6"/>}
                         </Button>                            

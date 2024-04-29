@@ -31,7 +31,7 @@ const ForgotPasswordForm = () => {
         navigate('/reset-password')
     }
 
-    // function onSubmit(values) {
+    // onSubmit = (values) => {
     //     login(values) 
     //     navigateResetPassword()
     // }

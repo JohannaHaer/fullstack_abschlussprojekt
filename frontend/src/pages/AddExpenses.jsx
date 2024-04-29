@@ -25,50 +25,34 @@ const AddExpenses = () => {
     return (
         <>
             <LogoExpenses/>
-            <section className='px-4 h-dvh'>
+            <section className='px-4 py-5 h-dvh'>
             <Header/>
-                <img className=" pb-16 px-4 py-4"id="back_arrowe"src="./src/assets/img/chevron-Left.png" alt="" />
-                <Card className="py-14 h-dvh w-full " >
-                    <CardHeader className="h-3/6 w-full flex flex-col gap-12">
-                        <div className="flex justify-between">
-                            <div>
-                                
-                                <p>Add income</p>
-                                <CardTitle>User</CardTitle>
-                            </div>
-                            <Avatar>
-                                <AvatarImage src="https://github.com/shadcn.png" className="w-14 rounded-full"/>
-                                <AvatarFallback>CN</AvatarFallback>
-                            </Avatar>
-                            
+            <Card className="py-14 h-dvh w-full " >
+                <CardHeader className="h-3/6 w-full flex flex-col gap-12">
+                    <Card className=" bg-accent rounded-lg " >
+                        <p className='px-4 py-4'>you got this!!!</p>
+                    </Card>
+                </CardHeader>
+                <CardContent className="w-full flex flex-col gap-5">
+                    <Card className=" bg-accent rounded-lg  " >
+                        <input className='w-full text-slate-950' type="number" name="input_amount" id="input_amount" placeholder="type in the amount. exp. ($6.000)"/>
+                    </Card>
                         
-                        </div>
-                        <Card className=" bg-accent rounded-lg " >
-                            <p className='px-4 py-4'>you got this!!!</p>
-                        </Card>
-                        
-                    </CardHeader>
-                    <CardContent className="w-full flex flex-col gap-5">
-                        <Card className=" bg-accent rounded-lg  " >
-                            <input className='w-full text-slate-950' type="number" name="input_amount" id="input_amount" placeholder="type in the amount. exp. ($6.000)"/>
-                        </Card>
-                            
-                        <p>Category</p>
-                        <Card className=" bg-accent rounded-lg  " >
-    
-                        </Card>
-                        <div id="TIMEDATE_frame"className='flex gap-4'>
-                                <Card id="card_date"className=" bg-accent rounded-lg w-full" >
-                                    <p className='px-4 py-4'>DATE</p>
-                                    <input className='w-full text-slate-9' type="date" name="input_date" id="input_date" />
-                                </Card>
-                                <Card id="card_time"className=" bg-accent rounded-lg  w-full" >
-                                    <p className='px-4 py-4'>TIME</p>
-                                    <input className="text-slate-950 w-full"type="time" name="input_time" id="input_time" />
-                                </Card>
-                        </div>
-                    </CardContent>
-                </Card>
+                    <p>Category</p>
+                    <Card className=" bg-accent rounded-lg  " >
+                    </Card>
+                    <div id="TIMEDATE_frame"className='flex gap-4'>
+                            <Card id="card_date"className=" bg-accent rounded-lg w-full" >
+                                <p className='px-4 py-4'>DATE</p>
+                                <input className='w-full text-slate-9' type="date" name="input_date" id="input_date" />
+                            </Card>
+                            <Card id="card_time"className=" bg-accent rounded-lg  w-full" >
+                                <p className='px-4 py-4'>TIME</p>
+                                <input className="text-slate-950 w-full"type="time" name="input_time" id="input_time" />
+                            </Card>
+                    </div>
+                </CardContent>
+            </Card>
                     <div  id ="Button_Parent"className='flex justify-center items-center'>
                     <   Button>SEND OR SEND</Button>
                     </div>

@@ -12,6 +12,7 @@ import Pitch from './pages/Pitch'
 import Landingpage from './pages/Landingpage'
 import Settings from './components/Settings'
 import ForgotPassword from './pages/ForgotPassword'
+import ResetPassword from './pages/ResetPassword'
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path='/reports' element={<Reports/>} />
         <Route path='/settings' element={<Settings/>}/>
         <Route path='/forgot-password' element={<ForgotPassword/>}/>
+        <Route path='/reset-password' element={<ResetPassword/>}/>
       </Routes>
         
     </>

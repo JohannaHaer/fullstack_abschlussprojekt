@@ -11,8 +11,8 @@ import {
     CardTitle,
   } from "@/components/ui/card"
 import { Button } from '@/components/ui/button'
-import AddExpenseForm from "@/components/AddExpenseForm";
 import { mainContext } from "@/context/mainProvider";
+import AddTransactionForm from "@/components/AddTransactionForm";
 
 const AddExpenses = () => {
     const [selectedOption, setSelectedOption] = useState(null);
@@ -30,7 +30,7 @@ const AddExpenses = () => {
             <LogoExpenses/>
             <section className='px-4 py-5 h-dvh'>
             <Header/>
-            <AddExpenseForm type={'expense'}/>
+            <AddTransactionForm type={'expense'}/>
             <Card className="py-14 h-dvh w-full " >
                 <CardHeader className="h-3/6 w-full flex flex-col gap-12">
                     <Card className=" bg-accent rounded-lg " >

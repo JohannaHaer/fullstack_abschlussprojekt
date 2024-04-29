@@ -1,21 +1,21 @@
 import mongoose, { Schema } from "mongoose";
 
 const defaultExpenseCategories = [
-    {categoryName:'essen',color:'red', imgUrl:'www.blödertest.de'},
-    {categoryName:'technik',color:'blue', imgUrl:'www.blödertest.de'},
-    {categoryName:'kleidung',color:'green', imgUrl:'www.blödertest.de'},
-    {categoryName:'miete',color:'violet', imgUrl:'www.blödertest.de'},
-    {categoryName:'versicherung',color:'yellow', imgUrl:'www.blödertest.de'},
-    {categoryName:'freizeit',color:'orange', imgUrl:'www.blödertest.de'},
+    {categoryName:'Food',color:'red', imgUrl:'www.blödertest.de'},
+    {categoryName:'Technic',color:'blue', imgUrl:'www.blödertest.de'},
+    {categoryName:'Clothing',color:'green', imgUrl:'www.blödertest.de'},
+    {categoryName:'Rental',color:'violet', imgUrl:'www.blödertest.de'},
+    {categoryName:'Insurance',color:'yellow', imgUrl:'www.blödertest.de'},
+    {categoryName:'Leisure',color:'orange', imgUrl:'www.blödertest.de'},
 ]
 
 const defaultIncomeCategories = [
-    {categoryName:'Gehalt',color:'red', imgUrl:'www.blödertest.de'},
+    {categoryName:'Salary',color:'red', imgUrl:'www.blödertest.de'},
     {categoryName:'Bonus',color:'blue', imgUrl:'www.blödertest.de'},
-    {categoryName:'Taschengeld',color:'green', imgUrl:'www.blödertest.de'},
-    {categoryName:'Rückzahlung',color:'violet', imgUrl:'www.blödertest.de'},
-    {categoryName:'Nebenjob',color:'yellow', imgUrl:'www.blödertest.de'},
-    {categoryName:'Verkäufe',color:'orange', imgUrl:'www.blödertest.de'},
+    {categoryName:'Pocket money',color:'green', imgUrl:'www.blödertest.de'},
+    {categoryName:'Cashback',color:'violet', imgUrl:'www.blödertest.de'},
+    {categoryName:'Part-time job',color:'yellow', imgUrl:'www.blödertest.de'},
+    {categoryName:'Sales',color:'orange', imgUrl:'www.blödertest.de'},
 ]
 
 const userSchema =new Schema({

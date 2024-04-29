@@ -1,4 +1,4 @@
-import AddIncomeForm from "@/components/AddIncomeForm";
+import AddTransactionForm from "@/components/AddTransactionForm";
 import Header from "@/components/Header";
 import NavBar from "@/components/NavBar";
 import LogoIncome from "@/components/logo/LogoIncome";
@@ -9,7 +9,7 @@ const AddIncome = () => {
         <LogoIncome/>
         <section className='py-5 px-4 h-dvh'>
             <Header/>
-            <AddIncomeForm/>
+            <AddTransactionForm type={'income'}/>
         </section>
         <NavBar/>
         </>

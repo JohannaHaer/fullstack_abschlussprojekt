@@ -22,10 +22,10 @@ const MainProvider = ({children}) => {
         transactions?.map((transaction) => {
             if(transaction.type == 'income') {
                 sum = sum + transaction.amount
-                console.log(transaction.amount, sum, '+');
+                // console.log(transaction.amount, sum, '+');
             } else if (transaction.type == 'expense') {
                 difference = difference + transaction.amount
-                console.log(transaction.amount, sum, '-');
+                // console.log(transaction.amount, sum, '-');
             }
             setSaldo(sum - difference)
             setAllIncome(sum)

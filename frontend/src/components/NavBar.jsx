@@ -27,9 +27,11 @@ const NavBar = () => {
 
     const [showText, setShowText] = useState(false);
     const [showTransactionText, setShowTransactionText] = useState(false);
-    const [showReports, setShowReports] = useState(false)
+    const [showReports, setShowReports] = useState(false);
+    const [showAddText, setShowAddText] = useState(false);
+    const [showAddExpensesText, setShowAddExpensesText] = useState(false);   
+    
     const location = useLocation()
-
     const navigate = useNavigate()
 
     const goToHome = () => {
@@ -53,28 +55,38 @@ const NavBar = () => {
     }
 
     useEffect(() => {
-        if (location.pathname === "/") {
-            setShowText(true);
-        } else {
-            setShowText(false);
-        }
-    }, [location.pathname]);
+        setShowText(location.pathname === "/home");
+        setShowTransactionText(location.pathname === "/transaction");
+        setShowReports(location.pathname === "/reports");
+        setShowAddText(location.pathname === "/addIncome");
+        setShowAddExpensesText(location.pathname === "/addExpenses");
+      }, [location.pathname]);
 
-    useEffect(() => {
-        if (location.pathname === "/transaction") {
-            setShowTransactionText(true);
-        } else {
-            setShowTransactionText(false);
-        }
-    }, [location.pathname]);
+    // useEffect(() => {
+    //     if (location.pathname === "/") {
+    //         setShowText(true);
+    //     } else {
+    //         setShowText(false);
+    //     }
+    // }, [location.pathname]);
 
-    useEffect(() => {
-        if (location.pathname === "/reports") {
-            setShowReports(true);
-        } else {
-            setShowReports(false);
-        }
-    }, [location.pathname]);
+    // useEffect(() => {
+    //     if (location.pathname === "/transaction") {
+    //         setShowTransactionText(true);
+    //     } else {
+    //         setShowTransactionText(false);
+    //     }
+    // }, [location.pathname]);
+
+    // useEffect(() => {
+    //     if (location.pathname === "/reports") {
+    //         setShowReports(true);
+    //     } else {
+    //         setShowReports(false);
+    //     }
+    // }, [location.pathname]);
+
+
 
     return ( 
         <>
@@ -91,7 +103,11 @@ const NavBar = () => {
                         <Button variant="ghost" onClick={goToTransaction}><img src="../src/assets/img/credit-card.png" className="w-6 h-6"/></Button>
                     )}
                     <DropdownMenu>
-                        <DropdownMenuTrigger asChild><Button variant="ghost"><img src="../src/assets/img/add.png" className="w-6 h-6"/></Button></DropdownMenuTrigger>
+                        <DropdownMenuTrigger >
+                        <Button variant="ghost" className="text-black underline">
+                            {showAddText || showAddExpensesText ? "Add" : <img src="../src/assets/img/add.png" className="w-6 h-6"/>}
+                        </Button>                            
+                        </DropdownMenuTrigger>
                         <DropdownMenuContent>
                             <DropdownMenuItem><span onClick={goToAddIncome}>Income</span></DropdownMenuItem>
                             <DropdownMenuSeparator />

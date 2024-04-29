@@ -23,6 +23,14 @@ const userSchema =new Schema({
         type:String,
         required:true,
     },
+    firstName:{
+        type:String,
+        required:true,
+    },
+    lastName:{
+        type:String,
+        required:true,
+    },
     passwordHash:{
         type:String,
         // required:true,
@@ -121,7 +129,7 @@ const userSchema =new Schema({
             },
             imgUrl:{
                 type:String,
-                default:"green",
+                default: 'www.blödertest.de'
             }
         }],
         default:defaultExpenseCategories
@@ -137,7 +145,7 @@ incomeCategories:{
         },
         imgUrl:{
             type:String,
-            default:'www.blödertest.de'
+            default: 'www.blödertest.de'
         }
     }],
     default:defaultIncomeCategories

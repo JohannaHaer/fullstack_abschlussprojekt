@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { z } from 'zod'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -28,19 +28,22 @@ const LoginForm = () => {
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            username: "",
             email: "",
             password: ""
         },
     })
 
     const navigateHome = () => {
-        navigate('/')
+        navigate('/home')
     }
 
-    function onSubmit(values) {
+    const onSubmit = (values) => {
         login(values) 
         navigateHome()
+    }
+
+    const navigateForgotPassword = () => {
+        navigate('/forgot-password')
     }
 
     return (
@@ -68,9 +71,11 @@ const LoginForm = () => {
                                     <Input placeholder="Password" {...field} required/>
                                 </FormControl>
                                 <FormMessage />
+                                <span onClick={navigateForgotPassword} className='flex justify-end'>Forgot Password</span>
                             </FormItem>
                         )}
                     />
+                    
                     <Button type="submit" className='text-lg'>Login</Button>
                 </form>
             </Form>

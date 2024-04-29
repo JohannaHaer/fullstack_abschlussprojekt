@@ -8,14 +8,14 @@ export const register = async (req,res)=>{
         const checkEmailStatus = res.locals.checkEmailStatus
         console.log(checkNameStatus, checkEmailStatus)
         if(checkNameStatus == "ok" && checkEmailStatus == "ok"){
-            const { username, password, email } = req.body;
-            if (!username || !password || !email) {
+            const { firstName, lastName, username, password, email } = req.body;
+            if (!firstName || !lastName || !username || !password || !email) {
                 res.sendStatus(403);
                 return;
             }  
             const salt = await bcrypt.genSalt();
             const hash = await bcrypt.hash(password, salt);
-            const user = await User.create({ username, passwordHash: hash, email });
+            const user = await User.create({ username, passwordHash: hash, email, firstName, lastName });
             res.json(user);
         }else{
             res.json({checkNameStatus:checkNameStatus,checkMailStatus:checkEmailStatus})

@@ -18,6 +18,8 @@ import { useNavigate } from 'react-router-dom'
 import { register } from '@/functions/registerFetch'
 
 const formSchema = z.object({
+    firstName: z.string(),
+    lastName: z.string(),
     username: z.string().min(2).max(50),
     email: z.string(),
     password: z.string()
@@ -46,6 +48,8 @@ const RegisterForm = () => {
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
+            firstName: "",
+            lastName: "",
             username: "",
             email: "",
             password: ""
@@ -60,7 +64,7 @@ const RegisterForm = () => {
         navigate('/terms-and-services')
     }
 
-    function onSubmit(values) {
+    const onSubmit = (values) => {
         register(values) 
         navigateSetupAccount()
     }
@@ -69,6 +73,30 @@ const RegisterForm = () => {
         <>
             <Form {...form} >
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 flex flex-col">
+                <FormField
+                        control={form.control}
+                        name="firstName"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormControl>
+                                    <Input placeholder="First name" {...field} required/>
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="lastName"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormControl>
+                                    <Input placeholder="Last name" {...field} required/>
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
                     <FormField
                         control={form.control}
                         name="username"

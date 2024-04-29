@@ -11,23 +11,19 @@ import {
     CardTitle,
   } from "@/components/ui/card"
 import Toggle from '@/components/Toggle'
+import Header from '@/components/Header'
+import NavBar from '@/components/NavBar'
+import LogoNormal from '@/components/logo/LogoNormal'
+
 
 const Home = () => {
     return (
         <>
-        <section className='px-4 h-dvh'>
+        <LogoNormal/>
+        <section className='py-5 px-4 h-dvh'>
+            <Header/>
             <Card className="py-14 h-dvh w-full " >
                 <CardHeader className="h-3/6 w-full flex flex-col gap-12">
-                    <div className="flex justify-between">
-                        <div>
-                            <p>welcome back,</p>
-                            <CardTitle>User</CardTitle>
-                        </div>
-                        <Avatar>
-                            <AvatarImage src="https://github.com/shadcn.png" className="w-14 rounded-full"/>
-                            <AvatarFallback>CN</AvatarFallback>
-                        </Avatar>
-                    </div>
                     <Card className=" bg-accent rounded-lg h-3/6 " >
                         <p className='px-4 py-4'>your Card or whatever</p>
                     </Card>
@@ -74,6 +70,7 @@ const Home = () => {
             </Card>
         </section>
         <Toggle/>
+        <NavBar/>
     </>
     )
 }

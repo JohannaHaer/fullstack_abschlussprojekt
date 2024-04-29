@@ -23,7 +23,7 @@ export const login = async(req, res) => {
         res.sendStatus(401);
       res.json({ status: "failed" });
     } else {
-      const token = jwt.sign({ id: user._id, username }, process.env.JWT_SECRET);
+      const token = jwt.sign({ id: user._id, username: user.username }, process.env.JWT_SECRET);
       res.cookie("token", token, { httpOnly: true });
       res.json({ status: "ok", token: token });
     }

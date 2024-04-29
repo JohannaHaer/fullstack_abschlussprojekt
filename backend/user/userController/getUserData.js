@@ -7,7 +7,7 @@ export const userRouter = express.Router();
 export const getUserData = async (req, res) =>{
     try {
         // const username = req.params.username;
-        const username = jwt.decode(req.cookie.token).username
+        const username = await jwt.decode(req.cookies.token).username
         const user = await User.findOne({ username }).lean();
         res.json(user);
     } catch (error) {

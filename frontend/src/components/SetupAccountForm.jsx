@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { z } from 'zod'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -9,27 +9,39 @@ import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
 import { useNavigate } from 'react-router-dom'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-// import { register } from '@/functions/registerFetch'
-
+import { getUser } from '@/functions/userDataFetch'
 
 const SetupAccountForm = () => {
 
     const [imageSelected, setImageSelected] = useState(null)
     const navigate = useNavigate()
+    const [user, setUser] = useState()
 
     const getImage = (event) => {
         const image = event.target.files[0]
         setImageSelected(URL.createObjectURL(image))
     }
 
+    useEffect(() => {
+        const getUserData = async () => {
+            const userData = await getUser()
+            setUser(userData)
+        }
+        getUserData()
+    }, [])
+
+    const getFirstName = user?.firstName.charAt(0).toUpperCase()
+    const getLastName = user?.lastName.charAt(0).toUpperCase()
+    const avatarFallback = getFirstName?.concat(getLastName)
+
     const navigateHome = () => {
         if(imageSelected != null){
-        navigate('/')
+        navigate('/home')
         }
     }
 
     const skip = () => {
-        navigate('/')
+        navigate('/home')
     }
     
     return (
@@ -39,7 +51,9 @@ const SetupAccountForm = () => {
                     <div className="grid w-full max-w-sm items-center justify-center gap-1.5">
                         <Avatar variant='preview'>
                             <AvatarImage id='avatar' src={imageSelected} />
-                            <AvatarFallback><img src='https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg' alt="" className='w-20 h-20'/></AvatarFallback>
+                            <AvatarFallback>
+                                <div className='w-20 h-20 rounded-full bg-grey border-2 flex justify-center items-center font-bold text-2xl'>{avatarFallback}</div>
+                            </AvatarFallback>
                         </Avatar>
                         <Label htmlFor="picture" className='text-start'>Profile picture</Label>
                         <Input id="picture" type="file" onChange={getImage}/>

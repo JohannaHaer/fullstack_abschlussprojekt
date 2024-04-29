@@ -64,7 +64,7 @@ const RegisterForm = () => {
         navigate('/terms-and-services')
     }
 
-    function onSubmit(values) {
+    const onSubmit = (values) => {
         register(values) 
         navigateSetupAccount()
     }

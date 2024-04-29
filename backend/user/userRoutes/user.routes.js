@@ -25,7 +25,7 @@ cloudinary.config({
 
 userRouter.post("/register",mult.none(),checkRepeatName, checkRepeatEmail, register)
 userRouter.post('/login', mult.none(), login)
-userRouter.get('/:username', checkAuth, getUserData)
+userRouter.get('/getUser', checkAuth, getUserData)
 userRouter.get('/logout', logout)
 userRouter.post('/addExpense', mult.none(), checkAuth, addExpense)
 userRouter.post('/addIncome', mult.none(), checkAuth, addIncome)

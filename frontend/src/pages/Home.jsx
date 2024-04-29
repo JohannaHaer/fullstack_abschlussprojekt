@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import {
     Card,
     CardContent,
@@ -13,33 +13,11 @@ import NavBar from '@/components/NavBar'
 import LogoNormal from '@/components/logo/LogoNormal'
 import { useNavigate } from 'react-router-dom'
 import { getUser } from '@/functions/userDataFetch'
+import { mainContext } from '@/context/mainProvider'
 
 
 const Home = () => {
-    // const [user, setUser] = useState()
-    // const [saldo, setSaldo] = useState()
-    // const navigate = useNavigate()
-
-    // useEffect(() => {
-    //     const getUserData = async () => {
-    //         const userData = await getUser()
-    //         setUser(userData)
-    //     }
-    //     getUserData()
-
-    //     let sum = 0
-    //     const transactions = user?.transactions
-    //     transactions?.map((transaction) => {
-    //         if(transaction.type == 'income') {
-    //             sum = sum + transaction.amount
-    //             console.log(transaction.amount, sum, '+');
-    //         } else if (transaction.type == 'expense') {
-    //             sum = sum - transaction.amount
-    //             console.log(transaction.amount, sum, '-');
-    //         }
-    //         setSaldo(sum)
-    //     })
-    // }, [])
+    const {allIncome, allExpneses} = useContext(mainContext)
 
 
     return (
@@ -63,7 +41,7 @@ const Home = () => {
                                             <img src="./src/assets/img/trending-up.png" alt="trending up icon" />
                                         </div>
                                         <p>Income</p>
-                                        <p>+ $</p>
+                                        <p>+ $ <span>{allIncome}</span></p>
                                     </div>
                                 </div>
                                 <div className='bg-accent rounded-lg w-3/6 h-36 '>
@@ -72,7 +50,7 @@ const Home = () => {
                                             <img src="./src/assets/img/trending-down.png" alt="trending down icon" />
                                         </div>
                                         <p>Expense</p>
-                                        <p>- $</p>
+                                        <p>- $ <span>{allExpneses}</span></p>
                                     </div>
                                 </div>
                             </div>

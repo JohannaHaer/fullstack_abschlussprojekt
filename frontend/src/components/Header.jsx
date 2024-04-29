@@ -1,33 +1,11 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { getUser } from '@/functions/userDataFetch'
 import { useNavigate } from 'react-router-dom'
 import { mainContext } from '@/context/mainProvider'
 
 const Header = () => {
     const {user, saldo} = useContext(mainContext)
     const navigate = useNavigate()
-
-    useEffect(() => {
-        const getUserData = async () => {
-            const userData = await getUser()
-            setUser(userData)
-        }
-        getUserData()
-
-        let sum = 0
-        const transactions = user?.transactions
-        transactions?.map((transaction) => {
-            if(transaction.type == 'income') {
-                sum = sum + transaction.amount
-                console.log(transaction.amount, sum, '+');
-            } else if (transaction.type == 'expense') {
-                sum = sum - transaction.amount
-                console.log(transaction.amount, sum, '-');
-            }
-            setSaldo(sum)
-        })
-    }, [])
 
     const getFirstName = user?.firstName.charAt(0).toUpperCase()
     const getLastName = user?.lastName.charAt(0).toUpperCase()

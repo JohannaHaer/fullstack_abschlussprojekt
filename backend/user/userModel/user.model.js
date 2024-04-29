@@ -64,12 +64,8 @@ const userSchema =new Schema({
             type:String
         },
         date:{
+            // type:String
             type:String
-            //type:Date
-        },
-        time:{
-            type:String
-            //tpye:Date
         },
     }],
     expenseCategories:{

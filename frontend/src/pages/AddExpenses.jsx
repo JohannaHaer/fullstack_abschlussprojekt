@@ -1,8 +1,7 @@
 import Header from "@/components/Header";
 import NavBar from "@/components/NavBar";
 import LogoExpenses from "@/components/logo/LogoExpenses";
-import React, { useState } from 'react'
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import React, { useContext, useState } from 'react'
 import {
     Card,
     CardContent,
@@ -11,11 +10,15 @@ import {
     CardHeader,
     CardTitle,
   } from "@/components/ui/card"
-import Toggle from '@/components/Toggle'
 import { Button } from '@/components/ui/button'
+import AddExpenseForm from "@/components/AddExpenseForm";
+import { mainContext } from "@/context/mainProvider";
 
 const AddExpenses = () => {
     const [selectedOption, setSelectedOption] = useState(null);
+    const {user} = useContext(mainContext)
+
+ 
 
     const handleSelect = (option) => {
         setSelectedOption(option);
@@ -27,6 +30,7 @@ const AddExpenses = () => {
             <LogoExpenses/>
             <section className='px-4 py-5 h-dvh'>
             <Header/>
+            <AddExpenseForm type={'expense'}/>
             <Card className="py-14 h-dvh w-full " >
                 <CardHeader className="h-3/6 w-full flex flex-col gap-12">
                     <Card className=" bg-accent rounded-lg " >

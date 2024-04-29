@@ -1,7 +1,4 @@
-import React from 'react'
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-
-
+import React, { useState } from 'react'
 import {
     Card,
     CardContent,
@@ -14,9 +11,37 @@ import Toggle from '@/components/Toggle'
 import Header from '@/components/Header'
 import NavBar from '@/components/NavBar'
 import LogoNormal from '@/components/logo/LogoNormal'
+import { useNavigate } from 'react-router-dom'
+import { getUser } from '@/functions/userDataFetch'
 
 
 const Home = () => {
+    // const [user, setUser] = useState()
+    // const [saldo, setSaldo] = useState()
+    // const navigate = useNavigate()
+
+    // useEffect(() => {
+    //     const getUserData = async () => {
+    //         const userData = await getUser()
+    //         setUser(userData)
+    //     }
+    //     getUserData()
+
+    //     let sum = 0
+    //     const transactions = user?.transactions
+    //     transactions?.map((transaction) => {
+    //         if(transaction.type == 'income') {
+    //             sum = sum + transaction.amount
+    //             console.log(transaction.amount, sum, '+');
+    //         } else if (transaction.type == 'expense') {
+    //             sum = sum - transaction.amount
+    //             console.log(transaction.amount, sum, '-');
+    //         }
+    //         setSaldo(sum)
+    //     })
+    // }, [])
+
+
     return (
         <>
         <LogoNormal/>

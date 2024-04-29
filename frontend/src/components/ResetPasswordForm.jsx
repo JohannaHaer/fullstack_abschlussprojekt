@@ -45,6 +45,17 @@ const ResetPasswordForm = () => {
     //     navigateLogin()
     // }
 
+    let toggle = () => {
+        let changePWButton = document.querySelector('#changePWButton')
+        if(FormField["password"] === FormField["confirmPassword"]) {
+            changePWButton.setAttribute("disabled", "disabled")
+            console.log('yeah');
+            
+        } else {
+            changePWButton.removeAttribute("disabled")
+            console.log('no');
+        }
+    }
 
     return (
         <>
@@ -87,7 +98,7 @@ const ResetPasswordForm = () => {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit" className='text-lg'>Reset Password</Button>
+                    <Button type="submit" className='text-lg' id='changePWButton'>Set new password</Button>
                 </form>
             </Form>
         </>

@@ -13,6 +13,7 @@ import { checkRepeatEmail, checkRepeatName } from "../../middleware/checkRepeat.
 import { editUser } from "../userController/editUser.js";
 import { changePassword } from "../userController/changePassword.js";
 import { imageUpload } from "../userController/uploadImage.js";
+import { removeUser } from "../userController/removeUser.js";
 
 const userRouter = express.Router()
 const mult = multer({ storage: multer.memoryStorage() })
@@ -29,5 +30,6 @@ userRouter.post('/addIncomeCategory', mult.none(), checkAuth, addIncomeCategory)
 userRouter.patch('/editUser', mult.none(), checkAuth, editUser)
 userRouter.patch('/changePassword', mult.none(), checkAuth, changePassword)
 userRouter.patch('/uploadImage', mult.single("image"), checkAuth, imageUpload) //sowohl für initialen upload als auch als änderung
+userRouter.delete('/removeUser', mult.none(), removeUser)
 
 export default userRouter

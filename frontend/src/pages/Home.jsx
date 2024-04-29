@@ -17,7 +17,7 @@ import { mainContext } from '@/context/mainProvider'
 
 
 const Home = () => {
-    const {allIncome, allExpneses} = useContext(mainContext)
+    const {allIncome, allExpenses} = useContext(mainContext)
 
 
     return (
@@ -50,7 +50,7 @@ const Home = () => {
                                             <img src="./src/assets/img/trending-down.png" alt="trending down icon" />
                                         </div>
                                         <p>Expense</p>
-                                        <p>- $ <span>{allExpneses}</span></p>
+                                        <p>- $ <span>{allExpenses}</span></p>
                                     </div>
                                 </div>
                             </div>

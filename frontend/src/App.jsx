@@ -10,7 +10,7 @@ import AddIncome from './pages/AddIncome'
 import AddExpenses from './pages/AddExpenses'
 import Pitch from './pages/Pitch'
 import Landingpage from './pages/Landingpage'
-import Settings from './components/Settings'
+import Settings from './pages/Settings'
 import ForgotPassword from './pages/ForgotPassword'
 import ResetPassword from './pages/ResetPassword'
 

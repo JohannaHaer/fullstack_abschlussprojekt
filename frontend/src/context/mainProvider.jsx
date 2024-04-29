@@ -24,10 +24,10 @@ const MainProvider = ({children}) => {
                 sum = sum + transaction.amount
                 console.log(transaction.amount, sum, '+');
             } else if (transaction.type == 'expense') {
-                difference = difference - transaction.amount
+                difference = difference + transaction.amount
                 console.log(transaction.amount, sum, '-');
             }
-            setSaldo(sum + difference)
+            setSaldo(sum - difference)
             setAllIncome(sum)
             setAllExpenses(difference)
         })

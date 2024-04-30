@@ -52,14 +52,14 @@ const VictoryPieChart = ({type}) => {
     return (
         <>
             <VictoryPie
-                width={450}
-                height={450}
-                padding={105}
+                width={430}
+                height={430}
+                padding={115}
                 startAngle={90}
                 endAngle={450}
                 colorScale={["tomato", "orange", "gold", "cyan", "navy"]}
                 style={{
-                    labels: { fontSize: 18, fill: 'white', padding: 15, fontFamily: 'ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"' },
+                    labels: { fontSize: 18, fill: '#0097B2', fontWeight: 'bold', padding: 15, fontFamily: 'ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"' },
                 }}   
                 data={clearedTransactionArray}
             />

@@ -19,7 +19,7 @@ const Header = () => {
         <section className='flex justify-between items-center'>
             <p className='text-2xl font-bold'>Hey {user?.username}</p>
             <div className='flex gap-4 items-center'>
-                <p className='text-l font-medium'>$ <span>{saldo}</span></p>
+                <p className='text-l font-medium'><span>{saldo}</span> $</p>
                 <Avatar variant='default' onClick={navigateSettings}>
                     <AvatarImage id='avatar' src='' />
                     <AvatarFallback>

@@ -16,6 +16,7 @@ import { imageUpload } from "../userController/uploadImage.js";
 import { removeUser } from "../userController/removeUser.js";
 import { sendMail } from "../userController/sendMail.js";
 import { createNewVerificationCode} from "../../middleware/createVerificationCode.js";
+import { compareVerificationCode } from "../userController/compareVerificationCode.js";
 
 const userRouter = express.Router()
 const mult = multer({ storage: multer.memoryStorage() })
@@ -34,5 +35,6 @@ userRouter.patch('/changePassword', mult.none(), checkAuth, changePassword)
 userRouter.patch('/uploadImage', mult.single("image"), checkAuth, imageUpload) //sowohl für initialen upload als auch als änderung
 userRouter.delete('/removeUser', mult.none(), removeUser)
 userRouter.post('/sendMail', mult.none(), createNewVerificationCode, sendMail )
+userRouter.post('/compareVerificationCode', mult.none(), compareVerificationCode)
 
 export default userRouter

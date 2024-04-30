@@ -1,5 +1,8 @@
 import React, { useMemo, useEffect, useState } from 'react';
 import { useTheme } from '@/components/theme-provider';
+import logoDarkPath from "@/assets/img/Logo_Backend_Abschlussprojekt_dark.png"
+import logoLightPath from "@/assets/img/Logo_Backend_Abschlussprojekt.png"
+
 
 const LogoNormal = () => {
     const { theme, setTheme } = useTheme();
@@ -18,8 +21,8 @@ const LogoNormal = () => {
         return () => darkModeMediaQuery.removeEventListener("change", handleThemeChange);
     }, [setTheme]);
 
-    const logoDarkPath = "../src/assets/img/Logo_Backend_Abschlussprojekt_dark.png";
-    const logoLightPath = "../src/assets/img/Logo_Backend_Abschlussprojekt.png";
+    // const logoDarkPath = "../src/assets/img/Logo_Backend_Abschlussprojekt_dark.png";
+    // const logoLightPath = "../src/assets/img/Logo_Backend_Abschlussprojekt.png";
 
     const logoPath = useMemo(() => {
         return theme === "dark" || (theme === null && systemTheme === "dark") ? logoDarkPath : logoLightPath;

@@ -1,5 +1,7 @@
 import React, { useMemo, useEffect, useState } from 'react';
 import { useTheme } from '@/components/theme-provider';
+import logoDarkPath from "@/assets/img/Logo-blau-frisst_dark.gif"
+import logoLightPath from "@/assets/img/Logo-blau-frisst.gif"
 
 const LogoNormal = () => {
     const { theme, setTheme } = useTheme();
@@ -18,8 +20,8 @@ const LogoNormal = () => {
         return () => darkModeMediaQuery.removeEventListener("change", handleThemeChange);
     }, [setTheme]);
 
-    const logoDarkPath = "../src/assets/img/Logo-blau-frisst_dark.gif";
-    const logoLightPath = "../src/assets/img/Logo-blau-frisst.gif";
+    // const logoDarkPath = "../src/assets/img/Logo-blau-frisst_dark.gif";
+    // const logoLightPath = "../src/assets/img/Logo-blau-frisst.gif";
 
     const logoPath = useMemo(() => {
         return theme === "dark" || (theme === null && systemTheme === "dark") ? logoDarkPath : logoLightPath;

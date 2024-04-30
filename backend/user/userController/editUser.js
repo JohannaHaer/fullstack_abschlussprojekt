@@ -4,7 +4,7 @@ import { User } from "../userModel/user.model.js";
 export const editUser = async(req,res)=>{
     try{
         const {username, email, pictureUrl} = req.body
-        const cookieUsername = '2test23'//await jwt.decode(req.cookies.token).username
+        const cookieUsername = await jwt.decode(req.cookies.token).username
         if(username){
             const user = await User.findOneAndUpdate(
                 {username: cookieUsername},

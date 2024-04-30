@@ -6,7 +6,6 @@ import jwt from "jsonwebtoken";
 export const sendMail = async (req,res)=>{
     try{
     const username = await jwt.decode(req.cookies.token).username
-    // const username = 'red23214234'
     const user = await User.findOne({ username }).lean();
     const emailResult = await mail.sendMail({
         from: '<finko@kunndensupport.de>',

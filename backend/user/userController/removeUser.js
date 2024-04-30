@@ -3,7 +3,6 @@ import { User } from "../userModel/user.model.js"
 
 export const removeUser = async(req, res)=>{
     const username = jwt.decode(req.cookies.token).username
-    // const {username}= req.body
     console.log(username)
     try{
     const user = await User.findOneAndDelete({username:username})

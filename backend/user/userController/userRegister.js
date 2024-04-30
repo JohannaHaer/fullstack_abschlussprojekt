@@ -18,7 +18,7 @@ export const register = async (req,res)=>{
             const hash = await bcrypt.hash(password, salt);
             const user = await User.create({ username, passwordHash: hash, email, firstName, lastName });
 
-            //für den automatischen Login nach dem Regsiter
+            //für den automatischen Login nach dem Regsiter:
             const userData = await User.findOne({username:username}).lean()
             const token = jwt.sign({ id: userData._id, username: userData.username }, process.env.JWT_SECRET);
             res.cookie("token", token, { httpOnly: true });

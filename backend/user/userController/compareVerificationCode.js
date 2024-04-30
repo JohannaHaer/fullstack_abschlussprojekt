@@ -1,4 +1,4 @@
-import { User } from "../userModel/user.model"
+import { User } from "../userModel/user.model.js"
 
 
 export const compareVerificationCode = async(req,res)=>{

@@ -62,32 +62,6 @@ const NavBar = () => {
         setShowAddExpensesText(location.pathname === "/addExpenses");
       }, [location.pathname]);
 
-    // useEffect(() => {
-    //     if (location.pathname === "/") {
-    //         setShowText(true);
-    //     } else {
-    //         setShowText(false);
-    //     }
-    // }, [location.pathname]);
-
-    // useEffect(() => {
-    //     if (location.pathname === "/transaction") {
-    //         setShowTransactionText(true);
-    //     } else {
-    //         setShowTransactionText(false);
-    //     }
-    // }, [location.pathname]);
-
-    // useEffect(() => {
-    //     if (location.pathname === "/reports") {
-    //         setShowReports(true);
-    //     } else {
-    //         setShowReports(false);
-    //     }
-    // }, [location.pathname]);
-
-
-
     return ( 
         <>
         <NavigationMenu >

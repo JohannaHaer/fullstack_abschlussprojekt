@@ -1,14 +1,19 @@
 import nodemailer from 'nodemailer'
 import { mail } from '../../utils/mail.js';
+import { User } from '../userModel/user.model.js';
+import jwt from "jsonwebtoken";
 
 export const sendMail = async (req,res)=>{
+    // const username = await jwt.decode(req.cookies.token).username
+    const username = 'red23214234'
+    const user = await User.findOne({ username }).lean();
     const emailResult = await mail.sendMail({
-        from: '<test@supercode.de>',
+        from: '<finko@kunndensupport.de>',
         // from: "stefan@supercode.de",
-        to: '<test@supercode.de>',
-        subject: "Registration, Hooray!",
-        text: `Danke für deine Registrierung. Klicke hier um zu bestaetigen. Dies ist dein Verification Code:`,
-        html: `<p>Danke für deine Registrierung, .</p> <p>Klicke hier um zu bestaetigen. Dies ist dein Verification Code: </p>`,
+        to: `<${user?.email}>`,
+        subject: "Reset Passwort",
+        text: `Hier ist dein Code um dein Passwort zurückzusetzten: ${user?.verificationCode}`,
+        // html: `<p>Danke für deine Registrierung, .</p> <p>Klicke hier um zu bestaetigen. Dies ist dein Verification Code: </p>`,
      
       });
       res.json(emailResult)

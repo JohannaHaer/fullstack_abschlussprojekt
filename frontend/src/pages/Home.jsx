@@ -12,7 +12,8 @@ import Header from '@/components/Header'
 import NavBar from '@/components/NavBar'
 import LogoNormal from '@/components/logo/LogoNormal'
 import { mainContext } from '@/context/mainProvider'
-import AreaChart from '@/components/flowbite-components/AreaChart'
+import IncomePie from '@/components/VictoryCharts/IncomePie'
+import VictoryPieTest from '@/components/VictoryCharts/VictoryPie'
 
 
 const Home = () => {
@@ -24,7 +25,8 @@ const Home = () => {
         <LogoNormal/>
         <section className='py-5 px-4 h-dvh'>
             <Header/>
-            <AreaChart/>
+            <IncomePie/>
+            {/* <VictoryPieTest/> */}
             <Card className="py-14 h-dvh w-full " >
                 <CardHeader className="h-3/6 w-full flex flex-col gap-12">
                     <Card className=" bg-accent rounded-lg h-3/6 " >

@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../components/Header'
 import NavBar from '../components/NavBar'
 import LogoNormal from '../components/logo/LogoNormal'
+import SettingsForm from '@/components/SettingsForm'
 
 const Settings = () => {
     return (
@@ -11,6 +12,7 @@ const Settings = () => {
             <Header/>
             <h1>Settings</h1>
         </section>
+        <SettingsForm />
         <NavBar/>
         </>
     )

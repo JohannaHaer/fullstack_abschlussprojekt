@@ -30,7 +30,7 @@ userRouter.post('/addExpense', mult.none(), checkAuth, addExpense)
 userRouter.post('/addIncome', mult.none(), checkAuth, addIncome)
 userRouter.post('/addExpenseCategory', mult.none(), checkAuth, addExpenseCategory)
 userRouter.post('/addIncomeCategory', mult.none(), checkAuth, addIncomeCategory)
-userRouter.patch('/editUser', mult.none(), checkAuth, editUser)
+userRouter.patch('/editUser', mult.none(),checkRepeatName, checkRepeatEmail, editUser) //!test
 userRouter.patch('/changePassword', mult.none(), checkAuth, changePassword)
 userRouter.patch('/uploadImage', mult.single("image"), checkAuth, imageUpload) //sowohl für initialen upload als auch als änderung
 userRouter.delete('/removeUser', mult.none(), removeUser)

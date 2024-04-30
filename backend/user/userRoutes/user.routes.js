@@ -23,7 +23,7 @@ import { deleteTransaction } from "../userController/deleteExpense.js";
 const userRouter = express.Router()
 const mult = multer({ storage: multer.memoryStorage() })
 
-
+//!CHECKAUTH
 //? user
 //*basic
 userRouter.post("/register",mult.none(),checkRepeatName, checkRepeatEmail, register)

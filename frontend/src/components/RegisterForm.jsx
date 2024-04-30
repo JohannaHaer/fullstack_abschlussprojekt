@@ -65,8 +65,9 @@ const RegisterForm = () => {
     }
 
     const onSubmit = (values) => {
-        register(values) 
-        navigateSetupAccount()
+        const registerStatus = register(values) 
+        
+        // navigateSetupAccount()
     }
 
     return (

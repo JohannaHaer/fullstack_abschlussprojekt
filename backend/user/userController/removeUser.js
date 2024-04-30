@@ -8,7 +8,7 @@ export const removeUser = async(req, res)=>{
     const user = await User.findOneAndDelete({username:username})
     console.log('test user is :', user);
     if (!user) {
-      return res.status(400).send('Item not found');
+        return res.status(400).send('Item not found');
     }
     return res.status(200).send("Id " + req.params.id + " has been deleted");//?funtioniert req.params.id?
 }

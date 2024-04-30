@@ -29,16 +29,16 @@ export const checkRepeatName = async (req,res,next)=>{
 export const checkRepeatEmail = async(req,res,next)=>{
 
     const { email } = req.body;
-    console.log(res.locals.checkNameStatus)
     try {
         const user = await User.findOne({ email }).lean();
         if (user) {
-            res.locals.checkEmailStatus= "Email already exists"
-            res.send('Email already exists')
+            // res.locals.checkEmailStatus= "Email already exists"
+            // res.send('Email already exists')
+            res.status(409).json({error:"Email already exists"})
         } else {
             res.locals.checkEmailStatus= "ok"
             if(res.locals.checkNameStatus=='username already exists'){
-                res.send('username already exists')
+                res.status(409).json({error:'username already exists'})
             }else{next()}
         }
     } catch (error) {

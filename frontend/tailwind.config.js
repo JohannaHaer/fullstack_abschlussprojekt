@@ -6,8 +6,6 @@ module.exports = {
     './components/**/*.{js,jsx}',
     './app/**/*.{js,jsx}',
     './src/**/*.{js,jsx}',
-    "./node_modules/flowbite/**/*.js",
-    'node_modules/flowbite-react/lib/esm/**/*.js'
   ],
   prefix: "",
   theme: {
@@ -82,8 +80,5 @@ module.exports = {
   },
   plugins: [
     require("tailwindcss-animate"),
-    require('flowbite/plugin')({
-      charts: true,
-  }),
 ],
 }

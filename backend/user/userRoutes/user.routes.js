@@ -25,14 +25,19 @@ const mult = multer({ storage: multer.memoryStorage() })
 
 
 //? user
+//*basic
 userRouter.post("/register",mult.none(),checkRepeatName, checkRepeatEmail, register)
 userRouter.post('/login', mult.none(), login)
 userRouter.get('/getUser', checkAuth, getUserData)
 userRouter.get('/logout', logout)
+
+//*edit
 userRouter.patch('/editUser', mult.none(),checkRepeatName, checkRepeatEmail, editUser)
 userRouter.patch('/changePassword', mult.none(), checkAuth, changePassword)
 userRouter.patch('/uploadImage', mult.single("image"), checkAuth, imageUpload) //sowohl für initialen upload als auch als änderung
 userRouter.delete('/removeUser', mult.none(), removeUser)
+
+//*other
 userRouter.post('/sendMail', mult.none(), createNewVerificationCode, sendMail )
 userRouter.post('/compareVerificationCode', mult.none(), compareVerificationCode)
 
@@ -41,8 +46,8 @@ userRouter.post('/addExpense', mult.none(), checkAuth, addExpense)
 userRouter.post('/addIncome', mult.none(), checkAuth, addIncome)
 userRouter.post('/addExpenseCategory', mult.none(), checkAuth, addExpenseCategory)
 userRouter.post('/addIncomeCategory', mult.none(), checkAuth, addIncomeCategory)
-userRouter.patch('/editTransaction/:id', mult.none(), editTransaction)//!funktioniert noch nciht
-userRouter.delete('/deleteTransaction/:id', mult.none(), deleteTransaction)//!funktioniert noch nciht
+userRouter.patch('/editTransaction/:id', mult.none(), editTransaction)
+userRouter.delete('/deleteTransaction/:id', mult.none(), deleteTransaction)
 
 
 export default userRouter

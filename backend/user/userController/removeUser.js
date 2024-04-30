@@ -10,8 +10,7 @@ export const removeUser = async(req, res)=>{
     if (!user) {
       return res.status(400).send('Item not found');
     }
-    return res.status(200).send("Id " + req.params.id + " has been deleted");
-    //res.json(user)
+    return res.status(200).send("Id " + req.params.id + " has been deleted");//?funtioniert req.params.id?
 }
     catch(error){
         return res.status(500).json(err);

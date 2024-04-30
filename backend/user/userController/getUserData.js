@@ -1,8 +1,8 @@
-import express from "express";
+// import express from "express";
 import { User } from "../userModel/user.model.js";
 import jwt from "jsonwebtoken";
 
-export const userRouter = express.Router();
+// export const userRouter = express.Router();
 
 export const getUserData = async (req, res) =>{
     try {

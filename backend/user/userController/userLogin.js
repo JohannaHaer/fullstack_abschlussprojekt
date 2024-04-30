@@ -20,8 +20,8 @@ export const login = async(req, res) => {
     const compareResult = await bcrypt.compare(password, user.passwordHash);
     console.log(compareResult)
     if (!compareResult) {
-        res.sendStatus(401);
-      res.json({ status: "failed" });
+        res.status(401).json("Falsches Passwort");
+      // res.json({ status: "failed" });
     } else {
       const token = jwt.sign({ id: user._id, username: user.username }, process.env.JWT_SECRET);
       res.cookie("token", token, { httpOnly: true });

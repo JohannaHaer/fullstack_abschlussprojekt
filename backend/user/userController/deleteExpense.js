@@ -1,31 +1,24 @@
-// import { User } from "../userModel/user.model.js";
+import { User } from "../userModel/user.model.js";
 
+export const deleteTransaction = async (req, res) => {
+    try {
+        const username = await jwt.decode(req.cookies.token).username
+        const transactionId = req.params.id
+        const user = await User.findOneAndUpdate(
+            { 
+                username: username
+            },
+            { 
+                $pull: { 
+                    transactions: { _id: transactionId } 
+                }
+            },
+            { new: true }
+        );
 
-
-// export const addExpense = async (req,res)=>{
-//   //!username muss noch getestet werden
-//   // const username = 'test'
-//   const username = jwt.decode(res.cookie.token).username
-//   const {id} = req.body
-//   try{
-//     const user = await User.findOne({username})
-//     if (!user) {
-//       throw new Error("User not found");
-//     }
-//     user.transactions.expenses.push({
-//       amount: amount,
-//       category: category,
-//       description: description
-//     })
-//     const writeResult = await user.save();
-//       res.json(writeResult);
-//   }
-//   catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: "Internal server error" });
-// }
-// }
-
-export const deleteTransaction = async(req,res) =>{
-console.log(req)
-}
+        res.json(user);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+};

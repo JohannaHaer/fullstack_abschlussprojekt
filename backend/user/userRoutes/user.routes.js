@@ -41,8 +41,8 @@ userRouter.post('/addExpense', mult.none(), checkAuth, addExpense)
 userRouter.post('/addIncome', mult.none(), checkAuth, addIncome)
 userRouter.post('/addExpenseCategory', mult.none(), checkAuth, addExpenseCategory)
 userRouter.post('/addIncomeCategory', mult.none(), checkAuth, addIncomeCategory)
-userRouter.patch('/editTransaction', mult.none(), editTransaction)//!funktioniert noch nciht
-userRouter.delete('/deletTransaction', mult.none(), deleteTransaction)//!funktioniert noch nciht
+userRouter.patch('/editTransaction/:id', mult.none(), editTransaction)//!funktioniert noch nciht
+userRouter.delete('/deleteTransaction/:id', mult.none(), deleteTransaction)//!funktioniert noch nciht
 
 
 export default userRouter

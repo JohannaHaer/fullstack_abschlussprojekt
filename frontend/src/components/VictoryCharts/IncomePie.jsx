@@ -4,33 +4,39 @@ import { VictoryPie } from 'victory'
 
 const IncomePie = () => {
     const {user} = useContext(mainContext)
-    console.log(user);
+    // console.log(user);
     const transactions = user?.transactions
-    console.log('trans', transactions);
+    // console.log('trans', transactions);
     const incomeArray = []
     const clearedIncomeArray = []
-    const transactionMap = transactions?.map((transaction) => {
+    transactions?.map((transaction) => {
         if(transaction.type == 'income') {
             incomeArray.push({x: transaction.category, y: transaction.amount})
-            // incomeArray.map((income) => {
-            //     if(income.x == transaction.category) {
-            //         console.log('test', income.x);
-            //     }
-            // })
         }
     })
-    console.log('incomeArray', incomeArray);
-    
-    const category = incomeArray.map((item) => item.x)
-    const duplicate = category.some((item, index) => {
-        return(
-            category.indexOf(item) != index
-        )
+    user?.incomeCategories?.map((category) => {
+        let categoryAmount = 0
+        incomeArray.map((income) => {
+            if(income.x == category.categoryName) {
+                // console.log(income.x, category.categoryName);
+                // console.log(income.y);
+                categoryAmount = categoryAmount + income.y
+            }
+            // console.log('test', categoryAmount, category.categoryName);
+            // clearedIncomeArray.push(categoryAmount)
+        })
+        if(categoryAmount > 0) {
+            clearedIncomeArray.push({x: category.categoryName, y: categoryAmount})
+        }
     })
-    console.log(duplicate);
+
+    console.log('cleared', clearedIncomeArray);
+    
+    // console.log('incomeArray', incomeArray);
+
     return (
         <>
-            <VictoryPie data = {incomeArray}/>
+            <VictoryPie data = {clearedIncomeArray}/>
         </>
     )
 }

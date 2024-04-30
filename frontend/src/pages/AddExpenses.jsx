@@ -1,24 +1,17 @@
 import Header from "@/components/Header";
 import NavBar from "@/components/NavBar";
 import LogoExpenses from "@/components/logo/LogoExpenses";
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import {
     Card,
     CardContent,
-    CardDescription,
-    CardFooter,
     CardHeader,
-    CardTitle,
   } from "@/components/ui/card"
 import { Button } from '@/components/ui/button'
-import { mainContext } from "@/context/mainProvider";
 import AddTransactionForm from "@/components/AddTransactionForm";
 
 const AddExpenses = () => {
     const [selectedOption, setSelectedOption] = useState(null);
-    const {user} = useContext(mainContext)
-
- 
 
     const handleSelect = (option) => {
         setSelectedOption(option);

@@ -21,11 +21,14 @@ const LogoNormal = () => {
         return () => darkModeMediaQuery.removeEventListener("change", handleThemeChange);
     }, [setTheme]);
 
-    // const logoDarkPath = "../src/assets/img/Logo_Backend_Abschlussprojekt_dark.png";
-    // const logoLightPath = "../src/assets/img/Logo_Backend_Abschlussprojekt.png";
-
     const logoPath = useMemo(() => {
-        return theme === "dark" || (theme === null && systemTheme === "dark") ? logoDarkPath : logoLightPath;
+        if (theme === "dark" || (theme === null && systemTheme === "dark")) {
+            return logoDarkPath;
+        } else if (theme === "light" || (theme !== null && systemTheme === "light")) {
+            return logoLightPath;
+        } else {
+            return logoDarkPath
+        }
     }, [theme, systemTheme]);
 
     return (

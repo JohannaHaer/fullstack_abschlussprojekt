@@ -1,17 +1,36 @@
 import { useTheme } from '@/components/theme-provider';
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import logoDarkPath from '@/assets/img/Logo-wechsel_dark.gif'
+import logoLightPath from '@/assets/img/Logo-wechsel.gif'
 
 const Landingpage = () => {
 
-    const { theme } = useTheme();
+    const { theme, setTheme } = useTheme();
     const navigate = useNavigate()
+    const [systemTheme, setSystemTheme] = useState(null);
 
-    const logoDarkPath = "../src/assets/img/Logo-wechsel_dark.gif";
-    const logoLightPath = "../src/assets/img/Logo-wechsel.gif";
+    useEffect(() => {
+        const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+        setSystemTheme(darkModeMediaQuery.matches ? "dark" : "light");
+
+        const handleThemeChange = (e) => {
+            setTheme(e.matches ? "dark" : "light");
+        };
+
+        darkModeMediaQuery.addEventListener("change", handleThemeChange);
+
+        return () => darkModeMediaQuery.removeEventListener("change", handleThemeChange);
+    }, [setTheme]);
 
     const logoPath = useMemo(() => {
-        return theme === "dark" ? logoDarkPath : logoLightPath;
+        if (theme === "dark" || (theme === null && systemTheme === "dark")) {
+            return logoDarkPath;
+        } else if (theme === "light" || (theme !== null && systemTheme === "light")) {
+            return logoLightPath;
+        } else {
+            return logoDarkPath
+        }
     }, [theme]);
 
     useEffect(() => {

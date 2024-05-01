@@ -9,9 +9,7 @@ export const editUser = async(values)=>{
     try{
         const responseEditUser = await fetch(import.meta.env.VITE_BACKEND_URL + '/user/editUser', {
             method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(values),
             credentials: 'include'
         })
@@ -28,9 +26,7 @@ export const addImage = async(values)=>{
     try{
         const responseAddImage = await fetch(import.meta.env.VITE_BACKEND_URL + '/user/uploadImage', {
             method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(values),
             credentials: 'include'
         })
@@ -47,9 +43,7 @@ export const changePassword = async(values)=>{
     try{
         const responsechangePassword = await fetch(import.meta.env.VITE_BACKEND_URL + '/user/changePassword', {
             method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(values),
             credentials: 'include'
         })
@@ -65,9 +59,7 @@ export const removeUser = async(values)=>{
     try{
         const responseRemoveUser = await fetch(import.meta.env.VITE_BACKEND_URL + '/user/removeUser', {
             method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(values),
             credentials: 'include'
         })

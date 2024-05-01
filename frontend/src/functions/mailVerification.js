@@ -6,9 +6,7 @@ export const sendVerificationmail = async(values)=>{
     try{
         const responseVerificationMail = await fetch(import.meta.env.VITE_BACKEND_URL + '/user/sendMail', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(values),
             credentials: 'include'
         })
@@ -27,9 +25,7 @@ export const verificate = async(values)=>{
     try{
         const responseVerificate = await fetch(import.meta.env.VITE_BACKEND_URL + '/user/compareVerificationCode', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(values),
             credentials: 'include'
         })

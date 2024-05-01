@@ -27,9 +27,7 @@ export const removeTransaction = async(id)=>{
     try{
         const resoponseEditTransaction = await fetch(import.meta.env.VITE_BACKEND_URL + '/user/deleteTransaction/'+ id, {
             method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(values),
             credentials: 'include'
         })

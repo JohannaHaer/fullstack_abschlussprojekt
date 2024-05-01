@@ -14,7 +14,15 @@ Finco is a web app for everyone, who wants to track their finances easily. Save 
 
 ## Tech Stack
 
-**Client:** JavaScript, HTML, CSS, React.js, Vite, Tailwind, Shadcn, Victory
+**Client:** 
+- JavaScript
+- HTML
+- CSS
+- React.js
+- Vite
+- Tailwind
+- Shadcn
+- Victory
 
 **Server:** Node.js, Express.js, MongoDB, Cloudinary, Cors, Dotenv, JWT, Bcyrpt, Cookie-parser, Multer, NodeMailer
 

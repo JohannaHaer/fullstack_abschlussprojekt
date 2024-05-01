@@ -17,29 +17,33 @@ Finco is a web app for everyone, who wants to track their finances easily. Save 
 <section className='grid grid-cols-2'>
     <div>
        <h2>Client</h2>
-        - JavaScript
-        - HTML
-        - CSS
-        - React.js
-        - Vite
-        - Tailwind
-        - Shadcn
-        - Victory
+        <ul className='flex flex-col'>
+            <li>JavaScript</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>React.js</li>
+            <li>Vite</li>
+            <li>Tailwind</li>
+            <li>Shadcn</li>
+            <li>Victory</li>
+        </ul>
     </div>
     
    <div>
         <h2>Server</h2> 
-        - Node.js
-        - Express.js
-        - MongoDB
-        - Cloudinary
-        - Cors
-        - Dotenv
-        - JWT
-        - Bcyrpt
-        - Cookie-parser
-        - Multer
-        - NodeMailer
+        <ul className='flex flex-col'>
+           <li>Node.js</li>
+            <li>Express.js</li>
+            <li>MongoDB</li>
+            <li>Cloudinary</li>
+            <li>Cors</li>
+            <li>Dotenv</li>
+            <li>JWT</li>
+            <li>Bcyrpt</li>
+            <li>Cookie-parser</li>
+            <li>Multer</li>
+            <li>NodeMailer</li>
+        </ul>
    </div>
 </section>
 

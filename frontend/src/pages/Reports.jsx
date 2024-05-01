@@ -12,6 +12,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import ReportForm from "@/components/ReportForm"
  
 
 const Reports = () => {
@@ -20,40 +21,37 @@ const Reports = () => {
         <LogoNormal/>
         <section className='py-5 px-4 h-dvh'>
             <Header/>
-                <Carousel className="w-full max-w-xs flex justify-center">
+                <h1 className="text-2xl font-bold pt-10 text-[#0097B2] dark:text-[#FFDE59]">Report</h1>
+                <Carousel className="w-full flex justify-center">
                     <CarouselContent>
                         <CarouselItem>
-                            <div className="p-1">
                                 <Card className='flex justify-center'>
                                     <CardContent className="flex flex-col aspect-square items-center justify-center p-2">
                                         <VictoryPieChart type={'income'}/>
-                                        <h2 className="text-xl">Income</h2>
-                                        <div className="py-2 flex gap-1">
+                                        <h2 className="text-xl text-[#0097B2] dark:text-[#0097B2]">Income</h2>
+                                        <div className="py-10 flex gap-1">
                                             <div className="border rounded-full w-2 h-2 bg-border"></div>
                                             <div className="border rounded-full w-2 h-2"></div>
                                         </div>
+                                        <ReportForm type={'income'}/>
                                     </CardContent>
                                 </Card>
-                            </div>
                         </CarouselItem>
                         <CarouselItem>
-                            <div className="p-1">
-                                <Card>
+                                <Card className='flex justify-center'>
                                     <CardContent className="flex flex-col aspect-square items-center justify-center p-2">
-                                    <VictoryPieChart type={'expense'}/>
-                                    <h2 className="text-xl">Expenses</h2>
-                                    <div className="py-2 flex gap-1">
+                                        <VictoryPieChart type={'expense'}/>
+                                        <h2 className="text-xl text-[#0097B2] dark:text-[#0097B2]">Expenses</h2>
+                                        <div className="py-10 flex gap-1">
                                             <div className="border rounded-full w-2 h-2"></div>
                                             <div className="border rounded-full w-2 h-2 bg-border"></div>
                                         </div>
+                                        <ReportForm type={'expense'}/>
                                     </CardContent>
                                 </Card>
-                            </div>
                         </CarouselItem>
                     </CarouselContent>
                 </Carousel>
-            {/* <VictoryPieChart type={'income'}/>
-            <VictoryPieChart type={'expense'}/> */}
         </section>
         <NavBar/>
         </>

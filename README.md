@@ -11,6 +11,9 @@ Finco is a web app for everyone, who wants to track their finances easily. Save 
 
 ## Logo
 
-Logo.png                                                         Logo.gif
+Logo.png
+<img src="./frontend/src/assets/img/Logo_Backend_Abschlussprojekt_dark.png" width='100px' height='100px'/>
 
-<img src="./frontend/src/assets/img/Logo_Backend_Abschlussprojekt_dark.png" width='100px' height='100px'/>                    <img src="./frontend/src/assets/img/Logo-wechsel.gif" width='100px' height='100px'/>
+
+ Logo.gif
+<img src="./frontend/src/assets/img/Logo-wechsel.gif" width='100px' height='100px'/>

@@ -1,3 +1,5 @@
+//!not testet
+
 
 //* in cookies.token muss ein username gespeichert sein
 //* im user wird ein verficate code generiert

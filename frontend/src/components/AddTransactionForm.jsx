@@ -68,7 +68,7 @@ const AddTransactionForm = ({type}) => {
 
     const handleCategoryChange = (categoryName) => {
         setSelectedCategory(`Category = ${categoryName}`)
-        form.setValue("category", categoryName);
+        form.setValue("category", categoryName)
     }
 
     return (
@@ -167,7 +167,7 @@ const AddTransactionForm = ({type}) => {
                         </FormItem>
                         )}
                     />
-                    <Button type="submit" className='text-lg' id='transactionButton'>Add</Button>
+                    <Button type="submit" className='text-lg' id='transactionButton'>Add {type}</Button>
                 </form>
             </Form>
         </section>

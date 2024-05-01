@@ -1,6 +1,6 @@
-# Fullstack final project: 
+## Fullstack final project: 
 
-## 💵 Finco - your finances at a glance
+# 💵 Finco - your finances at a glance
 
 Finco is a web app for everyone, who wants to track their finances easily. Save your income and expenses and see how your finances develop over time. Not sure how much you spend on food on average? No problem, just take a look in your Finco app.
 

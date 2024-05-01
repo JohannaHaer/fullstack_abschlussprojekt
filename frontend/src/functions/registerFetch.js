@@ -1,4 +1,8 @@
+import { mainContext } from "@/context/mainProvider"
+import { useContext } from "react"
+
 export const register = async (values) => {
+    const {status, setStatus} = useContext(mainContext)
     // console.log(values);
     // console.log(JSON.stringify(values));
     console.log('test')
@@ -7,6 +11,10 @@ export const register = async (values) => {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(values),
     })
-    .then(async(response)=>{return await response})
+    .then(async(response)=>{
+        return responseRegister
+        // const buffer = await response
+        // setStatus(buffer)
+    })
 
 }

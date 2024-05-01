@@ -16,6 +16,8 @@ import { toast } from "@/components/ui/use-toast"
 import { Checkbox } from "@/components/ui/checkbox"
 import { useNavigate } from 'react-router-dom'
 import { register } from '@/functions/registerFetch'
+import { mainContext } from "@/context/mainProvider"
+import { useContext } from "react"
 
 const formSchema = z.object({
     firstName: z.string(),
@@ -26,7 +28,7 @@ const formSchema = z.object({
 })
 
 const RegisterForm = () => {
-    
+    const {status, setStatus} = useContext(mainContext)
     const [isChecked, setIsChecked] = useState(false)
     const navigate = useNavigate()
 
@@ -64,9 +66,9 @@ const RegisterForm = () => {
         navigate('/terms-and-services')
     }
 
-    const onSubmit = (values) => {
-        const registerStatus = register(values) 
-        
+    const onSubmit = async(values) => {
+        const resp = await register(values) 
+        console.log(resp)
         // navigateSetupAccount()
     }
 

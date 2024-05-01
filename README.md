@@ -4,13 +4,32 @@
 
 Finco is a web app for everyone, who wants to track their finances easily. Save your income and expenses and see how your finances develop over time. Not sure how much you spend on food on average? No problem, just take a look in your Finco app.
 
+With its intuitive interface and powerful features, Finco is your go-to solution for managing your finances effectively. Start using Finco today and take control of your financial future.
+
+
 ## Depolyment
 
 
+**Or use it yourself**
+To get started with Finco, follow these steps:
 
-## Documentation
+1. Clone the project repository from GitHub.
+2. Install the necessary dependencies using 'npm i'.
+3. Set up your MongoDB database.
+4. Start the backend server using 'npm run dev'.
+5. Start the frontend development server using 'npm run dev'.
+6. Access Finco in your web browser at the specified URL.
+
+
+## Authentication
+
+Finco provides secure authentication features, allowing users to log in or register for an account. Protect your financial data with robust authentication mechanisms.
+
 
 ## Screenshots
+
+
+
 
 ## Tech Stack
 
@@ -27,6 +46,7 @@ Finco is a web app for everyone, who wants to track their finances easily. Save 
 |               |               | Cookie-parser |
 |               |               | Multer        |
 |               |               | NodeMailer    |
+
 
 ## Logo
 
@@ -46,3 +66,8 @@ Logo.png
 - [@VictordelaM](https://github.com/VictordelaM)
 - [@Bwalyaa](https://github.com/Bwalyaa)
 - [@Kaiznkinkaide](https://github.com/Kaiznkinkaide)
+
+
+## Context
+
+This web app was created as the final project of a fullstack web development bootcamp at supercode GmBH & Co. KG.

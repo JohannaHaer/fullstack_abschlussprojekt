@@ -13,37 +13,37 @@ const ReportForm = ({type}) => {
     if(type == 'expense') {
         transactions?.map((transaction) => {
             if(transaction.type == 'expense') {
-                transactionArray.push({x: transaction.category, y: transaction.amount})
+                transactionArray.push({category: transaction.category, amount: transaction.amount})
             } 
         })
 
         user?.expenseCategories?.map((category) => {
             let categoryAmount = 0
             transactionArray.map((income) => {
-                if(income.x == category.categoryName) {
-                    categoryAmount = categoryAmount + income.y
+                if(income.category == category.categoryName) {
+                    categoryAmount = categoryAmount + income.amount
                 }
             })
             if(categoryAmount > 0) {
-                clearedTransactionArray.push({a: category.imgUrl, b: category.categoryName, c: categoryAmount, d: '-'})
+                clearedTransactionArray.push({imgUrl: category.imgUrl, categoryName: category.categoryName, amount: categoryAmount, sign: '-'})
             }
         })
     } else if (type == 'income') {
         transactions?.map((transaction) => {
             if(transaction.type == 'income') {
-                transactionArray.push({x: transaction.category, y: transaction.amount})
+                transactionArray.push({category: transaction.category, amount: transaction.amount})
             } 
         })
 
         user?.incomeCategories?.map((category) => {
             let categoryAmount = 0
             transactionArray.map((income) => {
-                if(income.x == category.categoryName) {
-                    categoryAmount = categoryAmount + income.y
+                if(income.category == category.categoryName) {
+                    categoryAmount = categoryAmount + income.amount
                 }
             })
             if(categoryAmount > 0) {
-                clearedTransactionArray.push({a: category.imgUrl, b: category.categoryName, c: categoryAmount, d: ''})
+                clearedTransactionArray.push({imgUrl: category.imgUrl, categoryName: category.categoryName, amount: categoryAmount, sign: ''})
             }
         })
     }
@@ -52,10 +52,10 @@ const ReportForm = ({type}) => {
             <h2 className="text-xl font-bold self-start">Total {type} transactions</h2>
             {clearedTransactionArray.map((transaction) => {
                 return(
-                    <div key={transaction.b} className='grid grid-cols-5 pt-8'>
-                        <img src={transaction.a} alt=""/>
-                        <h3 className='text-l font-bold col-span-3'>{transaction.b}</h3>
-                        <p className='text-l font-bold text-[#0097B2] dark:text-[#FFDE59] justify-self-end'>{transaction.d} $ {transaction.c}</p>
+                    <div key={transaction.categoryName} className='grid grid-cols-5 pt-8'>
+                        <img src={transaction.imgUrl} alt=""/>
+                        <h3 className='text-l font-bold col-span-3'>{transaction.categoryName}</h3>
+                        <p className='text-l font-bold text-[#0097B2] dark:text-[#FFDE59] justify-self-end'>{transaction.sign} $ {transaction.amount}</p>
                     </div>
                 )
             })}

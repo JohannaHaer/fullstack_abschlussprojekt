@@ -2,7 +2,8 @@ import Header from "@/components/Header"
 import NavBar from "@/components/NavBar"
 import VictoryPieChart from "@/components/VictoryCharts/VictoryPie"
 import LogoNormal from "@/components/logo/LogoNormal"
-import * as React from "react"
+import { mainContext } from '@/context/mainProvider'
+import React, { useContext } from 'react'
  
 import { Card, CardContent } from "@/components/ui/card"
 import {
@@ -16,6 +17,16 @@ import ReportForm from "@/components/ReportForm"
  
 
 const Reports = () => {
+    // const {user} = useContext(mainContext)
+    // console.log(user);
+
+    // const transactions = user?.transactions
+    // console.log('transactionDate', transactions);
+    // const transactionsArray = []
+    // transactions.map((date) => {
+    //     transactionsArray.push({})
+    // })
+
     return ( 
         <>
         <LogoNormal/>

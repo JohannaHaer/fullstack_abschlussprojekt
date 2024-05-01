@@ -5,7 +5,6 @@ import { userRouter } from "./userLogin.js";
 
 
 export const imageUpload = async (req,res) =>{
-    console.log('check')
     try{
         const username = jwt.decode(req.cookies.token).username
         const uploadResult = await uploadImage(req.file.buffer)

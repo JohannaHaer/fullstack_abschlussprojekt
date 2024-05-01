@@ -3,7 +3,7 @@ import { User } from "../userModel/user.model.js";
 
 export const editUser = async(req,res)=>{
     try{
-        const {username, email, pictureUrl} = req.body
+        const {username, email} = req.body
         const cookieUsername = await jwt.decode(req.cookies.token).username
         if(username){
             const user = await User.findOneAndUpdate(
@@ -15,12 +15,6 @@ export const editUser = async(req,res)=>{
             const user = await User.findOneAndUpdate(
                 {username: cookieUsername},
                 {email:email}
-            )
-            res.json(user)
-        }else if(pictureUrl){
-            const user = await User.findOneAndUpdate(
-                {username:cookieUsername},
-                {pictureUrl:pictureUrl}
             )
             res.json(user)
         }

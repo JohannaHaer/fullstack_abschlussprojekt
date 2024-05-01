@@ -11,6 +11,7 @@ With its intuitive interface and powerful features, Finco is your go-to solution
 
 
 **Or use it yourself**
+
 To get started with Finco, follow these steps:
 
 1. Clone the project repository from GitHub.

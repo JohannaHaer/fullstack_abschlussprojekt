@@ -15,7 +15,6 @@ Finco is a web app for everyone, who wants to track their finances easily. Save 
 ## Tech Stack
 
 <section className='grid grid-cols-2'>
-    <div>
        <h2>Client</h2>
         <ul className='flex flex-col'>
             <li>JavaScript</li>
@@ -27,9 +26,6 @@ Finco is a web app for everyone, who wants to track their finances easily. Save 
             <li>Shadcn</li>
             <li>Victory</li>
         </ul>
-    </div>
-    
-   <div>
         <h2>Server</h2> 
         <ul className='flex flex-col'>
            <li>Node.js</li>
@@ -44,7 +40,6 @@ Finco is a web app for everyone, who wants to track their finances easily. Save 
             <li>Multer</li>
             <li>NodeMailer</li>
         </ul>
-   </div>
 </section>
 
 ## Logo

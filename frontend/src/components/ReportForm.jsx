@@ -1,65 +1,47 @@
-import { mainContext } from '@/context/mainProvider'
-import React, { useContext } from 'react'
+import React from 'react'
+import { Card, CardContent } from "@/components/ui/card"
+import VictoryPieChart from "@/components/VictoryCharts/VictoryPie"
 
-const ReportForm = ({type}) => {
-    const {user} = useContext(mainContext)
-
-    const transactions = user?.transactions
-    const transactionArray = []
-    const clearedTransactionArray = []
-
-    
-
-    if(type == 'expense') {
-        transactions?.map((transaction) => {
-            if(transaction.type == 'expense') {
-                transactionArray.push({category: transaction.category, amount: transaction.amount})
-            } 
-        })
-
-        user?.expenseCategories?.map((category) => {
-            let categoryAmount = 0
-            transactionArray.map((income) => {
-                if(income.category == category.categoryName) {
-                    categoryAmount = categoryAmount + income.amount
-                }
-            })
-            if(categoryAmount > 0) {
-                clearedTransactionArray.push({imgUrl: category.imgUrl, categoryName: category.categoryName, amount: categoryAmount, sign: '-'})
-            }
-        })
-    } else if (type == 'income') {
-        transactions?.map((transaction) => {
-            if(transaction.type == 'income') {
-                transactionArray.push({category: transaction.category, amount: transaction.amount})
-            } 
-        })
-
-        user?.incomeCategories?.map((category) => {
-            let categoryAmount = 0
-            transactionArray.map((income) => {
-                if(income.category == category.categoryName) {
-                    categoryAmount = categoryAmount + income.amount
-                }
-            })
-            if(categoryAmount > 0) {
-                clearedTransactionArray.push({imgUrl: category.imgUrl, categoryName: category.categoryName, amount: categoryAmount, sign: ''})
-            }
-        })
-    }
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+} from "@/components/ui/carousel"
+import TotalTransactions from "@/components/TotalTransactions"
+const ReportForm = () => {
     return (
-        <section className='flex flex-col w-full pb-16'>
-            <h2 className="text-xl font-bold self-start">Total {type} transactions</h2>
-            {clearedTransactionArray.map((transaction) => {
-                return(
-                    <div key={transaction.categoryName} className='grid grid-cols-5 pt-8'>
-                        <img src={transaction.imgUrl} alt=""/>
-                        <h3 className='text-l font-bold col-span-3'>{transaction.categoryName}</h3>
-                        <p className='text-l font-bold text-[#0097B2] dark:text-[#FFDE59] justify-self-end'>{transaction.sign} $ {transaction.amount}</p>
-                    </div>
-                )
-            })}
-        </section>
+        <>
+            <Carousel className="w-full flex justify-center">
+                    <CarouselContent>
+                        <CarouselItem>
+                                <Card className='flex justify-center'>
+                                    <CardContent className="flex flex-col aspect-square items-center justify-center p-2">
+                                        <VictoryPieChart type={'income'}/>
+                                        <h2 className="text-xl text-[#0097B2] dark:text-[#0097B2]">Income</h2>
+                                        <div className="py-10 flex gap-1">
+                                            <div className="border rounded-full w-2 h-2 bg-border"></div>
+                                            <div className="border rounded-full w-2 h-2"></div>
+                                        </div>
+                                        <TotalTransactions type={'income'}/>
+                                    </CardContent>
+                                </Card>
+                        </CarouselItem>
+                        <CarouselItem>
+                                <Card className='flex justify-center'>
+                                    <CardContent className="flex flex-col aspect-square items-center justify-center p-2">
+                                        <VictoryPieChart type={'expense'}/>
+                                        <h2 className="text-xl text-[#0097B2] dark:text-[#0097B2]">Expenses</h2>
+                                        <div className="py-10 flex gap-1">
+                                            <div className="border rounded-full w-2 h-2"></div>
+                                            <div className="border rounded-full w-2 h-2 bg-border"></div>
+                                        </div>
+                                        <TotalTransactions type={'expense'}/>
+                                    </CardContent>
+                                </Card>
+                        </CarouselItem>
+                    </CarouselContent>
+                </Carousel>
+        </>
     )
 }
 

@@ -1,18 +1,18 @@
 import Header from "@/components/Header"
 import NavBar from "@/components/NavBar"
-import VictoryPieChart from "@/components/VictoryCharts/VictoryPie"
+// import VictoryPieChart from "@/components/VictoryCharts/VictoryPie"
 import LogoNormal from "@/components/logo/LogoNormal"
 import { mainContext } from '@/context/mainProvider'
 import React, { useContext } from 'react'
  
-import { Card, CardContent } from "@/components/ui/card"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
+// import { Card, CardContent } from "@/components/ui/card"
+// import {
+//   Carousel,
+//   CarouselContent,
+//   CarouselItem,
+//   CarouselNext,
+//   CarouselPrevious,
+// } from "@/components/ui/carousel"
 import ReportForm from "@/components/ReportForm"
  
 
@@ -22,47 +22,29 @@ const Reports = () => {
 
     // const transactions = user?.transactions
     // console.log('transactionDate', transactions);
-    // const transactionsArray = []
-    // transactions.map((date) => {
-    //     transactionsArray.push({})
+    // const monthlyDates = []
+    // transactions?.map((transaction) => {
+    //     let oldDate = transaction.date
+    //     let newDate = oldDate.slice(0, 7)
+    //     if(newDate )
+    //     monthlyDates.push({date: newDate})
     // })
+    // console.log(monthlyDates);
 
+    // const year = (new Date()).getFullYear();
+    // const month = (new Date()).getMonth()
+    // console.log(month);
+    // console.log(year);
+    // const years = Array.from(new Array(5),( val, index) => year - index);
+    // console.log(years);
+ 
     return ( 
         <>
         <LogoNormal/>
         <section className='py-5 px-4 h-dvh'>
             <Header/>
                 <h1 className="text-2xl font-bold pt-10 text-[#0097B2] dark:text-[#FFDE59]">Report</h1>
-                <Carousel className="w-full flex justify-center">
-                    <CarouselContent>
-                        <CarouselItem>
-                                <Card className='flex justify-center'>
-                                    <CardContent className="flex flex-col aspect-square items-center justify-center p-2">
-                                        <VictoryPieChart type={'income'}/>
-                                        <h2 className="text-xl text-[#0097B2] dark:text-[#0097B2]">Income</h2>
-                                        <div className="py-10 flex gap-1">
-                                            <div className="border rounded-full w-2 h-2 bg-border"></div>
-                                            <div className="border rounded-full w-2 h-2"></div>
-                                        </div>
-                                        <ReportForm type={'income'}/>
-                                    </CardContent>
-                                </Card>
-                        </CarouselItem>
-                        <CarouselItem>
-                                <Card className='flex justify-center'>
-                                    <CardContent className="flex flex-col aspect-square items-center justify-center p-2">
-                                        <VictoryPieChart type={'expense'}/>
-                                        <h2 className="text-xl text-[#0097B2] dark:text-[#0097B2]">Expenses</h2>
-                                        <div className="py-10 flex gap-1">
-                                            <div className="border rounded-full w-2 h-2"></div>
-                                            <div className="border rounded-full w-2 h-2 bg-border"></div>
-                                        </div>
-                                        <ReportForm type={'expense'}/>
-                                    </CardContent>
-                                </Card>
-                        </CarouselItem>
-                    </CarouselContent>
-                </Carousel>
+                <ReportForm/>
         </section>
         <NavBar/>
         </>

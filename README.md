@@ -7,7 +7,7 @@ Finco is a web app for everyone, who wants to track their finances easily. Save 
 With its intuitive interface and powerful features, Finco is your go-to solution for managing your finances effectively. Start using Finco today and take control of your financial future.
 
 
-## Depolyment
+## Deployment
 
 
 **Or use it yourself**
@@ -40,7 +40,7 @@ Finco provides secure authentication features, allowing users to log in or regis
 | Trello        | HTML          | Express.js    |                                                   
 | Discord       | CSS           | MongoDB       |
 | Canva         | React.js      | Cloudinary    |
-|               | Vite          | Cors          |
+| Mailtrap      | Vite          | Cors          |
 |               | Tailwind      | Dotenv        |
 |               | Shadcn        | JWT           |
 |               | Victory       | Bcyrpt        |

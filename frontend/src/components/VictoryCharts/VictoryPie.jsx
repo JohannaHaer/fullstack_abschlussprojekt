@@ -14,15 +14,15 @@ const VictoryPieChart = ({type}) => {
     if(type == 'expense') {
         transactions?.map((transaction) => {
             if(transaction.type == 'expense') {
-                transactionArray.push({x: transaction.category, y: transaction.amount})
+                transactionArray.push({category: transaction.category, amount: transaction.amount})
             } 
         })
 
         user?.expenseCategories?.map((category) => {
             let categoryAmount = 0
             transactionArray.map((income) => {
-                if(income.x == category.categoryName) {
-                    categoryAmount = categoryAmount + income.y
+                if(income.category == category.categoryName) {
+                    categoryAmount = categoryAmount + income.amount
                 }
             })
             if(categoryAmount > 0) {
@@ -32,15 +32,15 @@ const VictoryPieChart = ({type}) => {
     } else if (type == 'income') {
         transactions?.map((transaction) => {
             if(transaction.type == 'income') {
-                transactionArray.push({x: transaction.category, y: transaction.amount})
+                transactionArray.push({category: transaction.category, amount: transaction.amount})
             } 
         })
 
         user?.incomeCategories?.map((category) => {
             let categoryAmount = 0
             transactionArray.map((income) => {
-                if(income.x == category.categoryName) {
-                    categoryAmount = categoryAmount + income.y
+                if(income.category == category.categoryName) {
+                    categoryAmount = categoryAmount + income.amount
                 }
             })
             if(categoryAmount > 0) {

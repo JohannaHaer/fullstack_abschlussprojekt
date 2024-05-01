@@ -71,4 +71,4 @@ Logo.png
 
 ## Context
 
-This web app was created as the final project of a fullstack web development bootcamp at supercode GmBH & Co. KG.
+This web app was created as the final project of a fullstack web development bootcamp at [supercode GmBH & Co. KG](https://www.super-code.de/).

@@ -7,14 +7,14 @@ export const userRouter = express.Router();
 
 export const login = async(req, res) => {
   try {
-    const { username, password, email } = req.body;
+    const { password, email } = req.body;
     if (!email || !password) {
       res.sendStatus(403);
       return;
     }
     const user = await User.findOne({ email}).lean();
     if (user === null) {
-      res.status(401).send("user doesn`t exist");
+      res.status(401).json("user doesn`t exist");
       return;
     }
     const compareResult = await bcrypt.compare(password, user.passwordHash);

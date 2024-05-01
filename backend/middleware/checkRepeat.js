@@ -34,7 +34,10 @@ export const checkRepeatEmail = async(req,res,next)=>{
         if (user) {
             // res.locals.checkEmailStatus= "Email already exists"
             // res.send('Email already exists')
-            res.status(409).json({error:"Email already exists"})
+            if(res.locals.checkNameStatus=='username already exists'){
+                res.status(409).json({error:'username and email already exists'})
+            }else{res.status(409).json({error:"Email already exists"})}
+            
         } else {
             res.locals.checkEmailStatus= "ok"
             if(res.locals.checkNameStatus=='username already exists'){

@@ -66,10 +66,11 @@ const RegisterForm = () => {
         navigate('/terms-and-services')
     }
 
+    //*in resp ist jetzt die gesamte response und mit resp.json() kann die fehlermeldung ausgelesen werden
     const onSubmit = async(values) => {
         const resp = await register(values) 
         console.log(resp)
-        // navigateSetupAccount()
+        if(await resp.status==200){navigateSetupAccount()}
     }
 
     return (

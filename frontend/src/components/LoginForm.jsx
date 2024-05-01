@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { toast } from "@/components/ui/use-toast"
-import { login } from '@/functions/loginFetch'
+import { login } from '@/functions/fetches/loginFetch'
 
 const formSchema = z.object({
     email: z.string(),
@@ -74,7 +74,7 @@ const LoginForm = () => {
                                 <FormControl>
                                     <Input placeholder="Password" {...field} required/>
                                 </FormControl>
-                                <FormMessage />
+                                <FormMessage /> //?muss das formmessage nicht um die span herum?
                                 <span onClick={navigateForgotPassword} className='flex justify-end'>Forgot Password</span>
                             </FormItem>
                         )}

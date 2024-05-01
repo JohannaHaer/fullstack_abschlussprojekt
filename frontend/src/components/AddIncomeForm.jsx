@@ -30,7 +30,7 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover"
 import { useNavigate } from 'react-router-dom'
-import { register } from '@/functions/registerFetch'
+import { register } from '@/functions/fetches/registerFetch'
 import { mainContext } from '@/context/mainProvider'
 
 const formSchema = z.object({

@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
 import { useNavigate } from 'react-router-dom'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { getUser } from '@/functions/userDataFetch'
+import { getUser } from '@/functions/fetches/userDataFetch'
 
 const SetupAccountForm = () => {
 

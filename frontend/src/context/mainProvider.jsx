@@ -1,4 +1,4 @@
-import { getUser } from '@/functions/userDataFetch'
+import { getUser } from '@/functions/fetches/userDataFetch'
 import React, { createContext, useEffect, useState } from 'react'
 export const mainContext = createContext()
 const MainProvider = ({children}) => {

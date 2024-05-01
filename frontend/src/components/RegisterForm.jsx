@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input"
 import { toast } from "@/components/ui/use-toast"
 import { Checkbox } from "@/components/ui/checkbox"
 import { useNavigate } from 'react-router-dom'
-import { register } from '@/functions/registerFetch'
+import { register } from '@/functions/fetches/registerFetch'
 import { mainContext } from "@/context/mainProvider"
 import { useContext } from "react"
 

@@ -15,7 +15,7 @@ Finco is a web app for everyone, who wants to track their finances easily. Save 
 ## Tech Stack
 
 **Client:** 
-![My Skills](https://skillicons.dev/icons?i=js,html,css,react,tailwind,vite,windows&perline=12)
+![My Skills](https://skillicons.dev/icons?i=js,html,css,react,tailwind,vite,shadcn,victory&perline=12)
 
 ## Logo
 

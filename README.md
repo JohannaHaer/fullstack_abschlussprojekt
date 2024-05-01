@@ -14,9 +14,9 @@ Finco is a web app for everyone, who wants to track their finances easily. Save 
 
 ## Tech Stack
 
-<section className='grid-cols-2'>
+<section className='grid grid-cols-2'>
     <div>
-        **Client:** 
+       <h2>Client</h2>
         - JavaScript
         - HTML
         - CSS
@@ -28,7 +28,7 @@ Finco is a web app for everyone, who wants to track their finances easily. Save 
     </div>
     
    <div>
-        **Server:** 
+        <h2>Server</h2> 
         - Node.js
         - Express.js
         - MongoDB

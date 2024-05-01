@@ -20,7 +20,7 @@ const Header = () => {
             <p className='text-2xl font-bold'>Hey {user?.username}</p>
             <div className='flex gap-4 items-center'>
                 <p className='text-l font-medium'><span>{saldo}</span> $</p>
-                <Avatar variant='default' onClick={navigateSettings}>
+                <Avatar variant='default' className='cursor-pointer' onClick={navigateSettings}>
                     <AvatarImage id='avatar' src='' />
                     <AvatarFallback>
                         <div className='w-10 h-10 rounded-full bg-grey border-2 flex justify-center items-center font-bold'>{avatarFallback}</div>

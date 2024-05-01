@@ -1,18 +1,8 @@
 import Header from "@/components/Header"
 import NavBar from "@/components/NavBar"
-// import VictoryPieChart from "@/components/VictoryCharts/VictoryPie"
 import LogoNormal from "@/components/logo/LogoNormal"
 import { mainContext } from '@/context/mainProvider'
 import React, { useContext } from 'react'
- 
-// import { Card, CardContent } from "@/components/ui/card"
-// import {
-//   Carousel,
-//   CarouselContent,
-//   CarouselItem,
-//   CarouselNext,
-//   CarouselPrevious,
-// } from "@/components/ui/carousel"
 import ReportForm from "@/components/ReportForm"
  
 
@@ -43,7 +33,7 @@ const Reports = () => {
         <LogoNormal/>
         <section className='py-5 px-4 h-dvh'>
             <Header/>
-                <h1 className="text-2xl font-bold pt-10 text-[#0097B2] dark:text-[#FFDE59]">Report</h1>
+                <h1 className="text-2xl text-center font-bold pt-10 text-[#0097B2] dark:text-[#FFDE59]">Report</h1>
                 <ReportForm/>
         </section>
         <NavBar/>

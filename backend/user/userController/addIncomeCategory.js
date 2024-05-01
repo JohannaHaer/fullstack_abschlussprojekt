@@ -4,9 +4,8 @@ import { User } from "../userModel/user.model.js";
 
 
 export const addIncomeCategory = async (req,res)=>{
-const username = await jwt.decode(req.cookies.token).username
+    const username = await jwt.decode(req.cookies.token).username
     const {categoryName, color, imgUrl} = req.body
-    console.log('bitte')
         try{
             const user = await User.findOne({username})
         if (!user) {

@@ -24,6 +24,7 @@ const TransactionsForm = () => {
         categoryImages.push({categoryName: expenseCategory.categoryName, imageUrl: expenseCategory.imageUrl})
     })
 
+    // 
     transactions?.map((transaction) => {
         categoryImages?.map((categoryImage) => {
             if (categoryImage.categoryName == transaction.category) {
@@ -40,12 +41,16 @@ const TransactionsForm = () => {
 
     const uniqueDateArray = [...new Set(transactionDateArray)]
 
-    uniqueDateArray?.map((date) => {
-        dateArray.push({date: date})
-        
+    const transactionsByDay = uniqueDateArray.map((date)=>{
+        const transactions = transactionArray?.filter((transaction)=>(transaction.date.slice(0,10) === date))
+        // const dates = new Date(date)
+        // const day = dates.slice(0,4)
+        // console.log(day);
+        return {date: date, transactions}
     })
 
-
+    console.log(transactionsByDay);
+    console.log(new Date);
 
     return (
         <section className='flex flex-col pb-16 relative'>
@@ -58,40 +63,26 @@ const TransactionsForm = () => {
                 </div>
             </div>
             </Card>
-            {dateArray?.map((transactionDate) => {
+            {transactionsByDay?.map((transactionDate) => {
                 return (
-                    <React.Fragment key={transactionDate.date}>
-                        
+                    <div key={transactionDate.date}>
                         <h2 className="text-l font-bold pt-5">{transactionDate.date}</h2>
                         <hr/>
-                        {transactionArray?.map((transaction) => {
-                            if (transaction.date.slice(0, 10) == transactionDate.date) {
-                                if (transaction.type == 'income') {
-                                    return (
-                                        <div key={transactionDate._id} className="grid grid-cols-6 py-2">
-                                            <img src={transaction.imgUrl} alt="" />
-                                            <div className="felx flex-col col-span-3">
-                                                <h3 className='text-l font-bold'>{transaction.category}</h3>
-                                                <p>{transaction.description}</p>
-                                            </div>
-                                            <p className='text-l font-bold text-[#06434E] dark:text-[#FFDE59] justify-self-end'>$ {transaction.amount}</p>
-                                            <Button id='deleteButton' variant='round' size='delete' className='justify-self-end self-center'><img src={Bin} alt="" className="w-8"/></Button>
-                                        </div>
-                                )} else {
-                                    return (
-                                        <div key={transactionDate._id} className="grid grid-cols-6 py-2">
-                                            <img src={transaction.imgUrl} alt="" />
-                                            <div className="felx flex-col col-span-3">
-                                                <h3 className='text-l font-bold'>{transaction.category}</h3>
-                                                <p>{transaction.description}</p>
-                                            </div>
-                                            <p className='text-l font-bold text-[#0097B2] dark:text-[#1A96B2] justify-self-end'>- $ {transaction.amount}</p>
-                                            <Button id='deleteButton' variant='round' size='delete' className='justify-self-end self-center'><img src={Bin} alt="" className="w-8"/></Button>
-                                        </div>
-                                    )}
-                                }
+                        {transactionsByDay?.transactions?.map((transaction) => {
+                            return (
+                                <div key={transaction._id} className="grid grid-cols-6 py-2">
+                                    <img src={transaction.imgUrl} alt="" />
+                                    <div className="felx flex-col col-span-3">
+                                        <h3 className='text-l font-bold'>{transaction.category}</h3>
+                                        <p>{transaction.description}</p>
+                                    </div>
+                                    {transaction.type === 'income' ? <p className='text-l font-bold text-[#06434E] dark:text-[#FFDE59] justify-self-end'>$ {transaction.amount}</p> :  <p className='text-l font-bold text-[#0097B2] dark:text-[#1A96B2] justify-self-end'>- $ {transactionDate.amount}</p>}
+                                    <Button id='deleteButton' variant='round' size='delete' className='justify-self-end self-center'><img src={Bin} alt="" className="w-8"/></Button>
+                                </div>
+                            )
                         })}
-                    </React.Fragment>
+                            
+                    </div>
                 )
             })}
         </section>

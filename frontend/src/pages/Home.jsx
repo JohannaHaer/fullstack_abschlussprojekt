@@ -12,7 +12,7 @@ import Header from '@/components/Header'
 import NavBar from '@/components/NavBar'
 import LogoNormal from '@/components/logo/LogoNormal'
 import { mainContext } from '@/context/mainProvider'
-import VictoryLine from '@/components/VictoryCharts/VictoryLine'
+import VictoryLineChart from '@/components/VictoryCharts/VictoryLine'
 
 const Home = () => {
     const {allIncome, allExpenses} = useContext(mainContext)
@@ -23,7 +23,7 @@ const Home = () => {
         <LogoNormal/>
         <section className='py-5 px-4 h-dvh'>
             <Header/>
-            {/* <VictoryLine/> */}
+            <VictoryLineChart/>
             <Card className="py-14 h-dvh w-full " >
                 <CardHeader className="h-3/6 w-full flex flex-col gap-12">
                     <Card className=" bg-accent rounded-lg h-3/6 " >

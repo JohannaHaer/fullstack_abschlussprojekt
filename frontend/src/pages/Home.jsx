@@ -13,6 +13,7 @@ import NavBar from '@/components/NavBar'
 import LogoNormal from '@/components/logo/LogoNormal'
 import { mainContext } from '@/context/mainProvider'
 import VictoryLine from '@/components/VictoryCharts/VictoryLine'
+import EditUser from '@/components/EditUser'
 
 const Home = () => {
     const {allIncome, allExpenses} = useContext(mainContext)
@@ -22,6 +23,7 @@ const Home = () => {
         <>
         <LogoNormal/>
         <section className='py-5 px-4 h-dvh'>
+            <EditUser/>
             <Header/>
             {/* <VictoryLine/> */}
             <Card className="py-14 h-dvh w-full " >

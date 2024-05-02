@@ -11,7 +11,8 @@ export const editUser = async(values)=>{
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(values),
-            credentials: 'include'
+            credentials: 'include',
+            withCredentials:true
         })
     }catch(error){
         console.error(error);

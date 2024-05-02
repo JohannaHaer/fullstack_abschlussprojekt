@@ -86,10 +86,10 @@ const NavBar = () => {
                             {showAddText || showAddExpensesText ? "Add" : <img src={imageAdd} className="w-6 h-6"/>}
                         </Button>                            
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent>
-                            <DropdownMenuItem><span onClick={goToAddIncome}>Income</span></DropdownMenuItem>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuItem><span onClick={goToAddExpenses}>Expenses</span></DropdownMenuItem>
+                        <DropdownMenuContent className="bg-background">
+                            <DropdownMenuItem className="flex justify-center"><span onClick={goToAddIncome}>Income</span></DropdownMenuItem>
+                            <DropdownMenuSeparator className='bg-border'/>
+                            <DropdownMenuItem className="flex justify-center"><span onClick={goToAddExpenses}>Expenses</span></DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>
                     {showReports ? (

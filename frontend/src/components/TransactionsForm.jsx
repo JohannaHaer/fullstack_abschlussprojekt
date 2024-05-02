@@ -7,39 +7,44 @@ import { Card } from "./ui/card"
 const TransactionsForm = () => {
     const {user} = useContext(mainContext)
 
+    // Userdaten Abfrage über mainProvider aus dem Backend sowie Speicherung der expense - und income Categories
     const transactions = user?.transactions
     const expenseCategories = user?.expenseCategories
     const incomeCategories = user?.incomeCategories
 
-    let categoryImages = []
+    let categoryImagesArray = []
     let transactionArray = []
     const transactionDateArray = []
 
+    //  Um die gesammelten Image Informationen der Categories, werden die expense sowie income Categories mit Namen und imageUrl im categoryImagesArray abgespeichert
     incomeCategories?.map((incomeCategory) => {
-        categoryImages.push({categoryName: incomeCategory.categoryName, imageUrl: incomeCategory.imageUrl})
+        categoryImagesArray.push({categoryName: incomeCategory.categoryName, imageUrl: incomeCategory.imageUrl})
     })
 
     expenseCategories?.map((expenseCategory) => {
-        categoryImages.push({categoryName: expenseCategory.categoryName, imageUrl: expenseCategory.imageUrl})
+        categoryImagesArray.push({categoryName: expenseCategory.categoryName, imageUrl: expenseCategory.imageUrl})
     })
 
-    // 
+    // Die transactions eines Users werden um die in dem categoryImagesArray gesammelten Images erweitert, indem der category-Name abgeglichen wird. Dies wird im transactionArray gespeichert
     transactions?.map((transaction) => {
-        categoryImages?.map((categoryImage) => {
+        categoryImagesArray?.map((categoryImage) => {
             if (categoryImage.categoryName == transaction.category) {
                 transactionArray.push({type: transaction.type, category: transaction.category, categoryImage: categoryImage.imageUrl, amount: transaction.amount, date: transaction.date, description: transaction.description, _id: transaction._id})
             }
         })
     })
 
+    // Da das Date nicht zu dem Format passt, wie es in der App angezeigt werden soll, wird es hier geschnitten sortiert 
     transactions?.map((transaction) => {
         let transactionDate = transaction.date.slice(0, 10)
         transactionDateArray.push(transactionDate)
         transactionDateArray.sort().reverse()
     })
 
+    // Damit Transactions von einem Tag gemeinsam angezeigt werden können, müssen alle doppelten Daten entfernt werden
     const uniqueDateArray = [...new Set(transactionDateArray)]
 
+    // Wenn das Datum einer Transaction mit einem Datum aus dem reduzierten Datensatz (uniqueDateArray) übereinstimmt, wird diese diesem hinzugefügt. Außerdem wird dem Datensatz ein Wochentag beigefügt
     const transactionsByDay = uniqueDateArray.map((date)=>{
         const transactions = transactionArray?.filter((transaction)=>(transaction.date.slice(0,10) === date))
         const dates = new Date(date).toString()
@@ -76,7 +81,6 @@ const TransactionsForm = () => {
                                 </div>
                             )
                         })}
-                            
                     </div>
                 )
             })}

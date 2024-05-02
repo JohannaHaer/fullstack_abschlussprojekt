@@ -12,7 +12,7 @@ const Transaction = () => {
         </section>
         <NavBar/>
         </>
-     );
+    );
 }
- 
+
 export default Transaction;

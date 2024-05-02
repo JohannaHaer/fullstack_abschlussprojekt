@@ -4,7 +4,6 @@ import jwt from 'jsonwebtoken'
 
 
 export const addExpense = async (req,res)=>{
-  //!username muss noch getestet werden
   const username = jwt.decode(req.cookies.token).username
   const {amount, category, description, date} = req.body
   console.log(amount, category, description, date);

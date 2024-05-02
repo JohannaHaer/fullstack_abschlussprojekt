@@ -17,24 +17,37 @@ import { removeUser } from "../userController/removeUser.js";
 import { sendMail } from "../userController/sendMail.js";
 import { createNewVerificationCode} from "../../middleware/createVerificationCode.js";
 import { compareVerificationCode } from "../userController/compareVerificationCode.js";
+import { editTransaction } from "../userController/editTransaction.js";
+import { deleteTransaction } from "../userController/deleteExpense.js";
 
 const userRouter = express.Router()
 const mult = multer({ storage: multer.memoryStorage() })
 
-
+//!CHECKAUTH
+//? user
+//*basic
 userRouter.post("/register",mult.none(),checkRepeatName, checkRepeatEmail, register)
 userRouter.post('/login', mult.none(), login)
 userRouter.get('/getUser', checkAuth, getUserData)
 userRouter.get('/logout', logout)
+
+//*edit
+userRouter.patch('/editUser', mult.none(),checkRepeatName, checkRepeatEmail, editUser)
+userRouter.patch('/changePassword', mult.none(), checkAuth, changePassword)
+userRouter.patch('/uploadImage', mult.single("image"), checkAuth, imageUpload) //sowohl für initialen upload als auch als änderung
+userRouter.delete('/removeUser', mult.none(), removeUser)
+
+//*other
+userRouter.post('/sendMail', mult.none(), createNewVerificationCode, sendMail )
+userRouter.post('/compareVerificationCode', mult.none(), compareVerificationCode)
+
+//?transaction
 userRouter.post('/addExpense', mult.none(), checkAuth, addExpense)
 userRouter.post('/addIncome', mult.none(), checkAuth, addIncome)
 userRouter.post('/addExpenseCategory', mult.none(), checkAuth, addExpenseCategory)
 userRouter.post('/addIncomeCategory', mult.none(), checkAuth, addIncomeCategory)
-userRouter.patch('/editUser', mult.none(),checkRepeatName, checkRepeatEmail, editUser) //!test
-userRouter.patch('/changePassword', mult.none(), checkAuth, changePassword)
-userRouter.patch('/uploadImage', mult.single("image"), checkAuth, imageUpload) //sowohl für initialen upload als auch als änderung
-userRouter.delete('/removeUser', mult.none(), removeUser)
-userRouter.post('/sendMail', mult.none(), createNewVerificationCode, sendMail )
-userRouter.post('/compareVerificationCode', mult.none(), compareVerificationCode)
+userRouter.patch('/editTransaction/:id', mult.none(), editTransaction)
+userRouter.delete('/deleteTransaction/:id', mult.none(), deleteTransaction)
+
 
 export default userRouter

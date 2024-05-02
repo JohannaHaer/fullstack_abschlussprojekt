@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { toast } from "@/components/ui/use-toast"
-import { login } from '@/functions/loginFetch'
+import { login } from '@/functions/fetches/loginFetch'
 
 const formSchema = z.object({
     email: z.string(),
@@ -37,13 +37,15 @@ const LoginForm = () => {
         navigate('/home')
     }
 
-    const onSubmit = (values) => {
-        login(values) 
-        const checkLogin = async()=>{
-            console.log(await login(values))
-        }
-        checkLogin()
-        navigateHome()
+     //*in resp ist jetzt die gesamte response und mit resp.json() kann die fehlermeldung ausgelesen werden
+    const onSubmit = async (values) => {
+        const resp = await login(values) 
+        console.log(resp)
+        // const checkLogin = async()=>{
+        //     console.log(await login(values))
+        // }
+        // checkLogin()
+        if(await resp.status==200){navigateHome()}
     }
 
     const navigateForgotPassword = () => {
@@ -74,7 +76,7 @@ const LoginForm = () => {
                                 <FormControl>
                                     <Input placeholder="Password" {...field} required/>
                                 </FormControl>
-                                <FormMessage />
+                                <FormMessage /> //?muss das formmessage nicht um die span herum?
                                 <span onClick={navigateForgotPassword} className='flex justify-end'>Forgot Password</span>
                             </FormItem>
                         )}

@@ -3,9 +3,7 @@ import jwt from 'jsonwebtoken'
 
 
 export const addIncome = async (req,res)=>{
-  //!username muss noch getestet werden
-  // const username = 'joan'
-  const username = await jwt.decode(req.cookies.token).username
+const username = await jwt.decode(req.cookies.token).username
   const {amount, category, description, date} = req.body
   try{
     const user = await User.findOne({username})

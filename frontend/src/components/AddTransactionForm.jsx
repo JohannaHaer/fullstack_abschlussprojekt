@@ -34,7 +34,7 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover"
 
-import { addExpense, addIncome } from '@/functions/addTransactionsFetches'
+import { addExpense, addIncome } from '@/functions/fetches/addTransactionsFetches'
 import { mainContext } from '@/context/mainProvider'
 
 const formSchema = z.object({

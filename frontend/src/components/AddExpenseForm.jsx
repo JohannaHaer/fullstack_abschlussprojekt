@@ -34,9 +34,9 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover"
 import { useNavigate } from 'react-router-dom'
-import { register } from '@/functions/registerFetch'
+import { register } from '@/functions/fetches/registerFetch'
 import { mainContext } from '@/context/mainProvider'
-import { addExpense, addIncome } from '@/functions/addTransactionsFetches'
+import { addExpense, addIncome } from '@/functions/fetches/addTransactionsFetches'
 
 const formSchema = z.object({
     category: z.string(),

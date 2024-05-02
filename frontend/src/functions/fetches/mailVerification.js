@@ -1,4 +1,3 @@
-//!not testet
 
 
 //* in cookies.token muss ein username gespeichert sein

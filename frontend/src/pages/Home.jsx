@@ -23,7 +23,6 @@ const Home = () => {
         <>
         <LogoNormal/>
         <section className='py-5 px-4 h-dvh'>
-            <EditUser/>
             <Header/>
             {/* <VictoryLine/> */}
             <Card className="py-14 h-dvh w-full " >

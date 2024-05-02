@@ -14,7 +14,6 @@ export const editUser = async(req,res)=>{
         res.clearCookie("token");
         const token = jwt.sign({ id: user._id, username: username }, process.env.JWT_SECRET);
         res.cookie("token", token, { httpOnly: true });
-        console.log(token)
         res.json({ status: "ok", token: token });
         }else if (email){
             const user = await User.findOneAndUpdate(

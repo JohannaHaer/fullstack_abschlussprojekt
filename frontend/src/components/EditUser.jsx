@@ -65,7 +65,7 @@ const EditUser = ({type}) => {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit" className='text-lg' id='transactionButton'>Add Category</Button>
+                    <Button type="submit" className='text-lg' id='transactionButton'>Change Username</Button>
                 </form>
             </Form>
             <Form {...emailForm} >
@@ -75,15 +75,15 @@ const EditUser = ({type}) => {
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>new Username</FormLabel>
+                                <FormLabel>new Email</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="new Username" {...field}/>
+                                    <Input placeholder="new Email" {...field}/>
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
                     />
-                    <Button type="submit" className='text-lg' id='transactionButton'>Add Category</Button>
+                    <Button type="submit" className='text-lg' id='transactionButton'>Change Email</Button>
                 </form>
             </Form>
         </div>

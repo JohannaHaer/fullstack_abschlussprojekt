@@ -4,10 +4,8 @@ import bcrypt from 'bcrypt'
 
 export const compareVerificationCode = async(req,res,next)=>{
     try{
-        const {code} = req.body
+        const {code}= req.body
         const email = await jwt.decode(req.cookies.emailToken).email
-        console.log(email)
-        console.log(code)
         const user = await User.findOne({email}).lean()
         if(bcrypt.compare(code.toString(), user.verificationCode)){
             next()

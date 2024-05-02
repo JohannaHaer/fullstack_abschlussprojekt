@@ -6,7 +6,6 @@ import bcrypt from 'bcrypt'
 export const sendVerificationMail = async (req,res)=>{
     try{
       const code = Math.floor(Math.random() * 900000) + 100000
-      console.log(code)
       const salt = await bcrypt.genSalt();
       const hash = await bcrypt.hash(code.toString(), salt);
       const {email} = req.body

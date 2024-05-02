@@ -8,11 +8,13 @@ export const resetPassword = async(req,res)=>{
         const email = await jwt.decode(req.cookies.emailToken).email
         const salt = await bcrypt.genSalt();
         const passwordHash = await bcrypt.hash(password, salt);
-        const user = User.findOneAndUpdate(
+        const user = await User.findOneAndUpdate(
             {email:email},
-            {passwordHash:passwordHash}
+            {$set: {passwordHash:passwordHash}},
+            { new: true } 
         )
-        res.json('Password changed')
+
+        res.json(`Password changed`)
         }
     catch (error) {
         console.error(error);

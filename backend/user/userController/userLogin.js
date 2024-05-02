@@ -21,7 +21,6 @@ export const login = async(req, res) => {
     console.log(password, email)
     if (!compareResult) {
         res.status(401).json("Falsches Passwort");
-      // res.json({ status: "failed" });
     } else {
       const token = jwt.sign({ id: user._id, username: user.username }, process.env.JWT_SECRET);
       console.log(token)

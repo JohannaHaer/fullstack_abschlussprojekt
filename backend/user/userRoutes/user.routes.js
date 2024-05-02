@@ -15,7 +15,6 @@ import { changePassword } from "../userController/changePassword.js";
 import { imageUpload } from "../userController/uploadImage.js";
 import { removeUser } from "../userController/removeUser.js";
 import { sendVerificationMail } from "../userController/sendMail.js";
-import { createNewVerificationCode} from "../../middleware/createVerificationCode.js";
 import { compareVerificationCode } from "../userController/compareVerificationCode.js";
 import { editTransaction } from "../userController/editTransaction.js";
 import { deleteTransaction } from "../userController/deleteExpense.js";

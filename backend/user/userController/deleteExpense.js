@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 
 export const deleteTransaction = async (req, res) => {
     try {
-        const username ='Joan'// await jwt.decode(req.cookies.token).username
+        const username = await jwt.decode(req.cookies.token).username
         const transactionId = req.params.id
         const user = await User.findOneAndUpdate(
             { 
@@ -16,7 +16,6 @@ export const deleteTransaction = async (req, res) => {
             },
             { new: true }
         );
-
         res.json(user);
     } catch (error) {
         console.error(error);

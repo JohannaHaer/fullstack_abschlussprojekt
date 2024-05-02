@@ -3,8 +3,9 @@ import jwt from 'jsonwebtoken'
 
 
 export const removeUser = async(req, res)=>{
-    const username = jwt.decode(req.cookies.token).username
+    
     try{
+    const username = jwt.decode(req.cookies.token).username
     const user = await User.findOneAndDelete({username:username})
     if (!user) {
         return res.status(400).send('Item not found');

@@ -2,6 +2,7 @@ import { mainContext } from "@/context/mainProvider"
 import React, { useContext } from "react"
 import { Button } from "@/components/ui/button"
 import Bin from '@/assets/img/muelleimer.png'
+import { Card } from "./ui/card"
 
 const TransactionsForm = () => {
     const {user} = useContext(mainContext)
@@ -48,9 +49,15 @@ const TransactionsForm = () => {
 
     return (
         <section className='flex flex-col pb-16 relative'>
-            <div className="z-10 border top-1/3 fixed ">
+            <Card className='z-10 border fixed w-80 top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+            <div className="p-4">
                 <p className="text-center">Are you sure you want to delete this element?</p>
+                <div className="flex justify-center gap-10 pt-4">
+                    <Button>Keep</Button>
+                    <Button variant='outline'>Delete</Button>
+                </div>
             </div>
+            </Card>
             {dateArray?.map((transactionDate) => {
                 return (
                     <React.Fragment key={transactionDate.date}>

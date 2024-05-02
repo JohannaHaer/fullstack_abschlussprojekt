@@ -2,7 +2,7 @@ import mongoose, { Schema } from "mongoose";
 
 const defaultExpenseCategories = [
     {categoryName:'Food',color:'red', imgUrl:'www.blödertest.de'},
-    {categoryName:'Technic',color:'blue', imgUrl:'www.blödertest.de'},
+    {categoryName:'Technology',color:'blue', imgUrl:'www.blödertest.de'},
     {categoryName:'Clothing',color:'green', imgUrl:'www.blödertest.de'},
     {categoryName:'Rental',color:'violet', imgUrl:'www.blödertest.de'},
     {categoryName:'Insurance',color:'yellow', imgUrl:'www.blödertest.de'},

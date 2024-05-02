@@ -46,6 +46,7 @@ const formSchema = z.object({
 
 const AddTransactionForm = ({type}) => {
     const { user } = useContext(mainContext)
+    const [selectedCategory, setSelectedCategory] = useState("Category")
 
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -65,17 +66,23 @@ const AddTransactionForm = ({type}) => {
         }
     }
 
+    const handleCategoryChange = (categoryName) => {
+        setSelectedCategory(`Category = ${categoryName}`)
+        form.setValue("category", categoryName)
+    }
+
     return (
         <section className='py-5'>
             <Form {...form} >
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 flex flex-col">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex flex-col">
                 <FormField
                         control={form.control}
                         name="description"
                         render={({ field }) => (
                             <FormItem>
+                                <FormLabel>Description</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Description" {...field}/>
+                                    <Input placeholder="Add a description" {...field}/>
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -85,9 +92,10 @@ const AddTransactionForm = ({type}) => {
                         control={form.control}
                         name="amount"
                         render={({ field }) => (
-                            <FormItem>
+                            <FormItem className='pb-4'>
+                                <FormLabel>Amount</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Amount" {...field} required/>
+                                    <Input placeholder="Enter the amount" {...field} required/>
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -99,18 +107,18 @@ const AddTransactionForm = ({type}) => {
                         render={({ field }) => (
                             <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
-                                    <Button variant="outline">Category</Button>
+                                    <Button variant="outline">{selectedCategory}</Button>
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent className="w-56">
-                                    <DropdownMenuRadioGroup selected={field.value} onValueChange={field.onChange}>
+                                    <DropdownMenuRadioGroup selected={field.value} onValueChange={handleCategoryChange}>
                                         {type == 'expense' ? user?.expenseCategories?.map((category) => {
                                             return(
-                                                <DropdownMenuRadioItem key={category._id} value={category.categoryName}>{category.categoryName}</DropdownMenuRadioItem>
+                                                <DropdownMenuRadioItem key={category._id} value={category.categoryName} >{category.categoryName}</DropdownMenuRadioItem>
                                             )
                                         })
                                         : user?.incomeCategories?.map((category) => {
                                             return(
-                                                <DropdownMenuRadioItem key={category._id} value={category.categoryName}>{category.categoryName}</DropdownMenuRadioItem>
+                                                <DropdownMenuRadioItem key={category._id} value={category.categoryName} onValueChange={handleCategoryChange}>{category.categoryName}</DropdownMenuRadioItem>
                                             )
                                         })}
                                     </DropdownMenuRadioGroup>
@@ -149,20 +157,17 @@ const AddTransactionForm = ({type}) => {
                                         selected={field.value}
                                         onSelect={field.onChange}
                                         disabled={(date) =>
-                                            date > new Date() || date < new Date("1900-01-01")
+                                            date < new Date("1900-01-01")
                                         }
                                         initialFocus
                                     />
                                 </PopoverContent>
                             </Popover>
-                            <FormDescription>
-                                Your date of birth is used to calculate your age.
-                            </FormDescription>
                             <FormMessage />
                         </FormItem>
                         )}
                     />
-                    <Button type="submit" className='text-lg' id='transactionButton'>Add</Button>
+                    <Button type="submit" className='text-lg' id='transactionButton'>Add {type}</Button>
                 </form>
             </Form>
         </section>

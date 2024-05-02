@@ -1,15 +1,12 @@
 import { mainContext } from '@/context/mainProvider'
 import React, { useContext } from 'react'
-import { VictoryPie } from 'victory'
 
-const VictoryPieChart = ({type}) => {
+const TotalTransactions = ({type}) => {
     const {user} = useContext(mainContext)
 
     const transactions = user?.transactions
     const transactionArray = []
     const clearedTransactionArray = []
-
-    
 
     if(type == 'expense') {
         transactions?.map((transaction) => {
@@ -26,7 +23,7 @@ const VictoryPieChart = ({type}) => {
                 }
             })
             if(categoryAmount > 0) {
-                clearedTransactionArray.push({x: category.categoryName, y: categoryAmount})
+                clearedTransactionArray.push({imgUrl: category.imgUrl, categoryName: category.categoryName, amount: categoryAmount, sign: '-'})
             }
         })
     } else if (type == 'income') {
@@ -44,27 +41,24 @@ const VictoryPieChart = ({type}) => {
                 }
             })
             if(categoryAmount > 0) {
-                clearedTransactionArray.push({x: category.categoryName, y: categoryAmount})
+                clearedTransactionArray.push({imgUrl: category.imgUrl, categoryName: category.categoryName, amount: categoryAmount, sign: ''})
             }
         })
     }
-    
     return (
-        <>
-            <VictoryPie
-                width={430}
-                height={430}
-                padding={120}
-                startAngle={115}
-                endAngle={475}
-                colorScale={["tomato", "orange", "gold", "cyan", "navy"]}
-                style={{
-                    labels: { fontSize: 20, fill: '#0097B2', fontWeight: 'bold', padding: 10, fontFamily: 'ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"' },
-                }}   
-                data={clearedTransactionArray}
-            />
-        </>
+        <section className='flex flex-col w-full pb-16'>
+            <h2 className="text-xl font-bold self-start">Total {type} transactions</h2>
+            {clearedTransactionArray.map((transaction) => {
+                return(
+                    <div key={transaction.categoryName} className='grid grid-cols-5 pt-8'>
+                        <img src={transaction.imgUrl} alt=""/>
+                        <h3 className='text-l font-bold col-span-3'>{transaction.categoryName}</h3>
+                        <p className='text-l font-bold text-[#0097B2] dark:text-[#FFDE59] justify-self-end'>{transaction.sign} $ {transaction.amount}</p>
+                    </div>
+                )
+            })}
+        </section>
     )
 }
 
-export default VictoryPieChart
+export default TotalTransactions

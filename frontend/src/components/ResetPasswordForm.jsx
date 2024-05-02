@@ -19,6 +19,7 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp"
+import { verificate } from '@/functions/fetches/mailVerification'
 
 const formSchema = z.object({
     password: z.string(),
@@ -40,10 +41,16 @@ const ResetPasswordForm = () => {
         navigate('/login')
     }
 
-    // onSubmit = (values) => {
-    //     login(values) 
-    //     navigateLogin()
-    // }
+    const onSubmit = (values) => {
+        if(values.password==values.confirmPassword){
+            verificate(values)
+            // navigateLogin()
+        }
+        console.log(values)
+        
+        // login(values) 
+        
+    }
 
     let toggle = () => {
         let changePWButton = document.querySelector('#changePWButton')
@@ -58,9 +65,9 @@ const ResetPasswordForm = () => {
     }
 
     return (
-        <>
+        <>                          //!DAS FORM ÜBERMITTELT DEN CODE NICHT BITTE ALS "code" IN VALUES SPEICHERN
             <Form {...form}>
-                <form className="space-y-8 flex flex-col">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 flex flex-col">
                     {/* onSubmit={form.handleSubmit(onSubmit)} */}
                     <div className='self-center py-5'>
                         <InputOTP maxLength={6} pattern={REGEXP_ONLY_DIGITS_AND_CHARS} required>

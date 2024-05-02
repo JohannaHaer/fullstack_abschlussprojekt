@@ -7,7 +7,7 @@ export const compareVerificationCode = async(req,res,next)=>{
         const {code}= req.body
         const email = await jwt.decode(req.cookies.emailToken).email
         const user = await User.findOne({email}).lean()
-        if(true){
+        if(bcrypt.compare(code.toString(), user.verificationCode)){
             next()
         }else{
             res.json({status:'Wrong Verificationcode'})

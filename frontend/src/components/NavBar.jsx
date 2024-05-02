@@ -14,19 +14,18 @@ import {
     NavigationMenuList,
     NavigationMenuTrigger,
     NavigationMenuViewport,
-  } from "@/components/ui/navigation-menu"
+} from "@/components/ui/navigation-menu"
 
-  import {
+import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-  } from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu"
 import { useState, useEffect } from "react";
-  
-  
+
 const NavBar = () => {
 
     const [showText, setShowText] = useState(false);
@@ -64,7 +63,7 @@ const NavBar = () => {
         setShowReports(location.pathname === "/reports");
         setShowAddText(location.pathname === "/addIncome");
         setShowAddExpensesText(location.pathname === "/addExpenses");
-      }, [location.pathname]);
+    }, [location.pathname]);
 
     return ( 
         <>
@@ -99,9 +98,8 @@ const NavBar = () => {
                     )}
                 </NavigationMenuItem>
         </NavigationMenu>
-
         </>
-    );
+    )
 }
 
 export default NavBar;

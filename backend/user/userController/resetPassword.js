@@ -13,7 +13,7 @@ export const resetPassword = async(req,res)=>{
             {$set: {passwordHash:passwordHash}},
             { new: true } 
         )
-
+        res.clearCookie("emailToken");
         res.json(`Password changed`)
         }
     catch (error) {

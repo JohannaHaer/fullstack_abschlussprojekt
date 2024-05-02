@@ -44,7 +44,7 @@ const ResetPasswordForm = () => {
     const onSubmit = (values) => {
         if(values.password==values.confirmPassword){
             verificate(values)
-            // navigateLogin()
+            navigateLogin()
         }
         console.log(values)
         

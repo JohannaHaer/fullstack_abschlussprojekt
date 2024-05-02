@@ -1,7 +1,7 @@
 import React from 'react'
-import LogoNormal from '@/components/logo/LogoNormal'
 import ForgotPasswordForm from '@/components/ForgotPasswordForm'
 import { useNavigate } from 'react-router-dom'
+import LogoLogin from '@/components/LogoLogin'
 
 const ForgotPassword = () => {
     const navigate = useNavigate()
@@ -12,7 +12,7 @@ const ForgotPassword = () => {
 
     return (
         <>
-            <LogoNormal/>
+            <LogoLogin/>
             <section className='flex flex-col align-center text-center h-dvh gap-5 p-5'>
                 <h1 className='text-center text-2xl font-bold mt-10'>Forgot your password</h1>
                 <p className='text-center'>Please enter your email address to reset your password.</p>

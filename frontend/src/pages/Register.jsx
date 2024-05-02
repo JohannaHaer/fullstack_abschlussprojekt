@@ -1,5 +1,5 @@
+import LogoLogin from '@/components/LogoLogin'
 import RegisterForm from '@/components/RegisterForm'
-import LogoNormal from '@/components/logo/LogoNormal'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -12,7 +12,7 @@ const Register = () => {
 
     return (
         <>
-            <LogoNormal/>
+            <LogoLogin/>
             <section className='flex flex-col align-center text-center h-dvh gap-5 p-5'>
                 <h1 className='text-center text-2xl font-bold'>Create an Account</h1>
                 <p className='text-center'>Fill out the following form to create your account.</p>

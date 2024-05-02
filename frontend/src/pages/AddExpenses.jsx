@@ -1,6 +1,4 @@
-import Header from "@/components/Header";
 import NavBar from "@/components/NavBar";
-import LogoExpenses from "@/components/logo/LogoExpenses";
 import React, { useState } from 'react'
 import {
     Card,
@@ -9,6 +7,7 @@ import {
   } from "@/components/ui/card"
 import { Button } from '@/components/ui/button'
 import AddTransactionForm from "@/components/AddTransactionForm";
+import HeaderAddExpense from "@/components/header/HeaderAddExpenses";
 
 const AddExpenses = () => {
     const [selectedOption, setSelectedOption] = useState(null);
@@ -20,9 +19,8 @@ const AddExpenses = () => {
 
     return (
         <>
-            <LogoExpenses/>
+            <HeaderAddExpense/>
             <section className='px-4 py-5 h-dvh'>
-            <Header/>
             <AddTransactionForm type={'expense'}/>
             <Card className="py-14 h-dvh w-full " >
                 <CardHeader className="h-3/6 w-full flex flex-col gap-12">

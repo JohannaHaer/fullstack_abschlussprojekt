@@ -13,7 +13,6 @@ const TransactionsForm = () => {
 
     let categoryImages = []
     let transactionArray = []
-    let dateArray = []
     const transactionDateArray = []
 
     incomeCategories?.map((incomeCategory) => {
@@ -43,14 +42,10 @@ const TransactionsForm = () => {
 
     const transactionsByDay = uniqueDateArray.map((date)=>{
         const transactions = transactionArray?.filter((transaction)=>(transaction.date.slice(0,10) === date))
-        // const dates = new Date(date)
-        // const day = dates.slice(0,4)
-        // console.log(day);
-        return {date: date, transactions}
+        const dates = new Date(date).toString()
+        const day = dates.slice(0,4)
+        return {date: date, transactions, day: day}
     })
-
-    console.log(transactionsByDay);
-    console.log(new Date);
 
     return (
         <section className='flex flex-col pb-16 relative'>
@@ -66,9 +61,9 @@ const TransactionsForm = () => {
             {transactionsByDay?.map((transactionDate) => {
                 return (
                     <div key={transactionDate.date}>
-                        <h2 className="text-l font-bold pt-5">{transactionDate.date}</h2>
+                        <h2 className="text-l font-bold pt-5">{transactionDate.day} {transactionDate.date}</h2>
                         <hr/>
-                        {transactionsByDay?.transactions?.map((transaction) => {
+                        {transactionDate?.transactions?.map((transaction) => {
                             return (
                                 <div key={transaction._id} className="grid grid-cols-6 py-2">
                                     <img src={transaction.imgUrl} alt="" />

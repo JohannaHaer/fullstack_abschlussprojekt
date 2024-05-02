@@ -1,7 +1,5 @@
-import Header from '@/components/Header'
-import NavBar from '@/components/NavBar'
 import ResetPasswordForm from '@/components/ResetPasswordForm'
-import LogoNormal from '@/components/logo/LogoNormal'
+import LogoNormal from '@/components/header/HeaderNormal'
 import React from 'react'
 
 const ResetPassword = () => {

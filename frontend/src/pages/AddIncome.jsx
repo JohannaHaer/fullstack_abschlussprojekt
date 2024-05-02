@@ -1,14 +1,12 @@
 import AddTransactionForm from "@/components/AddTransactionForm";
-import Header from "@/components/Header";
 import NavBar from "@/components/NavBar";
-import LogoIncome from "@/components/logo/LogoIncome";
+import HeaderAddIncome from "@/components/header/HeaderAddIncome";
 
 const AddIncome = () => {
     return ( 
         <>
-        <LogoIncome/>
+        <HeaderAddIncome/>
         <section className='py-5 px-4 h-dvh'>
-            <Header/>
             <AddTransactionForm type={'income'}/>
         </section>
         <NavBar/>

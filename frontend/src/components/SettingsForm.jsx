@@ -1,4 +1,3 @@
-import Header from "./Header";
 import { Button } from "./ui/button";
 
 const SettingsForm = () => {

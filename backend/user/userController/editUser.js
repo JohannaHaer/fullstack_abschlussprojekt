@@ -5,20 +5,24 @@ export const editUser = async(req,res)=>{
     try{
         const {username, email} = req.body
         const cookieUsername = await jwt.decode(req.cookies.token).username
+        console.log(username,email)
         if(username){
             const user = await User.findOneAndUpdate(
                 {username: cookieUsername},
-                {username: username}
+                {username: username},
             )
-            res.json(user)
-        }else if(email){
+        res.clearCookie("token");
+        const token = jwt.sign({ id: user._id, username: username }, process.env.JWT_SECRET);
+        res.cookie("token", token, { httpOnly: true });
+        console.log(token)
+        res.json({ status: "ok", token: token });
+        }else if (email){
             const user = await User.findOneAndUpdate(
                 {username: cookieUsername},
-                {email:email}
+                {email: email}
             )
-            res.json(user)
-        }
-
+        res.json(user);
+        }else{console.log('error: kein "username" oder "email" übergeben')}
     } catch(error){
         console.error(error);
         res.status(500).json({ error: "Internal server error" });

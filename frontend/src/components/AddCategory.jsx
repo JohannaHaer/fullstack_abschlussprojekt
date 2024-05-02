@@ -19,18 +19,17 @@ import { addExpenseCategory, addIncomeCategory } from '@/functions/fetches/addCa
 
 
 
-const addCategoryFormSchema = z.object({
+const formSchema = z.object({
     categoryName: z.string(),
 })
 const AddCategory = ({type}) => {
-    const addCategoryForm = useForm({
-        resolver: zodResolver(addCategoryFormSchema),
+    const form = useForm({
+        resolver: zodResolver(formSchema),
         defaultValues: {
             categoryName: "",
         },
     })
     const handleAddCategorySubmit = (values) =>{
-        console.log('test add')
         type = 'income'
         if (type=='income'){
             addIncomeCategory(values)
@@ -42,14 +41,14 @@ const AddCategory = ({type}) => {
     }
   return (
     <div>
-        <Form {...addCategoryForm} >
-                <form onSubmit={addCategoryForm.handleSubmit(handleAddCategorySubmit)} className="space-y-6 flex flex-col">
+        <Form {...form} >
+                <form onSubmit={form.handleSubmit(handleAddCategorySubmit)} className="space-y-6 flex flex-col">
                 <FormField
-                        control={addCategoryForm.control}
-                        name="description"
+                        control={form.control}
+                        name="categoryName"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Categoriename</FormLabel>
+                                <FormLabel>Categoryname</FormLabel>
                                 <FormControl>
                                     <Input placeholder="Add Categorie" {...field}/>
                                 </FormControl>

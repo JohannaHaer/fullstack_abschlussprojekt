@@ -16,7 +16,6 @@ export const editTransaction = async(values,id)=>{
         })
     }catch(error){
         console.error(error);
-        res.status(500).json({ error: "Internal server error" });
     }
 }
 
@@ -33,6 +32,5 @@ export const removeTransaction = async(id)=>{
         })
     }catch(error){
         console.error(error);
-        res.status(500).json({ error: "Internal server error" });
     }
 }

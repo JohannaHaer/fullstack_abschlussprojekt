@@ -15,7 +15,6 @@ export const editUser = async(values)=>{
         })
     }catch(error){
         console.error(error);
-        res.status(500).json({ error: "Internal server error" });
     }
 }
 
@@ -32,7 +31,6 @@ export const addImage = async(values)=>{
         })
     }catch(error){
         console.error(error);
-        res.status(500).json({ error: "Internal server error" });
     }
 }
 
@@ -49,7 +47,6 @@ export const changePassword = async(values)=>{
         })
     }catch(error){
         console.error(error);
-        res.status(500).json({ error: "Internal server error" });
     }
 }
 
@@ -64,7 +61,5 @@ export const removeUser = async(values)=>{
             credentials: 'include'
         })
     }catch(error){
-        console.error(error);
-        res.status(500).json({ error: "Internal server error" });
-    }
+        console.error(error);    }
 }

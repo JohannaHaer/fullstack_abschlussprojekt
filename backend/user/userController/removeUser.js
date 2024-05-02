@@ -1,4 +1,5 @@
 import { User } from "../userModel/user.model.js"
+import jwt from 'jsonwebtoken'
 
 
 export const removeUser = async(req, res)=>{

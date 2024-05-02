@@ -44,6 +44,8 @@ const formSchema = z.object({
     date: z.date(),
 })
 
+
+
 const AddTransactionForm = ({type}) => {
     const { user } = useContext(mainContext)
     const [selectedCategory, setSelectedCategory] = useState("Category")
@@ -58,6 +60,9 @@ const AddTransactionForm = ({type}) => {
         },
     })
 
+
+
+
     const onSubmit = (values) => {
         if(type == 'expense') {
             addExpense(values) 
@@ -65,6 +70,7 @@ const AddTransactionForm = ({type}) => {
             addIncome(values)
         }
     }
+
 
     const handleCategoryChange = (categoryName) => {
         setSelectedCategory(`Category = ${categoryName}`)
@@ -175,3 +181,7 @@ const AddTransactionForm = ({type}) => {
 }
 
 export default AddTransactionForm
+
+
+
+

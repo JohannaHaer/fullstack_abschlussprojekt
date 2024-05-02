@@ -4,6 +4,7 @@ export const register = async (values) => {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(values),
+        credentials: 'include'
     })
     .then(async(response)=>{
         status = response

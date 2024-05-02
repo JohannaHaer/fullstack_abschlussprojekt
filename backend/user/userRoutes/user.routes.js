@@ -26,7 +26,7 @@ const mult = multer({ storage: multer.memoryStorage() })
 //!CHECKAUTH
 //? user
 //*basic
-userRouter.post("/register",mult.none(),checkRepeatName, checkRepeatEmail, register)
+userRouter.post("/register",mult.none(),checkRepeatName, checkRepeatEmail, register, login)
 userRouter.post('/login', mult.none(), login)
 userRouter.get('/getUser', checkAuth, getUserData)
 userRouter.get('/logout', logout)

@@ -12,6 +12,7 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { sendVerificationmail } from '@/functions/fetches/mailVerification'
 
 const formSchema = z.object({
     email: z.string()
@@ -31,15 +32,15 @@ const ForgotPasswordForm = () => {
         navigate('/reset-password')
     }
 
-    // onSubmit = (values) => {
-    //     login(values) 
-    //     navigateResetPassword()
-    // }
+    const onSubmit = async (values) => {
+        sendVerificationmail(values)
+        navigateResetPassword()
+    }
 
     return (
         <>
             <Form {...form}>
-                <form className="space-y-8 flex flex-col">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 flex flex-col">
                     {/* onSubmit={form.handleSubmit(onSubmit)} */}
                     <FormField
                         control={form.control}

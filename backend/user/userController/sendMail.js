@@ -1,12 +1,12 @@
-import nodemailer from 'nodemailer'
 import { mail } from '../../utils/mail.js';
 import { User } from '../userModel/user.model.js';
 import jwt from "jsonwebtoken";
 
 export const sendMail = async (req,res)=>{
     try{
-    const username = await jwt.decode(req.cookies.token).username
-    const user = await User.findOne({ username }).lean();
+    // const username = await jwt.decode(req.cookies.token).username
+    const {email} = req.body
+    const user = await User.findOne({ email }).lean();
     const emailResult = await mail.sendMail({
         from: '<finko@kunndensupport.de>',
         to: `<${user?.email}>`,

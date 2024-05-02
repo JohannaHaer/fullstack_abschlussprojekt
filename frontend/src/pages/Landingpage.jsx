@@ -42,7 +42,7 @@ const Landingpage = () => {
 
     return (
         <section className='h-dvh flex justify-center items-center'>
-            <img src={logoPath} alt="" className='w-30 h-30'/>
+            <img src={logoPath} className='w-30 h-30'/>
         </section>
     )
 }

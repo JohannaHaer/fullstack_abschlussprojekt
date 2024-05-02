@@ -23,7 +23,6 @@ const Settings = () => {
         {/* </section> */}
         <SettingsForm />
         
-        {/* <Button type="submit" className='text-lg' id='transactionButton'>Add Income</Button> */}
 
         <NavBar/>
         </>

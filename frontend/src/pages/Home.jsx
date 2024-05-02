@@ -1,4 +1,8 @@
 import React, { useContext } from 'react'
+import imageTrendingUp from "@/assets/img/trending-up.png"
+import imageTrendingDown from "@/assets/img/trending-down.png"
+import imageHorizontal from "@/assets/img/more-horizontal.png"
+import imageAlertTriangle from "@/assets/img/alert-triangle.png"
 import {
     Card,
     CardContent,
@@ -37,7 +41,7 @@ const Home = () => {
                                 <div className='bg-accent rounded-lg w-3/6 h-36'>
                                     <div className='py-4 px-4'>
                                         <div className='w-12 h-12 bg-muted rounded-full flex justify-center items-center'>
-                                            <img src="./src/assets/img/trending-up.png" alt="trending up icon" />
+                                            <img src={imageTrendingUp}/>
                                         </div>
                                         <p>Income</p>
                                         <p>+ $ <span>{allIncome}</span></p>
@@ -46,7 +50,7 @@ const Home = () => {
                                 <div className='bg-accent rounded-lg w-3/6 h-36 '>
                                     <div className='px-4 py-4'>
                                         <div className='w-12 h-12 bg-muted rounded-full flex justify-center items-center '>
-                                            <img src="./src/assets/img/trending-down.png" alt="trending down icon" />
+                                            <img src={imageTrendingDown} />
                                         </div>
                                         <p>Expense</p>
                                         <p>- $ <span>{allExpenses}</span></p>
@@ -58,14 +62,14 @@ const Home = () => {
                         <div className='flex items-center  justify-between'>
                             <div className='flex items-center gap-4'>
                                 <div className='w-12 h-12 bg-muted rounded-full flex justify-center items-center '>
-                                    <img className='m-2' src="./src/assets/img/alert-triangle.png" alt="trending down icon" />
+                                    <img className='m-2' src={imageAlertTriangle} />
                                 </div>
                                 <div>
                                     <p>Monthly spending limit</p>
                                     <p>$ 6.000</p>
                                 </div>
                             </div>
-                            <img className='m-2' src="./src/assets/img/more-horizontal.png" alt="" />
+                            <img className='m-2' src={imageHorizontal} />
                         </div>
                     </div>
                 </CardContent>

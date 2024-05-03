@@ -17,6 +17,7 @@ import NavBar from '@/components/NavBar'
 import LogoNormal from '@/components/logo/LogoNormal'
 import { mainContext } from '@/context/mainProvider'
 import VictoryLine from '@/components/VictoryCharts/VictoryLine'
+import EditUser from '@/components/EditUser'
 
 const Home = () => {
     const {allIncome, allExpenses} = useContext(mainContext)

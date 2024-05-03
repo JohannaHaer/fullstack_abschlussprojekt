@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { z } from 'zod'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -14,6 +14,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { toast } from "@/components/ui/use-toast"
 import { login } from '@/functions/fetches/loginFetch'
+import { mainContext } from '@/context/mainProvider'
 
 const formSchema = z.object({
     email: z.string(),
@@ -22,7 +23,7 @@ const formSchema = z.object({
 
 
 const LoginForm = () => {
-
+    const {setLoad} = useContext(mainContext)
     const navigate = useNavigate()
 
     const form = useForm({
@@ -40,12 +41,10 @@ const LoginForm = () => {
      //*in resp ist jetzt die gesamte response und mit resp.json() kann die fehlermeldung ausgelesen werden
     const onSubmit = async (values) => {
         const resp = await login(values) 
-        console.log(resp)
-        // const checkLogin = async()=>{
-        //     console.log(await login(values))
-        // }
-        // checkLogin()
-        if(await resp.status==200){navigateHome()}
+        if(await resp.status==200){
+            setLoad(true)
+            navigateHome()
+        }
     }
 
     const navigateForgotPassword = () => {

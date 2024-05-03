@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext  } from 'react'
 import { z } from 'zod'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -16,8 +16,7 @@ import { toast } from "@/components/ui/use-toast"
 import { Checkbox } from "@/components/ui/checkbox"
 import { useNavigate } from 'react-router-dom'
 import { register } from '@/functions/fetches/registerFetch'
-import { mainContext } from "@/context/mainProvider"
-import { useContext } from "react"
+import { mainContext } from '@/context/mainProvider'
 
 const formSchema = z.object({
     firstName: z.string(),
@@ -28,7 +27,7 @@ const formSchema = z.object({
 })
 
 const RegisterForm = () => {
-    const {status, setStatus} = useContext(mainContext)
+    const {setLoad} = useContext(mainContext)
     const [isChecked, setIsChecked] = useState(false)
     const navigate = useNavigate()
 
@@ -58,6 +57,7 @@ const RegisterForm = () => {
         },
     })
 
+    //?kann die funktion gestrichen werden und direkt mit navigate gearbeitet werden? @JOAN
     const navigateSetupAccount = () => {
         navigate('/setup-account')
     }
@@ -69,7 +69,10 @@ const RegisterForm = () => {
     //*in resp ist jetzt die gesamte response und mit resp.json() kann die fehlermeldung ausgelesen werden
     const onSubmit = async(values) => {
         const resp = await register(values) 
-        if(await resp.status==200){navigateSetupAccount()}
+        if(await resp.status==200){
+            setLoad(true)
+            navigateSetupAccount()
+        }
     }
 
     return (

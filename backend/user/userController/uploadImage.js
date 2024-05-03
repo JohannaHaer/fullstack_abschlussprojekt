@@ -1,6 +1,7 @@
 import { uploadImage } from "../../utils/imgUpload.js";
 import { User } from "../userModel/user.model.js";
 import { userRouter } from "./userLogin.js";
+import jwt from 'jsonwebtoken'
 
 
 

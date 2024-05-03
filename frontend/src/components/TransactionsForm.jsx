@@ -3,6 +3,8 @@ import React, { useContext } from "react"
 import { Button } from "@/components/ui/button"
 import Bin from '@/assets/img/muelleimer.png'
 import { Card } from "./ui/card"
+import { removeTransaction } from "@/functions/fetches/editTransactionsFetchtes"
+import EditTransaction from "./EditTransaction"
 
 const TransactionsForm = () => {
     const {user} = useContext(mainContext)
@@ -44,8 +46,10 @@ const TransactionsForm = () => {
         dateArray.push({date: date})
         
     })
-
-
+    const deleteTransaction = (transaction)=>{
+        console.log(transaction._id.toString())
+        removeTransaction(transaction._id.toString())
+    }
 
     return (
         <section className='flex flex-col pb-16 relative'>
@@ -75,7 +79,7 @@ const TransactionsForm = () => {
                                                 <p>{transaction.description}</p>
                                             </div>
                                             <p className='text-l font-bold text-[#06434E] dark:text-[#FFDE59] justify-self-end'>$ {transaction.amount}</p>
-                                            <Button id='deleteButton' variant='round' size='delete' className='justify-self-end self-center'><img src={Bin} alt="" className="w-8"/></Button>
+                                            <Button onClick={()=>deleteTransaction(transaction)}id='deleteButton' variant='round' size='delete' className='justify-self-end self-center'><img src={Bin} alt="" className="w-8"/></Button>
                                         </div>
                                 )} else {
                                     return (

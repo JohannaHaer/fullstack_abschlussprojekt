@@ -1,4 +1,4 @@
-//!not testet
+
 
 
 //*in cookies.token muss ein username gespeichert sein
@@ -11,11 +11,11 @@ export const editUser = async(values)=>{
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(values),
-            credentials: 'include'
+            credentials: 'include',
+            withCredentials:true
         })
     }catch(error){
         console.error(error);
-        res.status(500).json({ error: "Internal server error" });
     }
 }
 
@@ -32,7 +32,6 @@ export const addImage = async(values)=>{
         })
     }catch(error){
         console.error(error);
-        res.status(500).json({ error: "Internal server error" });
     }
 }
 
@@ -49,7 +48,6 @@ export const changePassword = async(values)=>{
         })
     }catch(error){
         console.error(error);
-        res.status(500).json({ error: "Internal server error" });
     }
 }
 
@@ -64,7 +62,5 @@ export const removeUser = async(values)=>{
             credentials: 'include'
         })
     }catch(error){
-        console.error(error);
-        res.status(500).json({ error: "Internal server error" });
-    }
+        console.error(error);    }
 }

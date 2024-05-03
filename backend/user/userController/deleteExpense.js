@@ -1,4 +1,5 @@
 import { User } from "../userModel/user.model.js";
+import jwt from 'jsonwebtoken'
 
 export const deleteTransaction = async (req, res) => {
     try {
@@ -15,7 +16,6 @@ export const deleteTransaction = async (req, res) => {
             },
             { new: true }
         );
-
         res.json(user);
     } catch (error) {
         console.error(error);

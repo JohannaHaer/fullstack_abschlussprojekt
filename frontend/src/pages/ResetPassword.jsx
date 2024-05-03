@@ -5,7 +5,6 @@ import LogoNormal from '@/components/logo/LogoNormal'
 import React from 'react'
 
 const ResetPassword = () => {
-
     return (
         <>
         <LogoNormal/>

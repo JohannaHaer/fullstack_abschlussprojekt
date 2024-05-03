@@ -1,4 +1,3 @@
-//!not testet
 
 
 //*es muss in cookies.token ein username gespeichert sein
@@ -16,7 +15,6 @@ export const editTransaction = async(values,id)=>{
         })
     }catch(error){
         console.error(error);
-        res.status(500).json({ error: "Internal server error" });
     }
 }
 
@@ -28,11 +26,9 @@ export const removeTransaction = async(id)=>{
         const resoponseEditTransaction = await fetch(import.meta.env.VITE_BACKEND_URL + '/user/deleteTransaction/'+ id, {
             method: 'DELETE',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(values),
             credentials: 'include'
         })
     }catch(error){
         console.error(error);
-        res.status(500).json({ error: "Internal server error" });
     }
 }

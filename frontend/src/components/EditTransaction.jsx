@@ -13,16 +13,6 @@ import {
     FormDescription
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-    DropdownMenuRadioItem,
-    DropdownMenuRadioGroup
-} from "@/components/ui/dropdown-menu"
 "use client"
 import { format } from "date-fns"
 import { Calendar as CalendarIcon } from "lucide-react"
@@ -34,22 +24,20 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover"
 
-import { addExpense, addIncome } from '@/functions/fetches/addTransactionsFetches'
-import { mainContext } from '@/context/mainProvider'
+import { editTransaction } from '@/functions/fetches/editTransactionsFetchtes'
+
+
 
 const formSchema = z.object({
     category: z.string(),
-    amount: z.string(),
+    amount: z.number(),
     description: z.string(),
-    date: z.date(),
+    date: z.date()
 })
 
 
-
-const AddTransactionForm = ({type}) => {
-    const { user } = useContext(mainContext)
-    const [selectedCategory, setSelectedCategory] = useState("Category")
-
+//*muss eine id übergeben bekommen um die richtige transaktion zu bearbeiten
+const EditTransaction = ({id}) => {
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -59,36 +47,21 @@ const AddTransactionForm = ({type}) => {
             date: ""
         },
     })
-
-
-
-
-    const onSubmit = (values) => {
-        if(type == 'expense') {
-            addExpense(values) 
-        } else if ( type == 'income') {
-            addIncome(values)
-        }
+    const handleEditTransactionSubmit = (values) =>{
+        editTransaction(values,id)
     }
-
-
-    const handleCategoryChange = (categoryName) => {
-        setSelectedCategory(`Category = ${categoryName}`)
-        form.setValue("category", categoryName)
-    }
-
-    return (
-        <section className='py-5'>
-            <Form {...form} >
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex flex-col">
+  return (
+    <div>
+      <Form {...form} >
+                <form onSubmit={form.handleSubmit(handleEditTransactionSubmit)} className="space-y-6 flex flex-col">
                 <FormField
                         control={form.control}
-                        name="description"
+                        name="category"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Description</FormLabel>
+                                <FormLabel>Category</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Add a description" {...field}/>
+                                    <Input placeholder="Category" {...field}/>
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -98,38 +71,26 @@ const AddTransactionForm = ({type}) => {
                         control={form.control}
                         name="amount"
                         render={({ field }) => (
-                            <FormItem className='pb-4'>
+                            <FormItem>
                                 <FormLabel>Amount</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Enter the amount" {...field} required/>
+                                    <Input placeholder="Amount" {...field}/>
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
                     />
                     <FormField
-                        control={form.control} 
-                        name="category"
+                        control={form.control}
+                        name="description"
                         render={({ field }) => (
-                            <DropdownMenu>
-                                <DropdownMenuTrigger asChild>
-                                    <Button variant="outline">{selectedCategory}</Button>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent className="w-56">
-                                    <DropdownMenuRadioGroup selected={field.value} onValueChange={handleCategoryChange}>
-                                        {type == 'expense' ? user?.expenseCategories?.map((category) => {
-                                            return(
-                                                <DropdownMenuRadioItem key={category._id} value={category.categoryName} >{category.categoryName}</DropdownMenuRadioItem>
-                                            )
-                                        })
-                                        : user?.incomeCategories?.map((category) => {
-                                            return(
-                                                <DropdownMenuRadioItem key={category._id} value={category.categoryName} onValueChange={handleCategoryChange}>{category.categoryName}</DropdownMenuRadioItem>
-                                            )
-                                        })}
-                                    </DropdownMenuRadioGroup>
-                                </DropdownMenuContent>
-                            </DropdownMenu>
+                            <FormItem>
+                                <FormLabel>Description</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="Description" {...field}/>
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
                         )}
                     />
                     <FormField
@@ -173,15 +134,11 @@ const AddTransactionForm = ({type}) => {
                         </FormItem>
                         )}
                     />
-                    <Button type="submit" className='text-lg' id='transactionButton'>Add {type}</Button>
+                    <Button type="submit" className='text-lg' id='transactionButton'>Add Category</Button>
                 </form>
             </Form>
-        </section>
-    )
+    </div>
+  )
 }
 
-export default AddTransactionForm
-
-
-
-
+export default EditTransaction

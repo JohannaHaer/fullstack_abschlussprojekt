@@ -14,11 +14,11 @@ import { editUser } from "../userController/editUser.js";
 import { changePassword } from "../userController/changePassword.js";
 import { imageUpload } from "../userController/uploadImage.js";
 import { removeUser } from "../userController/removeUser.js";
-import { sendMail } from "../userController/sendMail.js";
-import { createNewVerificationCode} from "../../middleware/createVerificationCode.js";
+import { sendVerificationMail } from "../userController/sendMail.js";
 import { compareVerificationCode } from "../userController/compareVerificationCode.js";
 import { editTransaction } from "../userController/editTransaction.js";
 import { deleteTransaction } from "../userController/deleteExpense.js";
+import { resetPassword } from "../userController/resetPassword.js";
 
 const userRouter = express.Router()
 const mult = multer({ storage: multer.memoryStorage() })
@@ -26,7 +26,7 @@ const mult = multer({ storage: multer.memoryStorage() })
 //!CHECKAUTH
 //? user
 //*basic
-userRouter.post("/register",mult.none(),checkRepeatName, checkRepeatEmail, register)
+userRouter.post("/register",mult.none(),checkRepeatName, checkRepeatEmail, register, login)
 userRouter.post('/login', mult.none(), login)
 userRouter.get('/getUser', checkAuth, getUserData)
 userRouter.get('/logout', logout)
@@ -38,8 +38,8 @@ userRouter.patch('/uploadImage', mult.single("image"), checkAuth, imageUpload) /
 userRouter.delete('/removeUser', mult.none(), removeUser)
 
 //*other
-userRouter.post('/sendMail', mult.none(), createNewVerificationCode, sendMail )
-userRouter.post('/compareVerificationCode', mult.none(), compareVerificationCode)
+userRouter.post('/sendMail', mult.none(), sendVerificationMail )
+userRouter.post('/compareVerificationCode', mult.none(), compareVerificationCode, resetPassword)
 
 //?transaction
 userRouter.post('/addExpense', mult.none(), checkAuth, addExpense)

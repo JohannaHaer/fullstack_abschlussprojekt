@@ -57,15 +57,22 @@ const TotalTransactions = ({type}) => {
                 return(
                     <div key={transaction.categoryName} className='grid grid-cols-6 pt-8 items-center'>
                         {transaction.type === 'income' 
-                        ? <div className='w-10 h-10 p-2 rounded-full flex justify-center items-center bg-gradient-to-b from-[#FFDE59] to-[#FF9900]'>
-                            <img src={transaction.imgUrl} alt=""/>
-                        </div>
-                        : <div className='w-10 h-10 p-2 rounded-full flex justify-center items-center bg-gradient-to-b from-[#44BBFE] to-[#1E78FE]'>
-                            <img src={transaction.imgUrl} alt=""/>
-                        </div>
+                        ? <>
+                            <div className='w-10 h-10 p-2 rounded-full flex justify-center items-center bg-gradient-to-b from-[#FFDE59] to-[#FF9900]'>
+                                <img src={transaction.imgUrl} alt=""/>
+                            </div>
+                            <h3 className='text-l font-bold col-span-3'>{transaction.categoryName}</h3>
+                            <p className='text-l font-bold text-[#06434E] dark:text-[#FFDE59] justify-self-end col-span-2'>{transaction.sign} $ {transaction.amount}</p>
+                        </>
+                        : <>
+                            <div className='w-10 h-10 p-2 rounded-full flex justify-center items-center bg-gradient-to-b from-[#44BBFE] to-[#1E78FE]'>
+                                <img src={transaction.imgUrl} alt=""/>
+                            </div>
+                            <h3 className='text-l font-bold col-span-3'>{transaction.categoryName}</h3>
+                            <p className='text-l font-bold text-[#0097B2] dark:text-[#1A96B2] justify-self-end col-span-2'>{transaction.sign} $ {transaction.amount}</p>
+                        </>
                         }
-                        <h3 className='text-l font-bold col-span-3'>{transaction.categoryName}</h3>
-                        <p className='text-l font-bold text-[#0097B2] dark:text-[#FFDE59] justify-self-end col-span-2'>{transaction.sign} $ {transaction.amount}</p>
+                        
                     </div>
                 )
             })}

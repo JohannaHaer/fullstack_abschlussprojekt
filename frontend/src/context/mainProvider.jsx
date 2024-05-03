@@ -7,6 +7,7 @@ const MainProvider = ({children}) => {
     const [allIncome, setAllIncome] = useState()
     const [allExpenses, setAllExpenses] = useState()
     const [status, setStatus] = useState()
+    const [load,setLoad] = useState(false)
 
     useEffect(() => {
         const getUserData = async () => {
@@ -14,7 +15,7 @@ const MainProvider = ({children}) => {
             setUser(userData)
         }
         getUserData()
-    }, [])
+    }, [load])
 
     useEffect(() => {
         let sum = 0
@@ -35,7 +36,7 @@ const MainProvider = ({children}) => {
     }, [user])
 
     return (
-        <mainContext.Provider value={{user, saldo, allIncome, allExpenses, status, setStatus}}>
+        <mainContext.Provider value={{user, saldo, allIncome, allExpenses, status, setStatus, setLoad}}>
         {children}
         </mainContext.Provider>
     )

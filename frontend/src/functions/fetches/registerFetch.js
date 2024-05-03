@@ -7,7 +7,7 @@ export const register = async (values) => {
         credentials: 'include'
     })
     .then(async(response)=>{
-        status = response
+        status = await response
     })
     return status
 }

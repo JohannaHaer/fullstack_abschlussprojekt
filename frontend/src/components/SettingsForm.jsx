@@ -23,7 +23,7 @@ const SettingsForm = () => {
       </div>
 
     </>
-   );
+    );
 }
- 
+
 export default SettingsForm;

@@ -1,9 +1,7 @@
 import { logout } from "@/functions/fetches/logout";
-import Header from "./Header";
-import Toggle from "./Toggle";
 import { Button } from "./ui/button";
 import { useNavigate } from 'react-router-dom'
-
+import Toggle from "./Toggle";
 import imageSettings from "@/assets/img/settings.png"
 import imageQuestion from "@/assets/img/question.png"
 import imageLogout from "@/assets/img/logout.png"

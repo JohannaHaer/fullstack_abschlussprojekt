@@ -1,9 +1,8 @@
-import Header from "@/components/Header"
 import NavBar from "@/components/NavBar"
-import LogoNormal from "@/components/logo/LogoNormal"
 import { mainContext } from '@/context/mainProvider'
 import React, { useContext } from 'react'
 import ReportForm from "@/components/ReportForm"
+import HeaderNormal from "@/components/header/HeaderNormal"
  
 
 const Reports = () => {
@@ -30,9 +29,8 @@ const Reports = () => {
  
     return ( 
         <>
-        <LogoNormal/>
+        <HeaderNormal/>
         <section className='py-5 px-4 h-dvh'>
-            <Header/>
                 <h1 className="text-2xl text-center font-bold pt-10 text-[#0097B2] dark:text-[#FFDE59]">Report</h1>
                 <ReportForm/>
         </section>

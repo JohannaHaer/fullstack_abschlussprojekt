@@ -1,16 +1,15 @@
 import AddTransactionForm from "@/components/AddTransactionForm";
-import Header from "@/components/Header";
 import NavBar from "@/components/NavBar";
-import LogoIncome from "@/components/logo/LogoIncome";
+import HeaderAddIncome from "@/components/header/HeaderAddIncome";
 import AddCategory from "@/components/AddCategory";
 import EditUser from "@/components/EditUser";
 
 const AddIncome = () => {
     return ( 
         <>
-        <LogoIncome/>
+        <HeaderAddIncome/>
         <section className='py-5 px-4 h-dvh'>
-            <Header/>
+            <h1 className="text-2xl text-center font-bold pt-10 text-[#0097B2] dark:text-[#FFDE59]">Add Income</h1>
             <AddTransactionForm type={'income'}/>
         </section>
         <NavBar/>

@@ -9,47 +9,56 @@ import EditTransaction from "./EditTransaction"
 const TransactionsForm = () => {
     const {user} = useContext(mainContext)
 
+    // Userdaten Abfrage über mainProvider aus dem Backend sowie Speicherung der expense - und income Categories
     const transactions = user?.transactions
     const expenseCategories = user?.expenseCategories
     const incomeCategories = user?.incomeCategories
 
-    let categoryImages = []
+    let categoryImagesArray = []
     let transactionArray = []
-    let dateArray = []
     const transactionDateArray = []
 
+    //  Um die gesammelten Image Informationen der Categories, werden die expense sowie income Categories mit Namen und imageUrl im categoryImagesArray abgespeichert
     incomeCategories?.map((incomeCategory) => {
-        categoryImages.push({categoryName: incomeCategory.categoryName, imageUrl: incomeCategory.imageUrl})
+        categoryImagesArray.push({categoryName: incomeCategory.categoryName, imageUrl: incomeCategory.imageUrl})
     })
 
     expenseCategories?.map((expenseCategory) => {
-        categoryImages.push({categoryName: expenseCategory.categoryName, imageUrl: expenseCategory.imageUrl})
+        categoryImagesArray.push({categoryName: expenseCategory.categoryName, imageUrl: expenseCategory.imageUrl})
     })
 
+    // Die transactions eines Users werden um die in dem categoryImagesArray gesammelten Images erweitert, indem der category-Name abgeglichen wird. Dies wird im transactionArray gespeichert
     transactions?.map((transaction) => {
-        categoryImages?.map((categoryImage) => {
+        categoryImagesArray?.map((categoryImage) => {
             if (categoryImage.categoryName == transaction.category) {
                 transactionArray.push({type: transaction.type, category: transaction.category, categoryImage: categoryImage.imageUrl, amount: transaction.amount, date: transaction.date, description: transaction.description, _id: transaction._id})
             }
         })
     })
 
+    // Da das Date nicht zu dem Format passt, wie es in der App angezeigt werden soll, wird es hier geschnitten sortiert 
     transactions?.map((transaction) => {
         let transactionDate = transaction.date.slice(0, 10)
         transactionDateArray.push(transactionDate)
         transactionDateArray.sort().reverse()
     })
 
+    // Damit Transactions von einem Tag gemeinsam angezeigt werden können, müssen alle doppelten Daten entfernt werden
     const uniqueDateArray = [...new Set(transactionDateArray)]
 
-    uniqueDateArray?.map((date) => {
-        dateArray.push({date: date})
-        
+      // Wenn das Datum einer Transaction mit einem Datum aus dem reduzierten Datensatz (uniqueDateArray) übereinstimmt, wird diese diesem hinzugefügt. Außerdem wird dem Datensatz ein Wochentag beigefügt
+      const transactionsByDay = uniqueDateArray.map((date)=>{
+        const transactions = transactionArray?.filter((transaction)=>(transaction.date.slice(0,10) === date))
+        const dates = new Date(date).toString()
+        const day = dates.slice(0,4)
+        return {date: date, transactions, day: day}
     })
     const deleteTransaction = (transaction)=>{
         console.log(transaction._id.toString())
         removeTransaction(transaction._id.toString())
     }
+
+
 
     return (
         <section className='flex flex-col pb-16 relative'>
@@ -62,40 +71,25 @@ const TransactionsForm = () => {
                 </div>
             </div>
             </Card>
-            {dateArray?.map((transactionDate) => {
+            {transactionsByDay?.map((transactionDate) => {
                 return (
-                    <React.Fragment key={transactionDate.date}>
-                        
-                        <h2 className="text-l font-bold pt-5">{transactionDate.date}</h2>
+                    <div key={transactionDate.date}>
+                        <h2 className="text-l font-bold pt-5">{transactionDate.day} {transactionDate.date}</h2>
                         <hr/>
-                        {transactionArray?.map((transaction) => {
-                            if (transaction.date.slice(0, 10) == transactionDate.date) {
-                                if (transaction.type == 'income') {
-                                    return (
-                                        <div key={transactionDate._id} className="grid grid-cols-6 py-2">
-                                            <img src={transaction.imgUrl} alt="" />
-                                            <div className="felx flex-col col-span-3">
-                                                <h3 className='text-l font-bold'>{transaction.category}</h3>
-                                                <p>{transaction.description}</p>
-                                            </div>
-                                            <p className='text-l font-bold text-[#06434E] dark:text-[#FFDE59] justify-self-end'>$ {transaction.amount}</p>
-                                            <Button onClick={()=>deleteTransaction(transaction)}id='deleteButton' variant='round' size='delete' className='justify-self-end self-center'><img src={Bin} alt="" className="w-8"/></Button>
-                                        </div>
-                                )} else {
-                                    return (
-                                        <div key={transactionDate._id} className="grid grid-cols-6 py-2">
-                                            <img src={transaction.imgUrl} alt="" />
-                                            <div className="felx flex-col col-span-3">
-                                                <h3 className='text-l font-bold'>{transaction.category}</h3>
-                                                <p>{transaction.description}</p>
-                                            </div>
-                                            <p className='text-l font-bold text-[#0097B2] dark:text-[#1A96B2] justify-self-end'>- $ {transaction.amount}</p>
-                                            <Button id='deleteButton' variant='round' size='delete' className='justify-self-end self-center'><img src={Bin} alt="" className="w-8"/></Button>
-                                        </div>
-                                    )}
-                                }
+                        {transactionDate?.transactions?.map((transaction) => {
+                            return (
+                                <div key={transaction._id} className="grid grid-cols-6 py-2">
+                                    <img src={transaction.imgUrl} alt="" />
+                                    <div className="felx flex-col col-span-2">
+                                        <h3 className='text-l font-bold'>{transaction.category}</h3>
+                                        <p>{transaction.description}</p>
+                                    </div>
+                                    {transaction.type === 'income' ? <p className='col-span-2 text-l font-bold text-[#06434E] dark:text-[#FFDE59] justify-self-end'>$ {transaction.amount}</p> :  <p className='col-span-2 text-l font-bold text-[#0097B2] dark:text-[#1A96B2] justify-self-end'>- $ {transaction.amount}</p>}
+                                    <Button onClick={()=>deleteTransaction(transaction)} id='deleteButton' variant='round' size='delete' className='justify-self-end self-center'><img src={Bin} alt="" className="w-8"/></Button>
+                                </div>
+                            )
                         })}
-                    </React.Fragment>
+                    </div>
                 )
             })}
         </section>

@@ -14,19 +14,18 @@ import {
     NavigationMenuList,
     NavigationMenuTrigger,
     NavigationMenuViewport,
-  } from "@/components/ui/navigation-menu"
+} from "@/components/ui/navigation-menu"
 
-  import {
+import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-  } from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu"
 import { useState, useEffect } from "react";
-  
-  
+
 const NavBar = () => {
 
     const [showText, setShowText] = useState(false);
@@ -64,7 +63,7 @@ const NavBar = () => {
         setShowReports(location.pathname === "/reports");
         setShowAddText(location.pathname === "/addIncome");
         setShowAddExpensesText(location.pathname === "/addExpenses");
-      }, [location.pathname]);
+    }, [location.pathname]);
 
     return ( 
         <>
@@ -86,10 +85,10 @@ const NavBar = () => {
                             {showAddText || showAddExpensesText ? "Add" : <img src={imageAdd} className="w-6 h-6"/>}
                         </Button>                            
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent>
-                            <DropdownMenuItem><span onClick={goToAddIncome}>Income</span></DropdownMenuItem>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuItem><span onClick={goToAddExpenses}>Expenses</span></DropdownMenuItem>
+                        <DropdownMenuContent className="bg-background">
+                            <DropdownMenuItem className="flex justify-center"><span onClick={goToAddIncome}>Income</span></DropdownMenuItem>
+                            <DropdownMenuSeparator className='bg-border'/>
+                            <DropdownMenuItem className="flex justify-center"><span onClick={goToAddExpenses}>Expenses</span></DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>
                     {showReports ? (
@@ -99,9 +98,8 @@ const NavBar = () => {
                     )}
                 </NavigationMenuItem>
         </NavigationMenu>
-
         </>
-    );
+    )
 }
 
 export default NavBar;

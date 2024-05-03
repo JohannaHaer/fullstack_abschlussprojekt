@@ -1,5 +1,5 @@
 import LoginForm from '@/components/LoginForm'
-import LogoNormal from '@/components/logo/LogoNormal'
+import LogoLogin from '@/components/LogoLogin'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -12,7 +12,7 @@ const Login = () => {
 
     return (
         <>
-            <LogoNormal/>
+            <LogoLogin/>
             <section className='flex flex-col align-center text-center h-dvh gap-5 p-5'>
                 <h1 className='text-center text-2xl font-bold'>Welcome back</h1>
                 <p className='text-center'>Please log in to access your account.</p>

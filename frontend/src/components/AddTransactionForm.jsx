@@ -111,20 +111,20 @@ const AddTransactionForm = ({type}) => {
                         control={form.control} 
                         name="category"
                         render={({ field }) => (
-                            <DropdownMenu>
+                            <DropdownMenu >
                                 <DropdownMenuTrigger asChild>
                                     <Button variant="outline">{selectedCategory}</Button>
                                 </DropdownMenuTrigger>
-                                <DropdownMenuContent className="w-56">
+                                <DropdownMenuContent className="w-56 bg-background">
                                     <DropdownMenuRadioGroup selected={field.value} onValueChange={handleCategoryChange}>
                                         {type == 'expense' ? user?.expenseCategories?.map((category) => {
                                             return(
-                                                <DropdownMenuRadioItem key={category._id} value={category.categoryName} >{category.categoryName}</DropdownMenuRadioItem>
+                                                <DropdownMenuRadioItem className='border-b' key={category._id} value={category.categoryName} >{category.categoryName}</DropdownMenuRadioItem>
                                             )
                                         })
                                         : user?.incomeCategories?.map((category) => {
                                             return(
-                                                <DropdownMenuRadioItem key={category._id} value={category.categoryName} onValueChange={handleCategoryChange}>{category.categoryName}</DropdownMenuRadioItem>
+                                                <DropdownMenuRadioItem className='border-b' key={category._id} value={category.categoryName}>{category.categoryName}</DropdownMenuRadioItem>
                                             )
                                         })}
                                     </DropdownMenuRadioGroup>
@@ -157,7 +157,7 @@ const AddTransactionForm = ({type}) => {
                                         </Button>
                                     </FormControl>
                                 </PopoverTrigger>
-                                <PopoverContent className="w-auto p-0" align="start">
+                                <PopoverContent className="w-auto p-0 bg-background" align="start">
                                     <Calendar
                                         mode="single"
                                         selected={field.value}

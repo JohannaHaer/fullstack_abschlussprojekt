@@ -41,7 +41,7 @@ Finco provides secure authentication features, allowing users to log in or regis
 | Discord       | CSS           | MongoDB       |
 | Canva         | React.js      | Cloudinary    |
 | Mailtrap      | Vite          | Cors          |
-|               | Tailwind      | Dotenv        |
+| Figma         | Tailwind      | Dotenv        |
 |               | Shadcn        | JWT           |
 |               | Victory       | Bcyrpt        |
 |               |               | Cookie-parser |

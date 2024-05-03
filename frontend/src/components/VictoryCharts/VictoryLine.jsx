@@ -1,18 +1,18 @@
 import React from 'react'
-import { VictoryChart, VictoryTheme } from 'victory';
+import { VictoryChart, VictoryTheme, VictoryLine } from 'victory';
 
-const VictoryLine = () => {
+const VictoryLineChart = () => {
     return (
         <>
-            {/* <VictoryChart
+            <VictoryChart
                 theme={VictoryTheme.material}
-            > */}
+            >
 
             <VictoryLine
-                // style={{
-                //     data: { stroke: "#c43a31" },
-                //     parent: { border: "1px solid #ccc"}
-                // }}
+                style={{
+                    data: { stroke: "#c43a31" },
+                    parent: { border: "1px solid #ccc"}
+                }}
                 data={[
                     { x: 1, y: 2 },
                     { x: 2, y: 3 },
@@ -21,9 +21,9 @@ const VictoryLine = () => {
                     { x: 5, y: 7 }
                 ]}
             />
-            {/* </VictoryChart> */}
+            </VictoryChart>
         </>
     )
 }
 
-export default VictoryLine
+export default VictoryLineChart

@@ -10,7 +10,7 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-  } from "@/components/ui/card"
+} from "@/components/ui/card"
 import Toggle from '@/components/Toggle'
 import NavBar from '@/components/NavBar'
 import { mainContext } from '@/context/mainProvider'

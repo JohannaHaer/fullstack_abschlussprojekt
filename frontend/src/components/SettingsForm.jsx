@@ -10,18 +10,19 @@ const SettingsForm = () => {
   return ( 
     <>
       <div className=" ml-4 mr-4 mt-12 rounded-lg h-6 flex flex-col ">
-      <Button type="submit" className='text-lg border h-12' >My wallet</Button>
+      <Button className='text-lg border h-12' >My wallet<img src={imageNext} className="w-6 h-6"></img> </Button>
+      
       <div className="mt-8  flex flex-col ">
       <Button type="submit" className='text-lg border h-12 justify-around' >  darkmode <Toggle /></Button>
       
       </div>
       <div className=" flex flex-col">
-      <Button type="submit" className='text-lg border h-12 ' ><img src={imageSettings} className="w-6 h-6 mr-2"></img>  settings<img src={imageNext} className="w-6 h-6"></img>  </Button>
+      <Button  className='text-lg border h-12 ' ><img src={imageSettings} className="w-6 h-6 mr-2"></img>  settings<img src={imageNext} className="w-6 h-6"></img>  </Button>
       </div>
       <div className="mb-8  flex flex-col">
-      <Button type="submit" className='text-lg border h-12' ><img src={imageQuestion} className="w-6 h-6 mr-2"></img> FAQ</Button>
+      <Button  className='text-lg border h-12' ><img src={imageQuestion} className="w-6 h-6 mr-2"></img> FAQ<img src={imageNext} className="w-6 h-6"></img> </Button>
       </div>
-      <Button type="submit" className='text-lg border h-12' ><img src={imageLogout} className="w-6 h-6 mr-2"></img>Logout</Button>
+      <Button className='text-lg border h-12' ><img src={imageLogout} className="w-6 h-6 mr-2"></img>Logout<img src={imageNext} className="w-6 h-6"></img></Button>
       </div>
 
     </>

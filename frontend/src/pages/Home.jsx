@@ -34,35 +34,30 @@ const Home = () => {
         <section className='py-5 px-4 h-dvh'>
         <h1 className="text-2xl text-center font-bold pt-5 text-[#0097B2] dark:text-[#FFDE59]">Welcome {user?.username}</h1>
             <VictoryLineChart/>
-            <Card className="py-14 h-dvh w-full " >
-                <CardContent className="w-full flex flex-col gap-5">
-                    <h3 className='pb-8 text-2xl'>Total wallet</h3>
-                        <div>
-                            <div className='flex w-full gap-x-8 justify-center'>
-                                <div className='bg-accent rounded-lg w-3/6 h-36'>
-                                    <div className='py-4 px-4'>
-                                        <div className='w-12 h-12 bg-muted rounded-full flex justify-center items-center'>
-                                            <img src={imageTrendingUp}/>
-                                        </div>
-                                        <p>Income</p>
-                                        <p>+ $ <span>{allIncome}</span></p>
-                                    </div>
-                                </div>
-                                <div className='bg-accent rounded-lg w-3/6 h-36 '>
-                                    <div className='px-4 py-4'>
-                                        <div className='w-12 h-12 bg-muted rounded-full flex justify-center items-center '>
-                                            <img src={imageTrendingDown} />
-                                        </div>
-                                        <p>Expense</p>
-                                        <p>- $ <span>{allExpenses}</span></p>
-                                    </div>
-                                </div>
-                            </div>
+            <Card className='flex flex-col gap-4 px-2 w-full pb-28'>
+                <h2 className="text-xl font-bold self-start">Total Wallet</h2>
+                <div className='flex justify-center gap-6'>
+                    <CardContent className='bg-accent rounded-lg p-4 flex flex-col gap-7 w-full'>
+                        <div className='w-12 h-12 rounded-full flex justify-center items-center bg-gradient-to-b from-[#FFDE59] to-[#FF9900]'>
+                            <img src={imageTrendingUp}/>
                         </div>
-                </CardContent>
+                        <div className='flex flex-col gap-3'>
+                            <h3>Income</h3>
+                            <p className='text-xl'>+ $ {allIncome}</p>
+                        </div>
+                    </CardContent>
+                    <CardContent className='bg-accent rounded-lg p-4 flex flex-col gap-7 w-full'>
+                        <div className='w-12 h-12 rounded-full flex justify-center items-center bg-gradient-to-b from-[#44BBFE] to-[#1E78FE]'>
+                            <img src={imageTrendingDown}/>
+                        </div>
+                        <div className='flex flex-col gap-3'>
+                            <h3>Expense</h3>
+                            <p className='text-xl'>- $ {allExpenses}</p>
+                        </div>
+                    </CardContent>
+                </div>
             </Card>
         </section>
-        <Toggle/>
         <NavBar/>
     </>
     )

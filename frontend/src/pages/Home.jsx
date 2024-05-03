@@ -32,13 +32,9 @@ const Home = () => {
         <>
         <HeaderNormal/>
         <section className='py-5 px-4 h-dvh'>
+        <h1 className="text-2xl text-center font-bold pt-5 text-[#0097B2] dark:text-[#FFDE59]">Welcome {user?.username}</h1>
             <VictoryLineChart/>
             <Card className="py-14 h-dvh w-full " >
-                <CardHeader className="h-3/6 w-full flex flex-col gap-12">
-                    <Card className=" bg-accent rounded-lg h-3/6 " >
-                        <p className='px-4 py-4'>your Card or whatever</p>
-                    </Card>
-                </CardHeader>
                 <CardContent className="w-full flex flex-col gap-5">
                     <h3 className='pb-8 text-2xl'>Total wallet</h3>
                         <div>
@@ -63,20 +59,6 @@ const Home = () => {
                                 </div>
                             </div>
                         </div>
-                    <div className='bg-accent rounded-full px-4 py-4'>
-                        <div className='flex items-center  justify-between'>
-                            <div className='flex items-center gap-4'>
-                                <div className='w-12 h-12 bg-muted rounded-full flex justify-center items-center '>
-                                    <img className='m-2' src={imageAlertTriangle} />
-                                </div>
-                                <div>
-                                    <p>Monthly spending limit</p>
-                                    <p>$ 6.000</p>
-                                </div>
-                            </div>
-                            <img className='m-2' src={imageHorizontal} />
-                        </div>
-                    </div>
                 </CardContent>
             </Card>
         </section>

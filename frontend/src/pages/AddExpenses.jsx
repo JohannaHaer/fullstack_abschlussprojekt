@@ -19,7 +19,7 @@ const AddExpenses = () => {
         <>
             <HeaderAddExpense/>
             <section className='px-4 py-5 h-dvh'>
-                <h1 className="text-2xl text-center font-bold pt-10 text-[#0097B2] dark:text-[#FFDE59]">Add Expense</h1>
+                <h1 className="text-2xl text-center font-bold pt-5 text-[#0097B2] dark:text-[#FFDE59]">Add Expense</h1>
                 <AddTransactionForm type={'expense'}/>
             </section>
             <NavBar/>

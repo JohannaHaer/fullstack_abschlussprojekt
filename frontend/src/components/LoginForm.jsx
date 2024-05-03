@@ -75,7 +75,7 @@ const LoginForm = () => {
                                 <FormControl>
                                     <Input placeholder="Password" {...field} required/>
                                 </FormControl>
-                                <FormMessage /> //?muss das formmessage nicht um die span herum?
+                                <FormMessage />
                                 <span onClick={navigateForgotPassword} className='flex justify-end'>Forgot Password</span>
                             </FormItem>
                         )}

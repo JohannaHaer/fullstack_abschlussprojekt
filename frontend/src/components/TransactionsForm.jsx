@@ -75,13 +75,23 @@ const TransactionsForm = () => {
                         {transactionDate?.transactions?.map((transaction) => {
                             return (
                                 <div key={transaction._id} className="grid grid-cols-6 py-2">
-                                    <img src={transaction.imgUrl} alt="" />
+                                    {transaction.type === 'income' 
+                                    ? <div className='w-10 h-10 p-2 rounded-full flex justify-center items-center bg-gradient-to-b from-[#FFDE59] to-[#FF9900]'>
+                                        <img src={transaction.imgUrl} alt=""/>
+                                    </div>
+                                    : <div className='w-10 h-10 p-2 rounded-full flex justify-center items-center bg-gradient-to-b from-[#44BBFE] to-[#1E78FE]'>
+                                        <img src={transaction.imgUrl} alt=""/>
+                                    </div>
+                                    }
                                     <div className="felx flex-col col-span-2">
                                         <h3 className='text-l font-bold'>{transaction.category}</h3>
                                         <p>{transaction.description}</p>
                                     </div>
-                                    {transaction.type === 'income' ? <p className='col-span-2 text-l font-bold text-[#06434E] dark:text-[#FFDE59] justify-self-end'>$ {transaction.amount}</p> :  <p className='col-span-2 text-l font-bold text-[#0097B2] dark:text-[#1A96B2] justify-self-end'>- $ {transaction.amount}</p>}
-                                    <Button id='deleteButton' variant='round' size='delete' className='justify-self-end self-center' onClick={() => handleDeleteButton(transaction?._id)}><img src={Bin} alt="" className="w-8"/></Button>
+                                    {transaction.type === 'income' 
+                                    ? <p className='col-span-2 text-l font-bold text-[#06434E] dark:text-[#FFDE59] justify-self-end'>$ {transaction.amount}</p> 
+                                    : <p className='col-span-2 text-l font-bold text-[#0097B2] dark:text-[#1A96B2] justify-self-end'>- $ {transaction.amount}</p>
+                                    }
+                                    <Button id='deleteButton' variant='round' size='delete' className='justify-self-end' onClick={() => handleDeleteButton(transaction?._id)}><img src={Bin} alt="" className="w-8"/></Button>
                                 </div>
                             )
                         })}

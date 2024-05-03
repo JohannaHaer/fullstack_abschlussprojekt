@@ -10,15 +10,11 @@ import {
     FormItem,
     FormMessage,
     FormLabel,
-    FormDescription
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import {
     DropdownMenu,
     DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
     DropdownMenuTrigger,
     DropdownMenuRadioItem,
     DropdownMenuRadioGroup
@@ -60,17 +56,14 @@ const AddTransactionForm = ({type}) => {
         },
     })
 
-
-
-
     const onSubmit = (values) => {
         if(type == 'expense') {
             addExpense(values) 
         } else if ( type == 'income') {
             addIncome(values)
         }
+        window.location.reload()
     }
-
 
     const handleCategoryChange = (categoryName) => {
         setSelectedCategory(`Category = ${categoryName}`)

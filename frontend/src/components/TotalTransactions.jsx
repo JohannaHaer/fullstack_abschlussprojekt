@@ -50,10 +50,10 @@ const TotalTransactions = ({type}) => {
             <h2 className="text-xl font-bold self-start">Total {type} transactions</h2>
             {clearedTransactionArray.map((transaction) => {
                 return(
-                    <div key={transaction.categoryName} className='grid grid-cols-5 pt-8'>
+                    <div key={transaction.categoryName} className='grid grid-cols-6 pt-8'>
                         <img src={transaction.imgUrl} alt=""/>
                         <h3 className='text-l font-bold col-span-3'>{transaction.categoryName}</h3>
-                        <p className='text-l font-bold text-[#0097B2] dark:text-[#FFDE59] justify-self-end'>{transaction.sign} $ {transaction.amount}</p>
+                        <p className='text-l font-bold text-[#0097B2] dark:text-[#FFDE59] justify-self-end col-span-2'>{transaction.sign} $ {transaction.amount}</p>
                     </div>
                 )
             })}

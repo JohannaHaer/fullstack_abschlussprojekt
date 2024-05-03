@@ -1,11 +1,21 @@
 import NavBar from "@/components/NavBar"
 import { mainContext } from '@/context/mainProvider'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import ReportForm from "@/components/ReportForm"
 import HeaderNormal from "@/components/header/HeaderNormal"
+import { useNavigate } from "react-router-dom"
  
 
 const Reports = () => {
+    const {user} = useContext(mainContext)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!user) {
+            navigate('/login')
+        }
+    }, [])
+
     // const {user} = useContext(mainContext)
     // console.log(user);
 

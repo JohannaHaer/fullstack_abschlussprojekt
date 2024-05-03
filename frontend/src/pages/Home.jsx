@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import imageTrendingUp from "@/assets/img/trending-up.png"
 import imageTrendingDown from "@/assets/img/trending-down.png"
 import imageHorizontal from "@/assets/img/more-horizontal.png"
@@ -16,10 +16,17 @@ import NavBar from '@/components/NavBar'
 import { mainContext } from '@/context/mainProvider'
 import VictoryLineChart from '@/components/VictoryCharts/VictoryLine'
 import HeaderNormal from '@/components/header/HeaderNormal'
+import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
-    const {allIncome, allExpenses} = useContext(mainContext)
+    const {allIncome, allExpenses, user} = useContext(mainContext)
+    const navigate = useNavigate()
 
+    useEffect(() => {
+        if (!user) {
+            navigate('/login')
+        }
+    }, [])
 
     return (
         <>

@@ -1,21 +1,19 @@
 import NavBar from "@/components/NavBar";
-import React, { useState } from 'react'
-import {
-    Card,
-    CardContent,
-    CardHeader,
-  } from "@/components/ui/card"
-import { Button } from '@/components/ui/button'
+import React, { useContext, useEffect } from 'react'
 import AddTransactionForm from "@/components/AddTransactionForm";
 import HeaderAddExpense from "@/components/header/HeaderAddExpenses";
+import { useNavigate } from "react-router-dom";
+import { mainContext } from "@/context/mainProvider";
 
 const AddExpenses = () => {
-    const [selectedOption, setSelectedOption] = useState(null);
+    const {user} = useContext(mainContext)
+    const navigate = useNavigate()
 
-    const handleSelect = (option) => {
-        setSelectedOption(option);
-        onSelect(option);
-    };
+    useEffect(() => {
+        if (!user) {
+            navigate('/login')
+        }
+    }, [])
 
     return (
         <>

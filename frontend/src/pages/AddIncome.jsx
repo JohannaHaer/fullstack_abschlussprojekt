@@ -1,8 +1,20 @@
 import AddTransactionForm from "@/components/AddTransactionForm";
 import NavBar from "@/components/NavBar";
 import HeaderAddIncome from "@/components/header/HeaderAddIncome";
+import { mainContext } from "@/context/mainProvider";
+import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AddIncome = () => {
+    const {user} = useContext(mainContext)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!user) {
+            navigate('/login')
+        }
+    }, [])
+
     return ( 
         <>
         <HeaderAddIncome/>

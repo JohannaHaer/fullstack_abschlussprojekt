@@ -1,15 +1,17 @@
+// ! In this form, all transaction data is transferred from the backend to the frontend and processed so that it is available to the user
+// This jsx is connected to the Transaction.jsx
 import { mainContext } from "@/context/mainProvider"
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import { Button } from "@/components/ui/button"
 import Bin from '@/assets/img/muelleimer.png'
-import { Card } from "./ui/card"
-import { removeTransaction } from "@/functions/fetches/editTransactionsFetchtes"
 import EditTransaction from "./EditTransaction"
+import DeleteTransaction from "./DeleteTransaction"
 
 const TransactionsForm = () => {
     const {user} = useContext(mainContext)
+    const [deleteCard, setDeleteCard] = useState(false)
 
-    // Userdaten Abfrage über mainProvider aus dem Backend sowie Speicherung der expense - und income Categories
+    // Query of user data via mainProvider from the backend and storage of expense and income categories
     const transactions = user?.transactions
     const expenseCategories = user?.expenseCategories
     const incomeCategories = user?.incomeCategories
@@ -18,7 +20,7 @@ const TransactionsForm = () => {
     let transactionArray = []
     const transactionDateArray = []
 
-    //  Um die gesammelten Image Informationen der Categories, werden die expense sowie income Categories mit Namen und imageUrl im categoryImagesArray abgespeichert
+    // To store the collected image information of the categories, the expense and income categories with name and imageUrl are stored in the categoryImagesArray
     incomeCategories?.map((incomeCategory) => {
         categoryImagesArray.push({categoryName: incomeCategory.categoryName, imageUrl: incomeCategory.imageUrl})
     })
@@ -27,7 +29,7 @@ const TransactionsForm = () => {
         categoryImagesArray.push({categoryName: expenseCategory.categoryName, imageUrl: expenseCategory.imageUrl})
     })
 
-    // Die transactions eines Users werden um die in dem categoryImagesArray gesammelten Images erweitert, indem der category-Name abgeglichen wird. Dies wird im transactionArray gespeichert
+    // The transactions of a user are extended by the images collected in the categoryImagesArray by comparing the category name. This is saved in the transactionArray
     transactions?.map((transaction) => {
         categoryImagesArray?.map((categoryImage) => {
             if (categoryImage.categoryName == transaction.category) {
@@ -36,41 +38,32 @@ const TransactionsForm = () => {
         })
     })
 
-    // Da das Date nicht zu dem Format passt, wie es in der App angezeigt werden soll, wird es hier geschnitten sortiert 
+    // As the date does not fit the format as it should be displayed in the app, it is sorted here 
     transactions?.map((transaction) => {
         let transactionDate = transaction.date.slice(0, 10)
         transactionDateArray.push(transactionDate)
         transactionDateArray.sort().reverse()
     })
 
-    // Damit Transactions von einem Tag gemeinsam angezeigt werden können, müssen alle doppelten Daten entfernt werden
+    // In order for transactions from a tag to be displayed together, all duplicate data must be removed
     const uniqueDateArray = [...new Set(transactionDateArray)]
 
-      // Wenn das Datum einer Transaction mit einem Datum aus dem reduzierten Datensatz (uniqueDateArray) übereinstimmt, wird diese diesem hinzugefügt. Außerdem wird dem Datensatz ein Wochentag beigefügt
-      const transactionsByDay = uniqueDateArray.map((date)=>{
+    // If the date of a transaction matches a date from the reduced data set (uniqueDateArray), it is added to this data set. A day of the week is also added to the data set
+    const transactionsByDay = uniqueDateArray.map((date)=>{
         const transactions = transactionArray?.filter((transaction)=>(transaction.date.slice(0,10) === date))
         const dates = new Date(date).toString()
         const day = dates.slice(0,4)
         return {date: date, transactions, day: day}
     })
-    const deleteTransaction = (transaction)=>{
-        console.log(transaction._id.toString())
-        removeTransaction(transaction._id.toString())
+
+    //A pop-up window opens so that a transaction can be deleted. The deletion can be confirmed or cancelled in this window. The DeleteTransaction component provides the functionalities for this
+    const handleDeleteButton = () => {
+        setDeleteCard(true)
     }
-
-
-
+    
     return (
-        <section className='flex flex-col pb-16 relative'>
-            <Card className='z-10 border fixed w-80 top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
-            <div className="p-4">
-                <p className="text-center">Are you sure you want to delete this element?</p>
-                <div className="flex justify-center gap-10 pt-4">
-                    <Button>Keep</Button>
-                    <Button variant='outline'>Delete</Button>
-                </div>
-            </div>
-            </Card>
+        <section className='flex flex-col pb-16'>
+            <div className={deleteCard ? 'flex' : 'hidden'}><DeleteTransaction setDeleteCard={setDeleteCard}/></div>
             {transactionsByDay?.map((transactionDate) => {
                 return (
                     <div key={transactionDate.date}>
@@ -85,7 +78,7 @@ const TransactionsForm = () => {
                                         <p>{transaction.description}</p>
                                     </div>
                                     {transaction.type === 'income' ? <p className='col-span-2 text-l font-bold text-[#06434E] dark:text-[#FFDE59] justify-self-end'>$ {transaction.amount}</p> :  <p className='col-span-2 text-l font-bold text-[#0097B2] dark:text-[#1A96B2] justify-self-end'>- $ {transaction.amount}</p>}
-                                    <Button onClick={()=>deleteTransaction(transaction)} id='deleteButton' variant='round' size='delete' className='justify-self-end self-center'><img src={Bin} alt="" className="w-8"/></Button>
+                                    <Button id='deleteButton' variant='round' size='delete' className='justify-self-end self-center' onClick={handleDeleteButton}><img src={Bin} alt="" className="w-8"/></Button>
                                 </div>
                             )
                         })}

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import imageTrendingUp from "@/assets/img/trending-up.png"
 import imageTrendingDown from "@/assets/img/trending-down.png"
 import imageHorizontal from "@/assets/img/more-horizontal.png"
@@ -16,9 +16,18 @@ import NavBar from '@/components/NavBar'
 import { mainContext } from '@/context/mainProvider'
 import VictoryLineChart from '@/components/VictoryCharts/VictoryLine'
 import HeaderNormal from '@/components/header/HeaderNormal'
+import { getUser } from '@/functions/fetches/userDataFetch'
 
 const Home = () => {
-    const {allIncome, allExpenses} = useContext(mainContext)
+    const {allIncome, allExpenses, user, setUser} = useContext(mainContext)
+    
+    // useEffect(() => {
+    //     const getUserData = async () => {
+    //         const userData = await getUser()
+    //         setUser(userData)
+    //     }
+    //     getUserData()
+    // }, [])
 
 
     return (
@@ -77,6 +86,8 @@ const Home = () => {
         <NavBar/>
     </>
     )
+
+
 }
 
 export default Home

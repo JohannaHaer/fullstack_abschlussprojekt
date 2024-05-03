@@ -42,7 +42,6 @@ const LoginForm = () => {
     const onSubmit = async (values) => {
         const resp = await login(values) 
         if(await resp.status==200){
-            setLoad(true)
             navigateHome()
         }
     }

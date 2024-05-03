@@ -6,11 +6,16 @@ import imageSettings from "@/assets/img/settings.png"
 import imageQuestion from "@/assets/img/question.png"
 import imageLogout from "@/assets/img/logout.png"
 import imageNext from "@/assets/img/next.png"
+import { useContext } from "react";
+import { mainContext } from "@/context/mainProvider";
 
 const SettingsForm = () => {
+  const {setUser, setSaldo} = useContext(mainContext)
   const navigate = useNavigate()
   const handleLogout = () =>{
     logout()
+    setUser(undefined)
+    setSaldo(undefined)
     navigate('/')
   }
   return ( 

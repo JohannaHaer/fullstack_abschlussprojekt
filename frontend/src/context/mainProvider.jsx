@@ -9,34 +9,34 @@ const MainProvider = ({children}) => {
     const [status, setStatus] = useState()
     const [load,setLoad] = useState(false)
 
-    useEffect(() => {
-        const getUserData = async () => {
-            const userData = await getUser()
-            setUser(userData)
-        }
-        getUserData()
-    }, [load])
+    // useEffect(() => {
+    //     const getUserData = async () => {
+    //         const userData = await getUser()
+    //         setUser(userData)
+    //     }
+    //     getUserData()
+    // }, [])
 
-    useEffect(() => {
-        let sum = 0
-        let difference = 0
-        const transactions = user?.transactions
-        transactions?.map((transaction) => {
-            if(transaction.type == 'income') {
-                sum = sum + transaction.amount
-                // console.log(transaction.amount, sum, '+');
-            } else if (transaction.type == 'expense') {
-                difference = difference + transaction.amount
-                // console.log(transaction.amount, sum, '-');
-            }
-            setSaldo(sum - difference)
-            setAllIncome(sum)
-            setAllExpenses(difference)
-        })
-    }, [user])
+    // useEffect(() => {
+    //     let sum = 0
+    //     let difference = 0
+    //     const transactions = user?.transactions
+    //     transactions?.map((transaction) => {
+    //         if(transaction.type == 'income') {
+    //             sum = sum + transaction.amount
+    //             // console.log(transaction.amount, sum, '+');
+    //         } else if (transaction.type == 'expense') {
+    //             difference = difference + transaction.amount
+    //             // console.log(transaction.amount, sum, '-');
+    //         }
+    //         setSaldo(sum - difference)
+    //         setAllIncome(sum)
+    //         setAllExpenses(difference)
+    //     })
+    // }, [user])
 
     return (
-        <mainContext.Provider value={{user, saldo, allIncome, allExpenses, status, setStatus, setLoad}}>
+        <mainContext.Provider value={{user, setUser, saldo, setSaldo, allIncome, allExpenses, status, setStatus, setLoad}}>
         {children}
         </mainContext.Provider>
     )

@@ -1,8 +1,6 @@
 import AddTransactionForm from "@/components/AddTransactionForm";
 import NavBar from "@/components/NavBar";
 import HeaderAddIncome from "@/components/header/HeaderAddIncome";
-import AddCategory from "@/components/AddCategory";
-import EditUser from "@/components/EditUser";
 
 const AddIncome = () => {
     return ( 

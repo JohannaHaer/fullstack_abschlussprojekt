@@ -10,6 +10,7 @@ import DeleteTransaction from "./DeleteTransaction"
 const TransactionsForm = () => {
     const {user} = useContext(mainContext)
     const [deleteCard, setDeleteCard] = useState(false)
+    const [deleteTransaction, setDeleteTransaction] = useState('')
 
     // Query of user data via mainProvider from the backend and storage of expense and income categories
     const transactions = user?.transactions
@@ -56,14 +57,16 @@ const TransactionsForm = () => {
         return {date: date, transactions, day: day}
     })
 
-    //A pop-up window opens so that a transaction can be deleted. The deletion can be confirmed or cancelled in this window. The DeleteTransaction component provides the functionalities for this
-    const handleDeleteButton = () => {
+    //A pop-up window opens so that a transaction can be deleted. The deletion can be confirmed or cancelled in this window. The DeleteTransaction component provides the functionalities for this and gets the unique transaction id
+    const handleDeleteButton = ( deleteTransaction_id) => {
         setDeleteCard(true)
+        setDeleteTransaction(deleteTransaction_id.toString())
     }
+    console.log('delete', deleteTransaction);
     
     return (
         <section className='flex flex-col pb-16'>
-            <div className={deleteCard ? 'flex' : 'hidden'}><DeleteTransaction setDeleteCard={setDeleteCard}/></div>
+            <div className={deleteCard ? 'flex' : 'hidden'}><DeleteTransaction setDeleteCard={setDeleteCard} deleteTransaction={deleteTransaction}/></div>
             {transactionsByDay?.map((transactionDate) => {
                 return (
                     <div key={transactionDate.date}>
@@ -78,7 +81,7 @@ const TransactionsForm = () => {
                                         <p>{transaction.description}</p>
                                     </div>
                                     {transaction.type === 'income' ? <p className='col-span-2 text-l font-bold text-[#06434E] dark:text-[#FFDE59] justify-self-end'>$ {transaction.amount}</p> :  <p className='col-span-2 text-l font-bold text-[#0097B2] dark:text-[#1A96B2] justify-self-end'>- $ {transaction.amount}</p>}
-                                    <Button id='deleteButton' variant='round' size='delete' className='justify-self-end self-center' onClick={handleDeleteButton}><img src={Bin} alt="" className="w-8"/></Button>
+                                    <Button id='deleteButton' variant='round' size='delete' className='justify-self-end self-center' onClick={() => handleDeleteButton(transaction?._id)}><img src={Bin} alt="" className="w-8"/></Button>
                                 </div>
                             )
                         })}

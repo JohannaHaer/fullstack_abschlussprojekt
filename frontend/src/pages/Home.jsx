@@ -22,11 +22,11 @@ const Home = () => {
     const {allIncome, allExpenses, user} = useContext(mainContext)
     const navigate = useNavigate()
 
-    useEffect(() => {
-        if (!user) {
-            navigate('/login')
-        }
-    }, [])
+    // useEffect(() => {
+    //     if (!user) {
+    //         navigate('/login')
+    //     }
+    // }, [])
 
     return (
         <>

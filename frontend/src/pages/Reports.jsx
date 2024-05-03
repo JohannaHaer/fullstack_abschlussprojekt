@@ -7,14 +7,14 @@ import { useNavigate } from "react-router-dom"
  
 
 const Reports = () => {
-    const {user} = useContext(mainContext)
-    const navigate = useNavigate()
+    // const {user} = useContext(mainContext)
+    // const navigate = useNavigate()
 
-    useEffect(() => {
-        if (!user) {
-            navigate('/login')
-        }
-    }, [])
+    // useEffect(() => {
+    //     if (!user) {
+    //         navigate('/login')
+    //     }
+    // }, [])
 
     // const {user} = useContext(mainContext)
     // console.log(user);

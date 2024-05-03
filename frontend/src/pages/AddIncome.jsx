@@ -6,14 +6,14 @@ import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AddIncome = () => {
-    const {user} = useContext(mainContext)
-    const navigate = useNavigate()
+    // const {user} = useContext(mainContext)
+    // const navigate = useNavigate()
 
-    useEffect(() => {
-        if (!user) {
-            navigate('/login')
-        }
-    }, [])
+    // useEffect(() => {
+    //     if (!user) {
+    //         navigate('/login')
+    //     }
+    // }, [])
 
     return ( 
         <>

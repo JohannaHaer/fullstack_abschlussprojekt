@@ -6,14 +6,14 @@ import { mainContext } from '@/context/mainProvider';
 import { useNavigate } from 'react-router-dom';
 
 const Transaction = () => {
-    const {user} = useContext(mainContext)
-    const navigate = useNavigate()
+    // const {user} = useContext(mainContext)
+    // const navigate = useNavigate()
 
-    useEffect(() => {
-        if (!user) {
-            navigate('/login')
-        }
-    }, [])
+    // useEffect(() => {
+    //     if (!user) {
+    //         navigate('/login')
+    //     }
+    // }, [])
 
     return ( 
         <>

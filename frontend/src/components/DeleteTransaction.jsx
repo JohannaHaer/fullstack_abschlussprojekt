@@ -5,13 +5,16 @@ import { Card } from './ui/card'
 import { Button } from "@/components/ui/button"
 import { removeTransaction } from "@/functions/fetches/editTransactionsFetchtes"
 
-const DeleteTransaction = ({setDeleteCard}) => {
-    const deleteTransaction = (transaction)=>{
-        console.log(transaction._id.toString())
-        removeTransaction(transaction._id.toString())
+const DeleteTransaction = ({setDeleteCard, deleteTransaction}) => {
+    
+    // The Delete button deletes the transaction with the unique transaction id and closes the card again
+    const handleDeleteTransaction = ()=>{
+        removeTransaction(deleteTransaction)
+        setDeleteCard(false)
     }
 
-    const handleDeleteButton = () => {
+    // If the user decides not to delete the transaction after all, they can close the card again using the Keep button
+    const handleKeepButton = () => {
         setDeleteCard(false)
     }
     return (
@@ -20,8 +23,8 @@ const DeleteTransaction = ({setDeleteCard}) => {
                 <div className="p-4">
                     <p className="text-center">Are you sure you want to delete this element?</p>
                     <div className="flex justify-center gap-10 pt-4">
-                        <Button onClick={handleDeleteButton}>Keep</Button>
-                        <Button variant='outline' onClick={()=>deleteTransaction(transaction)}>Delete</Button>
+                        <Button onClick={handleKeepButton}>Keep</Button>
+                        <Button variant='outline' onClick={handleDeleteTransaction}>Delete</Button>
                     </div>
                 </div>
             </Card>

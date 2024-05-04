@@ -2,7 +2,6 @@
 // This jsx is connected to the Transaction.jsx
 import { mainContext } from "@/context/mainProvider"
 import React, { useContext, useState } from "react"
-import React, { useContext, useState } from "react"
 import { Button } from "@/components/ui/button"
 import Bin from '@/assets/img/muelleimer.png'
 import EditTransaction from "./EditTransaction"

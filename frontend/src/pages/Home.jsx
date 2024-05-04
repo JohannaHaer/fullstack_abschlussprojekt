@@ -42,7 +42,7 @@ const Home = () => {
         <HeaderNormal/>
         <section className='py-5 px-4 h-dvh flex flex-col gap-10'>
             <h1 className="text-2xl text-center font-bold pt-5 text-[#0097B2] dark:text-[#FFDE59]">Welcome {user?.username}</h1>
-            <VictoryLineChart/>
+            <div className='p-2'><VictoryLineChart/></div>
             <Card className='flex flex-col gap-4 px-2 w-full pb-20'>
                 <h2 className="text-xl font-bold self-start">Total Wallet</h2>
                 <div className='flex justify-center gap-6'>

@@ -1,5 +1,5 @@
 // ! All transactions are summarised in this form and displayed in the reports
-// This jsx is connected to the Reports.jsx
+// This jsx is connected to the ReportForm.jsx
 import { mainContext } from '@/context/mainProvider'
 import React, { useContext } from 'react'
 

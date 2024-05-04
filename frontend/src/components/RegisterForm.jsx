@@ -84,6 +84,8 @@ const RegisterForm = () => {
                 <ToastAction altText="OK">OK</ToastAction>
                 ),
             })
+        }else{
+            console.error('internal server error')
         }
     }
 

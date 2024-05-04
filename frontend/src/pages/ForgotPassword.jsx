@@ -7,7 +7,7 @@ const ForgotPassword = () => {
     const navigate = useNavigate()
 
     const navigateLogin = () => {
-        navigate('/reset-password')
+        navigate('/login')
     }
 
     return (

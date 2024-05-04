@@ -9,6 +9,7 @@ With its intuitive interface and powerful features, Finco is your go-to solution
 
 ## Deployment
 
+https://finco-frontend.onrender.com/
 
 **Or use it yourself**
 
@@ -27,7 +28,7 @@ To get started with Finco, follow these steps:
 Finco provides secure authentication features, allowing users to log in or register for an account. Protect your financial data with robust authentication mechanisms.
 
 
-## Screenshots
+## Mockups
 
 
 

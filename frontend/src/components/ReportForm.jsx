@@ -15,7 +15,7 @@ const ReportForm = () => {
                     <CarouselContent>
                         <CarouselItem>
                                 <Card className='flex justify-center'>
-                                    <CardContent className="flex flex-col aspect-square items-center justify-center p-2">
+                                    <CardContent className="flex flex-col aspect-square items-center justify-center">
                                         <VictoryPieChart type={'income'}/>
                                         <h2 className="text-xl text-[#0097B2] dark:text-[#0097B2]">Income</h2>
                                         <div className="py-10 flex gap-1">
@@ -28,7 +28,7 @@ const ReportForm = () => {
                         </CarouselItem>
                         <CarouselItem>
                                 <Card className='flex justify-center'>
-                                    <CardContent className="flex flex-col aspect-square items-center justify-center p-2">
+                                    <CardContent className="flex flex-col aspect-square items-center justify-center">
                                         <VictoryPieChart type={'expense'}/>
                                         <h2 className="text-xl text-[#0097B2] dark:text-[#0097B2]">Expenses</h2>
                                         <div className="py-10 flex gap-1">

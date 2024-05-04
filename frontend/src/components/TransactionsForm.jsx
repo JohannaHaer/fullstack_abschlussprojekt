@@ -1,14 +1,19 @@
 import { mainContext } from "@/context/mainProvider"
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import { Button } from "@/components/ui/button"
 import Bin from '@/assets/img/muelleimer.png'
 import { Card } from "./ui/card"
 import { removeTransaction } from "@/functions/fetches/editTransactionsFetchtes"
 import EditTransaction from "./EditTransaction"
+import { searchTransactionsByCategory, searchTransactionsByDate, searchTransactionsByDescription } from "@/functions/filter/search"
 
 const TransactionsForm = () => {
     const {user} = useContext(mainContext)
-
+    const [searchterm, setSearchterm] = useState('')
+    const filteredByDescription = searchTransactionsByDescription(user?.transactions,searchterm)
+    const filteredByCategory = searchTransactionsByCategory(user?.transactions,searchterm)
+    const filteredByDate = searchTransactionsByDate(user?.transactions, searchterm)
+    
     // Userdaten Abfrage über mainProvider aus dem Backend sowie Speicherung der expense - und income Categories
     const transactions = user?.transactions
     const expenseCategories = user?.expenseCategories
@@ -54,7 +59,6 @@ const TransactionsForm = () => {
         return {date: date, transactions, day: day}
     })
     const deleteTransaction = (transaction)=>{
-        console.log(transaction._id.toString())
         removeTransaction(transaction._id.toString())
     }
 

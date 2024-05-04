@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { z } from 'zod'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -36,6 +36,7 @@ import {
 
 import { addExpense, addIncome } from '@/functions/fetches/addTransactionsFetches'
 import { mainContext } from '@/context/mainProvider'
+import { getUser } from '@/functions/fetches/userDataFetch'
 
 const formSchema = z.object({
     category: z.string(),
@@ -47,7 +48,7 @@ const formSchema = z.object({
 
 
 const AddTransactionForm = ({type}) => {
-    const { user } = useContext(mainContext)
+    const { user, setUser } = useContext(mainContext)
     const [selectedCategory, setSelectedCategory] = useState("Category")
 
     const form = useForm({
@@ -59,7 +60,13 @@ const AddTransactionForm = ({type}) => {
             date: ""
         },
     })
-
+    useEffect(() => {
+        const getUserData = async () => {
+            const userData = await getUser()
+            setUser(userData)
+        }
+        getUserData()
+    }, [])
 
 
 
@@ -69,9 +76,9 @@ const AddTransactionForm = ({type}) => {
         } else if ( type == 'income') {
             addIncome(values)
         }
+        
+        location.reload()
     }
-
-
     const handleCategoryChange = (categoryName) => {
         setSelectedCategory(`Category = ${categoryName}`)
         form.setValue("category", categoryName)

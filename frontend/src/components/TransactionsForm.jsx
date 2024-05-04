@@ -2,14 +2,20 @@
 // This jsx is connected to the Transaction.jsx
 import { mainContext } from "@/context/mainProvider"
 import React, { useContext, useState } from "react"
+import React, { useContext, useState } from "react"
 import { Button } from "@/components/ui/button"
 import Bin from '@/assets/img/muelleimer.png'
 import EditTransaction from "./EditTransaction"
+import { searchTransactionsByCategory, searchTransactionsByDate, searchTransactionsByDescription } from "@/functions/filter/search"
 import DeleteTransaction from "./DeleteTransaction"
 
 const TransactionsForm = () => {
     const {user} = useContext(mainContext)
-    const [deleteCard, setDeleteCard] = useState(false)
+    const [searchterm, setSearchterm] = useState('')
+    const filteredByDescription = searchTransactionsByDescription(user?.transactions,searchterm)
+    const filteredByCategory = searchTransactionsByCategory(user?.transactions,searchterm)
+    const filteredByDate = searchTransactionsByDate(user?.transactions, searchterm)
+        const [deleteCard, setDeleteCard] = useState(false)
     const [deleteTransaction, setDeleteTransaction] = useState('')
 
     // Query of user data via mainProvider from the backend and storage of expense and income categories

@@ -36,7 +36,7 @@ const MainProvider = ({children}) => {
     // }, [user])
 
     return (
-        <mainContext.Provider value={{user, setUser, saldo, setSaldo, allIncome, allExpenses, status, setStatus, setLoad}}>
+        <mainContext.Provider value={{user, setUser, saldo, setSaldo, allIncome, setAllIncome, allExpenses,setAllExpenses, status, setStatus, setLoad}}>
         {children}
         </mainContext.Provider>
     )

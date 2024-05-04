@@ -1,6 +1,6 @@
 // ! In this form, new transactions, whether income or expense, are collected in a form with the most important information and forwarded to the backend so that it can be saved in the database
 // This jsx is integrated in AddExpenses.jsx and AddIncoem.jsx
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { z } from 'zod'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -34,6 +34,7 @@ import {
 
 import { addExpense, addIncome } from '@/functions/fetches/addTransactionsFetches'
 import { mainContext } from '@/context/mainProvider'
+import { getUser } from '@/functions/fetches/userDataFetch'
 
  // Definition of the schema for the form with Zod
 const formSchema = z.object({
@@ -46,7 +47,7 @@ const formSchema = z.object({
 
 
 const AddTransactionForm = ({type}) => {
-    const { user } = useContext(mainContext)
+    const { user, setUser } = useContext(mainContext)
     const [selectedCategory, setSelectedCategory] = useState("Category")
 
     // Use of useForm from react-hook-form for form control
@@ -59,8 +60,16 @@ const AddTransactionForm = ({type}) => {
             date: ""
         },
     })
+    useEffect(() => {
+        const getUserData = async () => {
+            const userData = await getUser()
+            setUser(userData)
+        }
+        getUserData()
+    }, [])
 
-    // Function that is called when the form is sent 
+
+
     const onSubmit = (values) => {
         // Decision based on the transaction type (income or expense)
         if(type == 'expense') {

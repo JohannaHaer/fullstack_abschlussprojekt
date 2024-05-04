@@ -12,9 +12,7 @@ import { getUser } from '@/functions/fetches/userDataFetch';
 const HeaderNormal = () => {
     const { theme, setTheme } = useTheme();
     const [systemTheme, setSystemTheme] = useState(null);
-    const {user,setUser, saldo, setSaldo} = useContext(mainContext)
-    const [allIncome, setAllIncome] = useState()
-    const [allExpenses, setAllExpenses] = useState()
+    const {user,setUser, saldo, setSaldo, allIncome, setAllIncome,allExpenses, setAllExpenses} = useContext(mainContext)
     
     useEffect(() => {
         const getUserData = async () => {
@@ -41,7 +39,6 @@ const HeaderNormal = () => {
             setAllExpenses(difference)
         })
     }, [user])
-    console.log(allExpenses, allIncome, saldo)
 
     // console.log(searchTransactionsByCategory(user?.transactions, 'Food'))
 

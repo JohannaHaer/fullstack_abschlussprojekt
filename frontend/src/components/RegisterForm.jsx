@@ -12,10 +12,12 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { toast } from "@/components/ui/use-toast"
 import { Checkbox } from "@/components/ui/checkbox"
 import { useNavigate } from 'react-router-dom'
 import { register } from '@/functions/fetches/registerFetch'
+import { ToastAction } from "@/components/ui/toast"
+import { useToast } from "@/components/ui/use-toast"
+import { Toaster } from './ui/toaster'
 
 
 const formSchema = z.object({
@@ -29,6 +31,7 @@ const formSchema = z.object({
 const RegisterForm = () => {
     const [isChecked, setIsChecked] = useState(false)
     const navigate = useNavigate()
+    const { toast } = useToast()
 
     let toggle = () => {
         let registerButton = document.querySelector('#registerButton')
@@ -67,9 +70,20 @@ const RegisterForm = () => {
 
     //*in resp ist jetzt die gesamte response und mit resp.json() kann die fehlermeldung ausgelesen werden
     const onSubmit = async(values) => {
+
         const resp = await register(values) 
+        const response = await resp.json()
+        console.log(response)
         if(await resp.status==200){
             navigateSetupAccount()
+        }else if(await resp.status==409){
+            toast({
+                title: "Register failed",
+                description: response?.error,
+                action: (
+                <ToastAction altText="OK">OK</ToastAction>
+                ),
+            })
         }
     }
 
@@ -144,6 +158,7 @@ const RegisterForm = () => {
                     <Button type="submit" id='registerButton' disabled={!isChecked} className='text-lg'>Register now</Button>
                 </form>
             </Form>
+            <Toaster />
         </>
     )
 }

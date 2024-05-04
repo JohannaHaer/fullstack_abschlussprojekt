@@ -48,7 +48,6 @@ const LoginForm = () => {
         if(await resp.status==200){
             navigateHome()
         }else if(resp.status==401){
-            console.log(resp.status)
                 toast({
                     title: "Login failed",
                     description: "The email address or password you entered is incorrect",
@@ -56,8 +55,10 @@ const LoginForm = () => {
                     <ToastAction altText="OK">OK</ToastAction>
                     ),
                 })
-        
-    }}
+        }else{
+            console.error('internal server error')
+        }
+}
 
     const navigateForgotPassword = () => {
         navigate('/forgot-password')

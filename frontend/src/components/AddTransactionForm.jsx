@@ -1,3 +1,5 @@
+// ! In this form, new transactions, whether income or expense, are collected in a form with the most important information and forwarded to the backend so that it can be saved in the database
+// This jsx is integrated in AddExpenses.jsx and AddIncoem.jsx
 import React, { useContext, useState } from 'react'
 import { z } from 'zod'
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -33,6 +35,7 @@ import {
 import { addExpense, addIncome } from '@/functions/fetches/addTransactionsFetches'
 import { mainContext } from '@/context/mainProvider'
 
+ // Definition of the schema for the form with Zod
 const formSchema = z.object({
     category: z.string(),
     amount: z.string(),
@@ -46,6 +49,7 @@ const AddTransactionForm = ({type}) => {
     const { user } = useContext(mainContext)
     const [selectedCategory, setSelectedCategory] = useState("Category")
 
+    // Use of useForm from react-hook-form for form control
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -56,15 +60,18 @@ const AddTransactionForm = ({type}) => {
         },
     })
 
+    // Function that is called when the form is sent 
     const onSubmit = (values) => {
+        // Decision based on the transaction type (income or expense)
         if(type == 'expense') {
-            addExpense(values) 
+            addExpense(values) // Add expense transaction
         } else if ( type == 'income') {
-            addIncome(values)
+            addIncome(values) // Add income transaction
         }
         window.location.reload()
     }
 
+    // Function for changing the selected category
     const handleCategoryChange = (categoryName) => {
         setSelectedCategory(`Category = ${categoryName}`)
         form.setValue("category", categoryName)

@@ -1,20 +1,24 @@
+// ! All transactions are summarised in this form and displayed in the reports
+// This jsx is connected to the Reports.jsx
 import { mainContext } from '@/context/mainProvider'
 import React, { useContext } from 'react'
 
 const TotalTransactions = ({type}) => {
     const {user} = useContext(mainContext)
 
+    // Query of user data via mainProvider from the backend and storage of necessary key-values pairs of transactions (transactionArray) and array (clearedTransactionArray) for storing the merged key-value pairs
     const transactions = user?.transactions
     const transactionArray = []
     const clearedTransactionArray = []
 
+    // Differentiation of the data according to their type, storage of the relevant transaction key-values in the transactionArray
     if(type == 'expense') {
         transactions?.map((transaction) => {
             if(transaction.type == 'expense') {
                 transactionArray.push({category: transaction.category, amount: transaction.amount, type: transaction.type})
             } 
         })
-
+        // Aggregation of transactions in their specific categories and storage in the clearedTransactionArray
         user?.expenseCategories?.map((category) => {
             let categoryAmount = 0
             let type = ''
@@ -28,13 +32,14 @@ const TotalTransactions = ({type}) => {
                 clearedTransactionArray.push({imgUrl: category.imgUrl, categoryName: category.categoryName, amount: categoryAmount, sign: '-', type: type})
             }
         })
+    // Differentiation of the data according to their type, storage of the relevant transaction key-values in the transactionArray
     } else if (type == 'income') {
         transactions?.map((transaction) => {
             if(transaction.type == 'income') {
                 transactionArray.push({category: transaction.category, amount: transaction.amount, type: transaction.type})
             } 
         })
-
+        // Aggregation of transactions in their specific categories and storage in the clearedTransactionArray
         user?.incomeCategories?.map((category) => {
             let categoryAmount = 0
             let type = ''

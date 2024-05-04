@@ -1,5 +1,5 @@
-// ! Da es Fälle gibt, in denen eine Transaction nicht mehr gewünscht ist, können diese im Bereich Transaction gelöscht werden
-// Diese jsx ist in das TransactionForm.jsx eingebunden
+// ! As there are cases in which a transaction is no longer desired, these can be deleted in the Transaction area
+// This jsx is integrated into the TransactionForm.jsx
 import React from 'react'
 import { Card } from './ui/card'
 import { Button } from "@/components/ui/button"

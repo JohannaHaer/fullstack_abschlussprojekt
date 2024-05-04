@@ -62,11 +62,12 @@ const TransactionsForm = () => {
         setDeleteCard(true)
         setDeleteTransaction(deleteTransaction_id.toString())
     }
-    console.log('delete', deleteTransaction);
     
     return (
         <section className='flex flex-col pb-16'>
-            <div className={deleteCard ? 'flex' : 'hidden'}><DeleteTransaction setDeleteCard={setDeleteCard} deleteTransaction={deleteTransaction}/></div>
+            <div className={deleteCard ? 'flex' : 'hidden'}>
+                <DeleteTransaction setDeleteCard={setDeleteCard} deleteTransaction={deleteTransaction}/>
+            </div>
             {transactionsByDay?.map((transactionDate) => {
                 return (
                     <div key={transactionDate.date}>
@@ -76,10 +77,10 @@ const TransactionsForm = () => {
                             return (
                                 <div key={transaction._id} className="grid grid-cols-6 py-2">
                                     {transaction.type === 'income' 
-                                    ? <div className='w-10 h-10 p-2 rounded-full flex justify-center items-center bg-gradient-to-b from-[#FFDE59] to-[#FF9900]'>
+                                    ? <div className='w-10 h-10 p-2 rounded-full flex justify-center items-center bg-gradient-to-b from-[#FFDE59] to-[#FF9900] self-center'>
                                         <img src={transaction.imgUrl} alt=""/>
                                     </div>
-                                    : <div className='w-10 h-10 p-2 rounded-full flex justify-center items-center bg-gradient-to-b from-[#44BBFE] to-[#1E78FE]'>
+                                    : <div className='w-10 h-10 p-2 rounded-full flex justify-center items-center bg-gradient-to-b from-[#44BBFE] to-[#1E78FE] self-center'>
                                         <img src={transaction.imgUrl} alt=""/>
                                     </div>
                                     }
@@ -88,10 +89,10 @@ const TransactionsForm = () => {
                                         <p>{transaction.description}</p>
                                     </div>
                                     {transaction.type === 'income' 
-                                    ? <p className='col-span-2 text-l font-bold text-[#06434E] dark:text-[#FFDE59] justify-self-end'>$ {transaction.amount}</p> 
-                                    : <p className='col-span-2 text-l font-bold text-[#0097B2] dark:text-[#1A96B2] justify-self-end'>- $ {transaction.amount}</p>
+                                    ? <p className='col-span-2 text-l font-bold text-[#06434E] dark:text-[#FFDE59] justify-self-end self-center'>$ {transaction.amount}</p> 
+                                    : <p className='col-span-2 text-l font-bold text-[#0097B2] dark:text-[#1A96B2] justify-self-end self-center'>- $ {transaction.amount}</p>
                                     }
-                                    <Button id='deleteButton' variant='round' size='delete' className='justify-self-end' onClick={() => handleDeleteButton(transaction?._id)}><img src={Bin} alt="" className="w-8"/></Button>
+                                    <Button id='deleteButton' variant='round' size='delete' className='justify-self-end self-center' onClick={() => handleDeleteButton(transaction?._id)}><img src={Bin} alt="" className="w-8"/></Button>
                                 </div>
                             )
                         })}

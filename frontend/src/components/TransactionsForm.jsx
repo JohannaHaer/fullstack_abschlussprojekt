@@ -2,7 +2,6 @@
 // This jsx is connected to the Transaction.jsx
 import { mainContext } from "@/context/mainProvider"
 import React, { useContext, useState } from "react"
-import React, { useContext, useState } from "react"
 import { Button } from "@/components/ui/button"
 import Bin from '@/assets/img/muelleimer.png'
 import EditTransaction from "./EditTransaction"
@@ -15,8 +14,9 @@ const TransactionsForm = () => {
     const filteredByDescription = searchTransactionsByDescription(user?.transactions,searchterm)
     const filteredByCategory = searchTransactionsByCategory(user?.transactions,searchterm)
     const filteredByDate = searchTransactionsByDate(user?.transactions, searchterm)
-        const [deleteCard, setDeleteCard] = useState(false)
+    const [deleteCard, setDeleteCard] = useState(false)
     const [deleteTransaction, setDeleteTransaction] = useState('')
+    const [searchType, setSearchType] = useState('')
 
     // Query of user data via mainProvider from the backend and storage of expense and income categories
     const transactions = user?.transactions
@@ -37,6 +37,7 @@ const TransactionsForm = () => {
     })
 
     // The transactions of a user are extended by the images collected in the categoryImagesArray by comparing the category name. This is saved in the transactionArray
+    // if(searchType == ''){
     transactions?.map((transaction) => {
         categoryImagesArray?.map((categoryImage) => {
             if (categoryImage.categoryName == transaction.category) {
@@ -44,6 +45,7 @@ const TransactionsForm = () => {
             }
         })
     })
+    // }
 
     // As the date does not fit the format as it should be displayed in the app, it is sorted here 
     transactions?.map((transaction) => {

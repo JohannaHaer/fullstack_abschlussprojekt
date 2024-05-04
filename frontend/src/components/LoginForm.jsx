@@ -12,9 +12,12 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { toast } from "@/components/ui/use-toast"
+// import { toast } from "@/components/ui/use-toast"
 import { login } from '@/functions/fetches/loginFetch'
 import { mainContext } from '@/context/mainProvider'
+import { ToastAction } from "@/components/ui/toast"
+import { useToast } from "@/components/ui/use-toast"
+import { Toaster } from './ui/toaster'
 
 const formSchema = z.object({
     email: z.string(),
@@ -25,6 +28,7 @@ const formSchema = z.object({
 const LoginForm = () => {
     const {setLoad} = useContext(mainContext)
     const navigate = useNavigate()
+    const { toast } = useToast()
 
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -43,8 +47,17 @@ const LoginForm = () => {
         const resp = await login(values) 
         if(await resp.status==200){
             navigateHome()
-        }
-    }
+        }else if(resp.status==401){
+            console.log(resp.status)
+                toast({
+                    title: "Login failed",
+                    description: "The email address or password you entered is incorrect",
+                    action: (
+                    <ToastAction altText="OK">OK</ToastAction>
+                    ),
+                })
+        
+    }}
 
     const navigateForgotPassword = () => {
         navigate('/forgot-password')
@@ -83,6 +96,7 @@ const LoginForm = () => {
                     <Button type="submit" className='text-lg'>Login</Button>
                 </form>
             </Form>
+            <Toaster />
         </>
     )
 }

@@ -7,6 +7,7 @@ import Bin from '@/assets/img/muelleimer.png'
 import EditTransaction from "./EditTransaction"
 import { searchTransactionsByCategory, searchTransactionsByDate, searchTransactionsByDescription } from "@/functions/filter/search"
 import DeleteTransaction from "./DeleteTransaction"
+import SearchTransaction from "./SearchTransaction"
 
 const TransactionsForm = () => {
     const {user} = useContext(mainContext)
@@ -73,6 +74,7 @@ const TransactionsForm = () => {
     
     return (
         <section className='flex flex-col pb-16'>
+            <SearchTransaction/>
             <div className={deleteCard ? 'flex' : 'hidden'}>
                 <DeleteTransaction setDeleteCard={setDeleteCard} deleteTransaction={deleteTransaction}/>
             </div>

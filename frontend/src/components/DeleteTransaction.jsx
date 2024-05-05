@@ -4,13 +4,16 @@ import React from 'react'
 import { Card } from './ui/card'
 import { Button } from "@/components/ui/button"
 import { removeTransaction } from "@/functions/fetches/editTransactionsFetchtes"
+import { useNavigate } from 'react-router-dom'
 
 const DeleteTransaction = ({setDeleteCard, deleteTransaction}) => {
+    const navigate = useNavigate()
     
     // The Delete button deletes the transaction with the unique transaction id and closes the card again
     const handleDeleteTransaction = ()=>{
         removeTransaction(deleteTransaction)
         setDeleteCard(false)
+        navigate('/transaction')
     }
 
     // If the user decides not to delete the transaction after all, they can close the card again using the Keep button

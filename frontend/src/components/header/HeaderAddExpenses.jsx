@@ -20,6 +20,25 @@ const HeaderAddExpense = () => {
         }
         getUserData()
     }, [])
+
+    useEffect(() => {
+        let sum = 0
+        let difference = 0
+        const transactions = user?.transactions
+        transactions?.map((transaction) => {
+            if(transaction.type == 'income') {
+                sum = sum + transaction.amount
+                // console.log(transaction.amount, sum, '+');
+            } else if (transaction.type == 'expense') {
+                difference = difference + transaction.amount
+                // console.log(transaction.amount, sum, '-');
+            }
+            setSaldo(sum - difference)
+            setAllIncome(sum)
+            setAllExpenses(difference)
+        })
+    }, [user])
+    
     const getFirstName = user?.firstName.charAt(0).toUpperCase()
     const getLastName = user?.lastName.charAt(0).toUpperCase()
     const avatarFallback = getFirstName?.concat(getLastName)

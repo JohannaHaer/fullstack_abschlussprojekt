@@ -5,12 +5,41 @@ import logoLightPath from "@/assets/img/Logo-blau-frisst.gif"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { useNavigate } from 'react-router-dom'
 import { mainContext } from '@/context/mainProvider'
+import { getUser } from '@/functions/fetches/userDataFetch';
 
+
+//!test
 const HeaderAddIncome = () => {
     const { theme, setTheme } = useTheme();
     const [systemTheme, setSystemTheme] = useState(null);
-    const {user, saldo} = useContext(mainContext)
+    const {user,setUser, saldo,setSaldo, allIncome, setAllIncome,allExpenses, setAllExpenses} = useContext(mainContext)
     const navigate = useNavigate()
+
+    useEffect(() => {
+        const getUserData = async () => {
+            const userData = await getUser()
+            setUser(userData)
+        }
+        getUserData()
+    }, [])
+
+    useEffect(() => {
+        let sum = 0
+        let difference = 0
+        const transactions = user?.transactions
+        transactions?.map((transaction) => {
+            if(transaction.type == 'income') {
+                sum = sum + transaction.amount
+                // console.log(transaction.amount, sum, '+');
+            } else if (transaction.type == 'expense') {
+                difference = difference + transaction.amount
+                // console.log(transaction.amount, sum, '-');
+            }
+            setSaldo(sum - difference)
+            setAllIncome(sum)
+            setAllExpenses(difference)
+        })
+    }, [user])
 
     const getFirstName = user?.firstName.charAt(0).toUpperCase()
     const getLastName = user?.lastName.charAt(0).toUpperCase()

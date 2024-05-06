@@ -34,6 +34,8 @@ const SetupAccountForm = () => {
     const getImage = (event) => {
         const image = event.target.files[0]
         setImageSelected(URL.createObjectURL(image))
+        console.log(event.target.files[0])
+        addImage(event.target.files[0])
     }
 
     useEffect(() => {
@@ -59,9 +61,18 @@ const SetupAccountForm = () => {
         navigate('/home')
     }
 
+    const image =(event)=>{
+        event.preventDefault()
+        console.log(event.target)
+        addImage(event.target.value)
+    }
     //!submithandler stimmt nicht
     return (
         <>
+                   <form>
+                            <input onChange={image} type='file' name='image'/>
+                            <button type="submit">sub</button>
+                        </form>
             <Form>
                 <form onSubmit={onSubmit} className="space-y-8 flex flex-col items-center">
                     <div className="grid w-full max-w-sm items-center justify-center gap-1.5">
@@ -79,6 +90,7 @@ const SetupAccountForm = () => {
                         
                         <Label htmlFor="picture" className='text-start'>Profile picture</Label>
                         <Input id="picture" type="file" onChange={getImage}/>
+                        
                     </div>
                     <div className='flex gap-5'>
                         <Button type="submit" variant='secondary' className='text-lg' onClick={skip}>Skip</Button>

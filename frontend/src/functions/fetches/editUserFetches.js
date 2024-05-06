@@ -24,10 +24,12 @@ export const editUser = async(values)=>{
 //*das bild wird bei cloudinary hochgeladen und die url wird beim user in pictureUrl gespeichert
 export const addImage = async(values)=>{
     try{
+        console.log(values)
+        const formData = new FormData();
+        formData.append('image', values);
         const responseAddImage = await fetch(import.meta.env.VITE_BACKEND_URL + '/user/uploadImage', {
             method: 'PATCH',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(values),
+            body: formData,
             credentials: 'include'
         })
     }catch(error){

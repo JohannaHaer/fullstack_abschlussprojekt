@@ -14,6 +14,7 @@ const DeleteTransaction = ({setDeleteCard, deleteTransaction}) => {
         removeTransaction(deleteTransaction)
         setDeleteCard(false)
         navigate('/transaction')
+        window.location.reload()
     }
 
     // If the user decides not to delete the transaction after all, they can close the card again using the Keep button

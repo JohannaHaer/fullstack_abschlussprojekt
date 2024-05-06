@@ -12,15 +12,27 @@ import SearchTransaction from "./SearchTransaction"
 const TransactionsForm = () => {
     const {user} = useContext(mainContext)
     const [searchterm, setSearchterm] = useState('')
-    const filteredByDescription = searchTransactionsByDescription(user?.transactions,searchterm)
-    const filteredByCategory = searchTransactionsByCategory(user?.transactions,searchterm)
-    const filteredByDate = searchTransactionsByDate(user?.transactions, searchterm)
     const [deleteCard, setDeleteCard] = useState(false)
     const [deleteTransaction, setDeleteTransaction] = useState('')
     const [searchType, setSearchType] = useState('')
+    const [searchResult, setSearchResult] = useState([])
 
     // Query of user data via mainProvider from the backend and storage of expense and income categories
-    const transactions = user?.transactions
+    let transactions
+    switch(searchType){
+        case '':
+            transactions = user?.transactions
+            break
+        case "description":
+            transactions = searchTransactionsByDescription(user?.transactions, searchterm)
+            break
+        case 'date':
+            transactions = searchTransactionsByDate(user?.transactions, searchterm)
+            break
+        case 'category':
+            transactions = searchTransactionsByCategory(user?.transactions, searchterm)
+            break
+    }
     const expenseCategories = user?.expenseCategories
     const incomeCategories = user?.incomeCategories
 
@@ -71,9 +83,10 @@ const TransactionsForm = () => {
         setDeleteCard(true)
         setDeleteTransaction(deleteTransaction_id.toString())
     }
+
     return (
         <section className='flex flex-col pb-16'>
-            <SearchTransaction/>
+            <SearchTransaction setSearchType={setSearchType} setSearchterm={setSearchterm}/>
             <div className={deleteCard ? 'flex' : 'hidden'}>
                 <DeleteTransaction setDeleteCard={setDeleteCard} deleteTransaction={deleteTransaction}/>
             </div>

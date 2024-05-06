@@ -16,7 +16,7 @@ import {
     DropdownMenuTrigger,
   } from "@/components/ui/dropdown-menu"
 
-const SearchTransaction = () => {
+const SearchTransaction = ({setSearchType, setSearchterm}) => {
     const {user, setUser} = useContext(mainContext)
     const [date, setDate] = React.useState(new Date())
     const [showCalendar, setShowCalendar] = useState(false);
@@ -44,20 +44,33 @@ const SearchTransaction = () => {
         setShowInput(!showInput)
     }
 
-    const toggleCategory = () => {
+    const toggleCategory = (event) => {
         setShowCategory(!showCategory)
         setShowInput(false)
+        setSearchType("category")
+        setSearchterm(event)
     }
 
     const handleDateSelect = (date) => {
         setDate(date)
         setShowCalendar(false)
+        setSearchType("date")
+        setSearchterm(date)
     }
 
+    const searchDescription =(event)=>{
+        setSearchType("description")
+        setSearchterm(event.target.value)
+        
+    }
+
+    const seeAll = () =>{
+        setSearchType("")
+    }
     return (
         <>
             <div className="flex items-center gap-2 justify-center p-5">
-                <Button variant='search' className='text-black'>See all</Button>
+                <Button onClick={seeAll} variant='search' className='text-black'>See all</Button>
                 <DropdownMenu >
                     <DropdownMenuTrigger asChild>
                         <Button variant="search" className="text-black">Category</Button>
@@ -66,14 +79,14 @@ const SearchTransaction = () => {
                         <DropdownMenuRadioGroup selected={showCategory} onValueChange={toggleCategory}>
                             {categoryArray.map((category) => {
                                 return (
-                                    <DropdownMenuRadioItem className='border-b' key={category._id} value={category.categoryName} >{category.categoryName}</DropdownMenuRadioItem>
+                                    <DropdownMenuRadioItem className='border-b' key={category.categoryID} value={category.categoryName} >{category.categoryName}</DropdownMenuRadioItem>
                                 )
                             })}
                         </DropdownMenuRadioGroup>
                     </DropdownMenuContent>
                 </DropdownMenu>
                 {showInput 
-                ? <Input type="text" placeholder="Search..."/>
+                ? <Input type="text" onChange={searchDescription} placeholder="Search..."/>
                 : <Button onClick={toggleInput} variant='search'>
                     <img src={search} alt="" className='w-6 pt-2 pb-2'/>
                 </Button>

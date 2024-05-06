@@ -34,7 +34,7 @@ userRouter.get('/logout', logout)
 //*edit
 userRouter.patch('/editUser', mult.none(),checkRepeatName, checkRepeatEmail, editUser)
 userRouter.patch('/changePassword', mult.none(), checkAuth, changePassword)
-userRouter.patch('/uploadImage', mult.single("image"), checkAuth, imageUpload) //sowohl für initialen upload als auch als änderung
+userRouter.patch('/uploadImage', mult.single("image"),  imageUpload) //sowohl für initialen upload als auch als änderung
 userRouter.delete('/removeUser', mult.none(), removeUser)
 
 //*other

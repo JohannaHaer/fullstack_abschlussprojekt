@@ -21,7 +21,7 @@ export const sendVerificationMail = async (req,res)=>{
         // html: `<p>Danke für deine Registrierung, .</p> <p>Klicke hier um zu bestaetigen. Dies ist dein Verification Code: </p>`,
       });
       const emailToken = jwt.sign({email:email}, process.env.JWT_SECRET)
-      res.cookie("emailToken", emailToken, { httpOnly: true })
+      res.cookie("emailToken", emailToken, { httpOnly: true, sameSite: 'none' })
       res.json(emailResult)
   }
   catch (error) {

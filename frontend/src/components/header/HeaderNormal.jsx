@@ -10,11 +10,11 @@ import { getUser } from '@/functions/fetches/userDataFetch';
 
 
 const HeaderNormal = () => {
+    const navigate = useNavigate()
     const { theme, setTheme } = useTheme();
     const [systemTheme, setSystemTheme] = useState(null);
     const {user,setUser, saldo, setSaldo, allIncome, setAllIncome,allExpenses, setAllExpenses} = useContext(mainContext)
     
-    console.log(user);
     useEffect(() => {
         const getUserData = async () => {
             const userData = await getUser()
@@ -22,7 +22,7 @@ const HeaderNormal = () => {
         }
         getUserData()
     }, [])
-    const navigate = useNavigate()
+   
     useEffect(() => {
         let sum = 0
         let difference = 0

@@ -18,10 +18,9 @@ const VictoryLineChart = () => {
             transactionArray.push({x: transaction.date, y: transaction.amount})
         }
     })
-    console.log('transactionArray', transactionArray);
+
     const sortedTransactions = transactionArray.sort((a, b) => new Date(a.x) - new Date(b.x));
 
-    console.log('sortedTransactions', sortedTransactions);
     // Daten vorverarbeiten, um kumulierte Werte zu berechnen
     const processedData = []
     let cumulativeIncome = 0
@@ -43,36 +42,43 @@ const VictoryLineChart = () => {
             balance: cumulativeIncome - cumulativeExpense
         })
     })
-    console.log('processedData', processedData);
 
     const getScaleColor = () => {
         return document.documentElement.classList.contains('dark') ? 'white' : '#06434E';
     }
     
     return (
-        <div className='p-2 bg-accent rounded-lg'>
-            <VictoryChart>
-                <VictoryAxis
-                    style={{ axis: { stroke: getScaleColor() }, tickLabels: { fill: getScaleColor() } }}
-                    tickFormat={(date) => {
-                        const formattedDate = new Date(date)
-                        const month = formattedDate.toLocaleString('en-US', { month: 'short' });
-                        const year = formattedDate.getFullYear();
-                        return `${month} ${year}`;
-                    }}
-                />
-                <VictoryAxis
-                    dependentAxis
-                    style={{ axis: { stroke: getScaleColor() }, tickLabels: { fill: getScaleColor() } }}
-                />
-                <VictoryLine
-                    groupComponent={<VictoryClipContainer/>}
-                    style={{ data: { stroke: "tomato", strokeWidth: 5, strokeLinecap: "round" }}}
-                    data={processedData.map((data) => ({x: data.x, y: data.balance}))}
-                    domain={{ y: [0, Math.max(...processedData.map(data => data.balance)) + 100] }}
-                />
-            </VictoryChart>
-        </div>
+        <>
+            {processedData.length < 10
+                ? <div>
+                    <p>Graph is only displayed when there are at least 10 transactions.</p>
+                </div>
+                : <div className='p-2 bg-accent rounded-lg'>
+                    <VictoryChart>
+                        <VictoryAxis
+                            style={{ axis: { stroke: getScaleColor() }, tickLabels: { fill: getScaleColor() } }}
+                            tickFormat={(date) => {
+                                const formattedDate = new Date(date)
+                                const month = formattedDate.toLocaleString('en-US', { month: 'short' });
+                                const year = formattedDate.getFullYear();
+                                return `${month} ${year}`;
+                            }}
+                        />
+                        <VictoryAxis
+                            dependentAxis
+                            style={{ axis: { stroke: getScaleColor() }, tickLabels: { fill: getScaleColor() } }}
+                        />
+                        <VictoryLine
+                            groupComponent={<VictoryClipContainer/>}
+                            style={{ data: { stroke: "tomato", strokeWidth: 5, strokeLinecap: "round" }}}
+                            data={processedData.map((data) => ({x: data.x, y: data.balance}))}
+                            domain={{ y: [0, Math.max(...processedData.map(data => data.balance)) + 100] }}
+                        />
+                    </VictoryChart>
+                </div>
+            }
+        </>
+        
     )
 }
 

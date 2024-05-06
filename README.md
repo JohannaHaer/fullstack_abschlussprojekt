@@ -30,10 +30,8 @@ Finco provides secure authentication features, allowing users to login or regist
 
 ## Mockups
 
-<div>
-    <img src="./frontend/src/assets/img/1.png" width='400px' />
-    <img src="./frontend/src/assets/img/2.png" width='400px'/>
-</div>
+| <img src="./frontend/src/assets/img/1.png" width='400px' /> | <img src="./frontend/src/assets/img/2.png" width='400px'/>
+
 <img src="./frontend/src/assets/img/3.png" width='400px'/>
 <img src="./frontend/src/assets/img/4.png" width='400px'/>
 

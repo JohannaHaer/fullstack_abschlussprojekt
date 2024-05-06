@@ -74,8 +74,6 @@ const HeaderNormal = () => {
         }
     }, [theme, systemTheme]);
 
-  
-
     return (
         <section className='flex justify-between items-center'>
             <div className='px-4 pt-2'>

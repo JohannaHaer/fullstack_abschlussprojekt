@@ -50,7 +50,7 @@ const VictoryLineChart = () => {
     return (
         <>
             {processedData.length < 10
-                ? <div>
+                ? <div className='p-2 bg-accent rounded-lg'>
                     <p>Graph is only displayed when there are at least 10 transactions.</p>
                 </div>
                 : <div className='p-2 bg-accent rounded-lg'>

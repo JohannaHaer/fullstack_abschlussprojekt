@@ -14,6 +14,7 @@ const HeaderNormal = () => {
     const [systemTheme, setSystemTheme] = useState(null);
     const {user,setUser, saldo, setSaldo, allIncome, setAllIncome,allExpenses, setAllExpenses} = useContext(mainContext)
     
+    console.log(user);
     useEffect(() => {
         const getUserData = async () => {
             const userData = await getUser()
@@ -73,6 +74,8 @@ const HeaderNormal = () => {
         }
     }, [theme, systemTheme]);
 
+  
+
     return (
         <section className='flex justify-between items-center'>
             <div className='px-4 pt-2'>
@@ -80,12 +83,16 @@ const HeaderNormal = () => {
             </div>
             <div className='flex gap-4 items-center px-4 pt-2'>
                 <p className='text-l font-medium'><span>{saldo}</span> $</p>
-                <Avatar variant='default' className='cursor-pointer' onClick={navigateSettings}>
-                    <AvatarImage id='avatar' src='' />
+                {user?.pictureUrl 
+                ? <Avatar variant='default' className='cursor-pointer' onClick={navigateSettings}>
+                    <AvatarImage id='avatar' src={user.pictureUrl} />
+                </Avatar>
+                : <Avatar variant='default' className='cursor-pointer' onClick={navigateSettings}>
                     <AvatarFallback>
                         <div className='w-10 h-10 rounded-full bg-grey border-2 flex justify-center items-center font-bold'>{avatarFallback}</div>
                     </AvatarFallback>
                 </Avatar>
+                }
             </div>
         </section>
     );

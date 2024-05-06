@@ -56,7 +56,7 @@ const SearchTransaction = () => {
 
     return (
         <>
-            <div className="flex items-center gap-2 justify-center">
+            <div className="flex items-center gap-2 justify-center p-5">
                 <Button variant='search' className='text-black'>See all</Button>
                 <DropdownMenu >
                     <DropdownMenuTrigger asChild>

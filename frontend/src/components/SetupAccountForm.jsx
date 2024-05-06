@@ -52,12 +52,18 @@ const SetupAccountForm = () => {
             <Form>
                 <form onSubmit={handleSubmit} className="space-y-8 flex flex-col items-center">
                     <div className="grid w-full max-w-sm items-center justify-center gap-1.5">
-                        <Avatar variant='preview'>
+                        {imageSelected
+                        ? <Avatar variant='preview'>
                             <AvatarImage id='avatar' src={imageSelected} />
-                            <AvatarFallback>
-                                <div className='w-20 h-20 rounded-full bg-grey border-2 flex justify-center items-center font-bold text-2xl'>{avatarFallback}</div>
-                            </AvatarFallback>
                         </Avatar>
+                        : <Avatar>
+                        <AvatarFallback>
+                            <div className='w-20 h-20 rounded-full bg-grey border-2 flex justify-center items-center font-bold text-2xl'>{avatarFallback}</div>
+                        </AvatarFallback>
+                        </Avatar>
+                        }
+                        
+                        
                         <Label htmlFor="picture" className='text-start'>Profile picture</Label>
                         <Input id="picture" type="file" onChange={getImage}/>
                     </div>

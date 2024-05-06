@@ -55,8 +55,8 @@ const VictoryPieChart = ({type}) => {
                 width={430}
                 height={430}
                 padding={100}
-                startAngle={140}
-                endAngle={505}
+                startAngle={130}
+                endAngle={495}
                 colorScale={["tomato", "orange", "gold", "cyan", "navy"]}
                 style={{
                     labels: { fontSize: 18, fill: '#0097B2', fontWeight: 'bold', padding: 30, fontFamily: 'ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"' },

@@ -73,7 +73,7 @@ const RegisterForm = () => {
 
         const resp = await register(values) 
         const response = await resp.json()
-        console.log(response)
+
         if(await resp.status==200){
             navigateSetupAccount()
         }else if(await resp.status==409){

@@ -8,7 +8,6 @@ import { mainContext } from '@/context/mainProvider'
 import { getUser } from '@/functions/fetches/userDataFetch';
 
 
-//!test
 const HeaderAddIncome = () => {
     const { theme, setTheme } = useTheme();
     const [systemTheme, setSystemTheme] = useState(null);

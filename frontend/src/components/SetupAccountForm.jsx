@@ -12,11 +12,24 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { getUser } from '@/functions/fetches/userDataFetch'
 import { addImage } from '@/functions/fetches/editUserFetches'
 
+
+// const formSchema = z.object({
+//     image: z.files()
+// })
+
+
 const SetupAccountForm = () => {
 
     const [imageSelected, setImageSelected] = useState(null)
     const navigate = useNavigate()
     const [user, setUser] = useState()
+
+    // const form = useForm({
+    //     resolver: zodResolver(formSchema),
+    //     defaultValues: {
+    //         image:""
+    //     },
+    // })
 
     const getImage = (event) => {
         const image = event.target.files[0]
@@ -35,7 +48,7 @@ const SetupAccountForm = () => {
     const getLastName = user?.lastName.charAt(0).toUpperCase()
     const avatarFallback = getFirstName?.concat(getLastName)
 
-    const handleSubmit= () => {
+    const onSubmit= () => {
         addImage()
         if(imageSelected != null){
         navigate('/home')
@@ -50,7 +63,7 @@ const SetupAccountForm = () => {
     return (
         <>
             <Form>
-                <form onSubmit={handleSubmit} className="space-y-8 flex flex-col items-center">
+                <form onSubmit={onSubmit} className="space-y-8 flex flex-col items-center">
                     <div className="grid w-full max-w-sm items-center justify-center gap-1.5">
                         <Avatar variant='preview'>
                             <AvatarImage id='avatar' src={imageSelected} />

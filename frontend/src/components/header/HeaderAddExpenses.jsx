@@ -7,12 +7,13 @@ import { useNavigate } from 'react-router-dom'
 import { mainContext } from '@/context/mainProvider'
 import { getUser } from '@/functions/fetches/userDataFetch';
 
-//!test
+
 const HeaderAddExpense = () => {
     const { theme, setTheme } = useTheme();
     const [systemTheme, setSystemTheme] = useState(null);
     const {user,setUser, saldo, setSaldo, allIncome, setAllIncome,allExpenses, setAllExpenses} = useContext(mainContext)
     const navigate = useNavigate()
+    
     useEffect(() => {
         const getUserData = async () => {
             const userData = await getUser()
@@ -38,7 +39,7 @@ const HeaderAddExpense = () => {
             setAllExpenses(difference)
         })
     }, [user])
-    
+
     const getFirstName = user?.firstName.charAt(0).toUpperCase()
     const getLastName = user?.lastName.charAt(0).toUpperCase()
     const avatarFallback = getFirstName?.concat(getLastName)

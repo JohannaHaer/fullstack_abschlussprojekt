@@ -22,6 +22,7 @@ import {
 import { verificate } from '@/functions/fetches/mailVerification'
 
 const formSchema = z.object({
+    code: z.string(),
     password: z.string(),
     confirmPassword: z.string()
 })
@@ -32,6 +33,7 @@ const ResetPasswordForm = () => {
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
+            code:"",
             password: "",
             confirmPassword: ""
         }
@@ -46,10 +48,6 @@ const ResetPasswordForm = () => {
             verificate(values)
             navigateLogin()
         }
-        console.log(values)
-        
-        // login(values) 
-        
     }
 
     let toggle = () => {
@@ -70,7 +68,13 @@ const ResetPasswordForm = () => {
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 flex flex-col">
                     {/* onSubmit={form.handleSubmit(onSubmit)} */}
                     <div className='self-center py-5'>
-                        <InputOTP maxLength={6} pattern={REGEXP_ONLY_DIGITS_AND_CHARS} required>
+                        <FormField
+                            control={form.control}
+                            name="code"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormControl>
+                                    <InputOTP maxLength={6} pattern={REGEXP_ONLY_DIGITS_AND_CHARS} required>
                             <InputOTPGroup>
                                 <InputOTPSlot index={0} />
                                 <InputOTPSlot index={1} />
@@ -80,6 +84,12 @@ const ResetPasswordForm = () => {
                                 <InputOTPSlot index={5} />
                             </InputOTPGroup>
                         </InputOTP>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        
                     </div>
                     <FormField
                         control={form.control}

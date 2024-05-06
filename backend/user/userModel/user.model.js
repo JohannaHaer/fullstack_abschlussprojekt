@@ -1,21 +1,21 @@
 import mongoose, { Schema } from "mongoose";
 
 const defaultExpenseCategories = [
-    {categoryName:'Food',color:'red', imgUrl:'www.blödertest.de'},
-    {categoryName:'Technology',color:'blue', imgUrl:'www.blödertest.de'},
-    {categoryName:'Clothing',color:'green', imgUrl:'www.blödertest.de'},
-    {categoryName:'Rental',color:'violet', imgUrl:'www.blödertest.de'},
-    {categoryName:'Insurance',color:'yellow', imgUrl:'www.blödertest.de'},
-    {categoryName:'Leisure',color:'orange', imgUrl:'www.blödertest.de'},
+    {categoryName:'Food',color:'red', imgUrl:'https://res-console.cloudinary.com/dvuefu0mx/thumbnails/v1/image/upload/v1714913283/Zm9vZF9zcndzdG8=/drilldown'},
+    {categoryName:'Technology',color:'blue', imgUrl:'https://res-console.cloudinary.com/dvuefu0mx/thumbnails/v1/image/upload/v1714913288/dGVjaF9wenZ2ZG4=/drilldown'},
+    {categoryName:'Clothing',color:'green', imgUrl:'https://res-console.cloudinary.com/dvuefu0mx/thumbnails/v1/image/upload/v1714913295/Y2xvdGhlc19yOTlub2M=/drilldown'},
+    {categoryName:'Rental',color:'violet', imgUrl:'https://res-console.cloudinary.com/dvuefu0mx/thumbnails/v1/image/upload/v1714913301/bWlldGVfdWlyMnNr/drilldown'},
+    {categoryName:'Insurance',color:'yellow', imgUrl:'https://res-console.cloudinary.com/dvuefu0mx/thumbnails/v1/image/upload/v1714913306/dmVyc2ljaGVydW5nX2t4YWg0cg==/drilldown'},
+    {categoryName:'Leisure',color:'orange', imgUrl:'https://res-console.cloudinary.com/dvuefu0mx/thumbnails/v1/image/upload/v1714913312/ZHJhY2hlbl9qZ2pvbm0=/drilldown'},
 ]
 
 const defaultIncomeCategories = [
-    {categoryName:'Salary',color:'red', imgUrl:'www.blödertest.de'},
-    {categoryName:'Bonus',color:'blue', imgUrl:'www.blödertest.de'},
-    {categoryName:'Pocket money',color:'green', imgUrl:'www.blödertest.de'},
-    {categoryName:'Cashback',color:'violet', imgUrl:'www.blödertest.de'},
-    {categoryName:'Part-time job',color:'yellow', imgUrl:'www.blödertest.de'},
-    {categoryName:'Sales',color:'orange', imgUrl:'www.blödertest.de'},
+    {categoryName:'Salary',color:'red', imgUrl:'https://res-console.cloudinary.com/dvuefu0mx/thumbnails/v1/image/upload/v1714913257/c2FsYXJ5X2lpbGljcw==/drilldown'},
+    {categoryName:'Bonus',color:'blue', imgUrl:'https://res-console.cloudinary.com/dvuefu0mx/thumbnails/v1/image/upload/v1714913231/Qm9udXNfaTF3eDBz/drilldown'},
+    {categoryName:'Pocket money',color:'green', imgUrl:'https://res-console.cloudinary.com/dvuefu0mx/thumbnails/v1/image/upload/v1714913262/cG9ja2V0TW9uZXlfZnVlbHc1/drilldown'},
+    {categoryName:'Cashback',color:'violet', imgUrl:'https://res-console.cloudinary.com/dvuefu0mx/thumbnails/v1/image/upload/v1714913268/Y2FzaGJhY2tfZXpkZXZk/drilldown'},
+    {categoryName:'Part-time job',color:'yellow', imgUrl:'https://res-console.cloudinary.com/dvuefu0mx/thumbnails/v1/image/upload/v1714913277/cGFydC10aW1lX2hrNHhldQ==/drilldown'},
+    {categoryName:'Sales',color:'orange', imgUrl:'https://res-console.cloudinary.com/dvuefu0mx/thumbnails/v1/image/upload/v1714913226/c2FsZXNfeHF1ODFx/drilldown'},
 ]
 
 const userSchema =new Schema({

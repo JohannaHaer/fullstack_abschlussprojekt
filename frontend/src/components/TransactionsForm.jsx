@@ -29,11 +29,12 @@ const TransactionsForm = () => {
 
     // To store the collected image information of the categories, the expense and income categories with name and imageUrl are stored in the categoryImagesArray
     incomeCategories?.map((incomeCategory) => {
-        categoryImagesArray.push({categoryName: incomeCategory.categoryName, imageUrl: incomeCategory.imageUrl})
+        console.log(incomeCategory)
+        categoryImagesArray.push({categoryName: incomeCategory.categoryName, imageUrl: incomeCategory.imgUrl})
     })
 
     expenseCategories?.map((expenseCategory) => {
-        categoryImagesArray.push({categoryName: expenseCategory.categoryName, imageUrl: expenseCategory.imageUrl})
+        categoryImagesArray.push({categoryName: expenseCategory.categoryName, imageUrl: expenseCategory.imgUrl})
     })
 
     // The transactions of a user are extended by the images collected in the categoryImagesArray by comparing the category name. This is saved in the transactionArray
@@ -70,7 +71,6 @@ const TransactionsForm = () => {
         setDeleteCard(true)
         setDeleteTransaction(deleteTransaction_id.toString())
     }
-    
     return (
         <section className='flex flex-col pb-16'>
             <div className={deleteCard ? 'flex' : 'hidden'}>
@@ -86,10 +86,10 @@ const TransactionsForm = () => {
                                 <div key={transaction._id} className="grid grid-cols-6 py-2">
                                     {transaction.type === 'income' 
                                     ? <div className='w-10 h-10 p-2 rounded-full flex justify-center items-center bg-gradient-to-b from-[#FFDE59] to-[#FF9900] self-center'>
-                                        <img src={transaction.imgUrl} alt=""/>
+                                        <img src={transaction.categoryImage} alt=""/>
                                     </div>
                                     : <div className='w-10 h-10 p-2 rounded-full flex justify-center items-center bg-gradient-to-b from-[#44BBFE] to-[#1E78FE] self-center'>
-                                        <img src={transaction.imgUrl} alt=""/>
+                                        <img src={transaction.categoryImage} alt=""/>
                                     </div>
                                     }
                                     <div className="felx flex-col col-span-2">

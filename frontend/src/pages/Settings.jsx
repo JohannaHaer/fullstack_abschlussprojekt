@@ -16,9 +16,7 @@ const Settings = () => {
     return (
         <>
         <HeaderNormal/>
-        {/* <section className='py-5 px-4 h-dvh'> */}
-            <h1>Settings</h1>
-        {/* </section> */}
+      
         <SettingsForm />
         
 

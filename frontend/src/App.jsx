@@ -13,6 +13,7 @@ import Landingpage from './pages/Landingpage'
 import Settings from './pages/Settings'
 import ForgotPassword from './pages/ForgotPassword'
 import ResetPassword from './pages/ResetPassword'
+import EditUser from './components/EditUser'
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Route path='/settings' element={<Settings/>}/>
         <Route path='/forgot-password' element={<ForgotPassword/>}/>
         <Route path='/reset-password' element={<ResetPassword/>}/>
+        <Route path='/editUser' element={<EditUser />} />
       </Routes>
         
     </>

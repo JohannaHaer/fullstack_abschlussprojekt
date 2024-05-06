@@ -1,4 +1,4 @@
-// ! In this form, all transaction data is transferred from the backend to the frontend and processed so that it is available to the user
+//* In this form, all transaction data is transferred from the backend to the frontend and processed so that it is available to the user
 // This jsx is connected to the Transaction.jsx
 import { mainContext } from "@/context/mainProvider"
 import React, { useContext, useState } from "react"
@@ -29,7 +29,6 @@ const TransactionsForm = () => {
 
     // To store the collected image information of the categories, the expense and income categories with name and imageUrl are stored in the categoryImagesArray
     incomeCategories?.map((incomeCategory) => {
-        console.log(incomeCategory)
         categoryImagesArray.push({categoryName: incomeCategory.categoryName, imageUrl: incomeCategory.imgUrl})
     })
 

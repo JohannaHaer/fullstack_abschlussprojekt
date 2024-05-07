@@ -15,7 +15,6 @@ const TransactionsForm = () => {
     const [deleteCard, setDeleteCard] = useState(false)
     const [deleteTransaction, setDeleteTransaction] = useState('')
     const [searchType, setSearchType] = useState('')
-    const [searchResult, setSearchResult] = useState([])
 
     // Query of user data via mainProvider from the backend and storage of expense and income categories
     let transactions

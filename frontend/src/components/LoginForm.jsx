@@ -86,7 +86,7 @@ const LoginForm = () => {
                         render={({ field }) => (
                             <FormItem>
                                 <FormControl>
-                                    <Input placeholder="Password" {...field} required/>
+                                    <Input type="password" placeholder="Password" {...field} required/>
                                 </FormControl>
                                 <FormMessage />
                                 <span onClick={navigateForgotPassword} className='flex justify-end'>Forgot Password</span>

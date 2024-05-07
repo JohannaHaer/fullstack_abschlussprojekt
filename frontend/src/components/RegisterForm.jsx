@@ -59,7 +59,6 @@ const RegisterForm = () => {
         },
     })
 
-    //?kann die funktion gestrichen werden und direkt mit navigate gearbeitet werden? @JOAN
     const navigateSetupAccount = () => {
         navigate('/setup-account')
     }
@@ -68,7 +67,6 @@ const RegisterForm = () => {
         navigate('/terms-and-services')
     }
 
-    //*in resp ist jetzt die gesamte response und mit resp.json() kann die fehlermeldung ausgelesen werden
     const onSubmit = async(values) => {
 
         const resp = await register(values) 
@@ -147,7 +145,7 @@ const RegisterForm = () => {
                         render={({ field }) => (
                             <FormItem>
                                 <FormControl>
-                                    <Input placeholder="Password" {...field} required/>
+                                    <Input type="password" placeholder="Password" {...field} required/>
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>

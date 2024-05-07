@@ -1,3 +1,4 @@
+// * This jsx is built into EditUserForm.jsx
 import React, { useState, useEffect } from 'react'
 import { z } from 'zod'
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -18,7 +19,7 @@ import { addImage } from '@/functions/fetches/editUserFetches'
 // })
 
 
-const SetupAccountForm = () => {
+const ChangeUserImage = () => {
 
     const [imageSelected, setImageSelected] = useState(null)
     const navigate = useNavigate()
@@ -53,12 +54,8 @@ const SetupAccountForm = () => {
         event.preventDefault()
         addImage(event.target.picture.files[0])
         if(imageSelected != null){
-        navigate('/home')
+        navigate('/settings')
         }
-    }
-
-    const skip = () => {
-        navigate('/home')
     }
 
     return (
@@ -82,14 +79,11 @@ const SetupAccountForm = () => {
                         <Input id="picture" name="picture" type="file" onChange={getImage}/>
                         
                     </div>
-                    <div className='flex gap-5'>
-                        <Button type="submit" variant='secondary' className='text-lg' onClick={skip}>Skip</Button>
-                        <Button type="submit" className='text-lg'>Add Image</Button>
-                    </div>
+                    <Button type="submit" className='text-lg'>Add Image</Button>
                 </form>
             </Form>
         </>
     )
 }
 
-export default SetupAccountForm
+export default ChangeUserImage

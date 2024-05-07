@@ -11,7 +11,7 @@ import { useContext } from "react";
 import { mainContext } from "@/context/mainProvider";
 
 const SettingsForm = () => {
-  const {setUser, setSaldo} = useContext(mainContext)
+  const {user, setUser, setSaldo} = useContext(mainContext)
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -20,7 +20,7 @@ const SettingsForm = () => {
   };
 
   const goToEditUser = () => {
-    navigate("/editUser");
+    navigate("/edit-profile");
   };
 
   const goToFaq = () => {
@@ -36,16 +36,27 @@ const SettingsForm = () => {
   return (
     <section className="py-5 px-4 h-dvh">
       <h1 className="text-2xl text-center font-bold pt-5 text-[#0097B2] dark:text-[#FFDE59]">Settings</h1>
+      {/* <Card className='flex flex-col gap-4 px-2 w-full pb-20'>
+        <CardContent className='bg-accent rounded-lg p-4 flex flex-col gap-7 w-full'>
+            <div className='w-12 h-12 rounded-full flex justify-center items-center bg-gradient-to-b from-[#FFDE59] to-[#FF9900]'>
+                <img src={user.pictureUrl}/>
+            </div>
+            <div className='flex flex-col gap-3'>
+                <h3>Income</h3>
+                <p className='text-xl'>+ $ {allIncome}</p>
+            </div>
+        </CardContent>
+      </Card> */}
       <div className=" ml-6 mr-6 mt-12 rounded-lg h-6 flex flex-col">
-        <div className="mb-6 flex flex-col bg-accent rounded-lg ">
-          <div className="text-lg border h-12 items-center rounded-md flex justify-between bg-primary text-primary-foreground hover:bg-primary/90">
+        <div className="mb-6 flex flex-col bg-card rounded-lg ">
+          <div className="text-lg border h-12 items-center rounded-md flex justify-between bg-accent text-primary-foreground hover:bg-primary/90">
             <div className="flex items-center mx-4">
               <img
                 src={imageNightMode}
                 className="w-6 h-6 mr-2"
                 alt="Night Mode"
-              ></img>
-              Darkmode
+              />
+              <p className="text-foreground">Darkmode</p>
             </div>
             <div className="mr-2">
               <Toggle />
@@ -57,31 +68,33 @@ const SettingsForm = () => {
           <Button
             onClick={goToEditUser}
             className="text-lg border h-12 justify-between"
+            variant='likeCard'
           >
             <div className="flex items-center">
-              <img src={imageSettings} className="w-6 h-6 mr-2"></img>
+              <img src={imageSettings} className="w-6 h-6 mr-2"/>
               Edit Profile
             </div>
-            <img src={imageNext} className="w-6 h-6"></img>
+            <img src={imageNext} className="w-6 h-6"/>
           </Button>
         </div>
 
         <div className=" flex flex-col">
-          <Button onClick={goToFaq} className="text-lg border h-12 justify-between">
+          <Button onClick={goToFaq} className="text-lg border h-12 justify-between" variant='likeCard'>
             <div className="flex items-center">
-              <img src={imageQuestion} className="w-6 h-6 mr-2"></img> FAQ
+              <img src={imageQuestion} className="w-6 h-6 mr-2"/>
+              <p>FAQ</p> 
             </div>
-            <img src={imageNext} className="w-6 h-6"></img>{" "}
+            <img src={imageNext} className="w-6 h-6"/>
           </Button>
         </div>
 
         <div className="mb-8  flex flex-col">
-          <Button onClick={goToTermsAndServices} className="text-lg border h-12 justify-between">
+          <Button onClick={goToTermsAndServices} className="text-lg border h-12 justify-between" variant='likeCard'>
             <div className="flex items-center">
-              <img src={imageQuestion} className="w-6 h-6 mr-2"></img> Terms and
-              Services
+              <img src={imageQuestion} className="w-6 h-6 mr-2"/> 
+              <p>Terms and Services</p>
             </div>
-            <img src={imageNext} className="w-6 h-6"></img>{" "}
+            <img src={imageNext} className="w-6 h-6"/>
           </Button>
         </div>
 
@@ -89,11 +102,13 @@ const SettingsForm = () => {
           <Button
             onClick={handleLogout}
             className="text-lg border h-12 justify-between"
+            variant='likeCard'
           >
             <div className="flex items-center">
-              <img src={imageLogout} className="w-6 h-6 mr-2"></img> Logout
+              <img src={imageLogout} className="w-6 h-6 mr-2"/> 
+              <p>Logout</p>
             </div>
-            <img src={imageNext} className="w-6 h-6"></img>{" "}
+            <img src={imageNext} className="w-6 h-6"/>
           </Button>
         </div>
       </div>

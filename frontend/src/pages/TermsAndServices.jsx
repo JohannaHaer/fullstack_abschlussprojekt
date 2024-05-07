@@ -1,9 +1,14 @@
+import NavBar from "@/components/NavBar";
+import HeaderNormal from "@/components/header/HeaderNormal";
 
 
 const TermsAndServices = () => {
     return ( 
-        <div className="p-4">
-        <h1 className="text-2xl font-bold mb-4">Terms and Policy</h1>
+        
+        <>
+        <HeaderNormal />
+        <div className="py-5 px-4 h-dvh">
+        <h1 className="text-2xl text-center font-bold pt-5 pb-5 text-[#0097B2] dark:text-[#FFDE59]">Terms and Policy</h1>
         <p className="text-sm mb-2">
           Please read these terms and conditions carefully before using our
           services.
@@ -34,6 +39,8 @@ const TermsAndServices = () => {
           us.
         </p>
       </div>
+      <NavBar />
+      </>
      );
 }
  

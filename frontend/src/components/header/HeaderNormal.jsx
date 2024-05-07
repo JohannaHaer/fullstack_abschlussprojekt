@@ -76,7 +76,7 @@ const HeaderNormal = () => {
 
     return (
         <section className='flex justify-between items-center'>
-            <div className='px-4 pt-2'>
+            <div className='px-4 pt-4'>
                 <img src={logoPath} alt="" className='w-9 h-9'/>
             </div>
             <div className='flex gap-4 items-center px-4 pt-2'>

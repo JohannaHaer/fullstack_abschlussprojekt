@@ -30,27 +30,27 @@ const SettingsForm = () => {
   const goToTermsAndServices = () => {
     setUser(undefined)
     setSaldo(undefined)
-    navigate("/termsandservices");
+    navigate("/terms-and-services");
   };
 
   return (
-    <>
-      <h1 className="text-4xl mt-10 text-center">Settings</h1>
-      <section className=" ml-6 mr-6 mt-12 rounded-lg h-6 flex flex-col ">
+    <section className="py-5 px-4 h-dvh">
+      <h1 className="text-2xl text-center font-bold pt-5 text-[#0097B2] dark:text-[#FFDE59]">Settings</h1>
+      <div className=" ml-6 mr-6 mt-12 rounded-lg h-6 flex flex-col">
         <div className="mb-6 flex flex-col bg-accent rounded-lg ">
-          <p className="text-lg border h-12 items-center rounded-md flex  justify-between bg-primary text-primary-foreground hover:bg-primary/90">
-            <span className="flex items-center mx-4">
+          <div className="text-lg border h-12 items-center rounded-md flex justify-between bg-primary text-primary-foreground hover:bg-primary/90">
+            <div className="flex items-center mx-4">
               <img
                 src={imageNightMode}
                 className="w-6 h-6 mr-2"
                 alt="Night Mode"
               ></img>
               Darkmode
-            </span>
+            </div>
             <div className="mr-2">
               <Toggle />
             </div>
-          </p>
+          </div>
         </div>
 
         <div className=" flex flex-col">
@@ -58,29 +58,29 @@ const SettingsForm = () => {
             onClick={goToEditUser}
             className="text-lg border h-12 justify-between"
           >
-            <span className="flex">
+            <div className="flex items-center">
               <img src={imageSettings} className="w-6 h-6 mr-2"></img>
               Edit Profile
-            </span>
+            </div>
             <img src={imageNext} className="w-6 h-6"></img>
           </Button>
         </div>
 
         <div className=" flex flex-col">
           <Button onClick={goToFaq} className="text-lg border h-12 justify-between">
-            <span className="flex">
+            <div className="flex items-center">
               <img src={imageQuestion} className="w-6 h-6 mr-2"></img> FAQ
-            </span>
+            </div>
             <img src={imageNext} className="w-6 h-6"></img>{" "}
           </Button>
         </div>
 
         <div className="mb-8  flex flex-col">
           <Button onClick={goToTermsAndServices} className="text-lg border h-12 justify-between">
-            <span className="flex">
+            <div className="flex items-center">
               <img src={imageQuestion} className="w-6 h-6 mr-2"></img> Terms and
               Services
-            </span>
+            </div>
             <img src={imageNext} className="w-6 h-6"></img>{" "}
           </Button>
         </div>
@@ -90,14 +90,14 @@ const SettingsForm = () => {
             onClick={handleLogout}
             className="text-lg border h-12 justify-between"
           >
-            <span className="flex">
+            <div className="flex items-center">
               <img src={imageLogout} className="w-6 h-6 mr-2"></img> Logout
-            </span>
+            </div>
             <img src={imageNext} className="w-6 h-6"></img>{" "}
           </Button>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

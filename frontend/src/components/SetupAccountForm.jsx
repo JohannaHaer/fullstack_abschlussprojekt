@@ -34,8 +34,6 @@ const SetupAccountForm = () => {
     const getImage = (event) => {
         const image = event.target.files[0]
         setImageSelected(URL.createObjectURL(image))
-        console.log(event.target.files[0])
-        addImage(event.target.files[0])
     }
 
     useEffect(() => {
@@ -50,8 +48,10 @@ const SetupAccountForm = () => {
     const getLastName = user?.lastName.charAt(0).toUpperCase()
     const avatarFallback = getFirstName?.concat(getLastName)
 
-    const onSubmit= () => {
-        addImage()
+    
+    const onSubmit= (event) => {
+        event.preventDefault()
+        addImage(event.target.picture.files[0])
         if(imageSelected != null){
         navigate('/home')
         }
@@ -61,18 +61,18 @@ const SetupAccountForm = () => {
         navigate('/home')
     }
 
-    const image =(event)=>{
-        event.preventDefault()
-        console.log(event.target)
-        addImage(event.target.value)
-    }
+    // const image =(event)=>{
+    //     event.preventDefault()
+    //     console.log(event.target)
+    //     addImage(event.target.files[0])
+    // }
     //!submithandler stimmt nicht
     return (
         <>
-                   <form>
+                   {/* <form>
                             <input onChange={image} type='file' name='image'/>
                             <button type="submit">sub</button>
-                        </form>
+                        </form> */}
             <Form>
                 <form onSubmit={onSubmit} className="space-y-8 flex flex-col items-center">
                     <div className="grid w-full max-w-sm items-center justify-center gap-1.5">
@@ -89,7 +89,7 @@ const SetupAccountForm = () => {
                         
                         
                         <Label htmlFor="picture" className='text-start'>Profile picture</Label>
-                        <Input id="picture" type="file" onChange={getImage}/>
+                        <Input id="picture" name="picture" type="file" onChange={getImage}/>
                         
                     </div>
                     <div className='flex gap-5'>

@@ -1,21 +1,21 @@
 import mongoose, { Schema } from "mongoose";
 
 const defaultExpenseCategories = [
-    {categoryName:'Food',color:'red', imgUrl:'https://res-console.cloudinary.com/dvuefu0mx/thumbnails/v1/image/upload/v1714913283/Zm9vZF9zcndzdG8=/drilldown'},
-    {categoryName:'Technology',color:'blue', imgUrl:'https://res-console.cloudinary.com/dvuefu0mx/thumbnails/v1/image/upload/v1714913288/dGVjaF9wenZ2ZG4=/drilldown'},
-    {categoryName:'Clothing',color:'green', imgUrl:'https://res-console.cloudinary.com/dvuefu0mx/thumbnails/v1/image/upload/v1714913295/Y2xvdGhlc19yOTlub2M=/drilldown'},
-    {categoryName:'Rental',color:'violet', imgUrl:'https://res-console.cloudinary.com/dvuefu0mx/thumbnails/v1/image/upload/v1714913301/bWlldGVfdWlyMnNr/drilldown'},
-    {categoryName:'Insurance',color:'yellow', imgUrl:'https://res-console.cloudinary.com/dvuefu0mx/thumbnails/v1/image/upload/v1714913306/dmVyc2ljaGVydW5nX2t4YWg0cg==/drilldown'},
-    {categoryName:'Leisure',color:'orange', imgUrl:'https://res-console.cloudinary.com/dvuefu0mx/thumbnails/v1/image/upload/v1714913312/ZHJhY2hlbl9qZ2pvbm0=/drilldown'},
+    {categoryName:'Food',color:'red', imgUrl:'https://res.cloudinary.com/dvuefu0mx/image/upload/v1714913283/food_srwsto.png'},
+    {categoryName:'Technology',color:'blue', imgUrl:'https://res.cloudinary.com/dvuefu0mx/image/upload/v1714913288/tech_pzvvdn.png'},
+    {categoryName:'Clothing',color:'green', imgUrl:'https://res.cloudinary.com/dvuefu0mx/image/upload/v1714913295/clothes_r99noc.png'},
+    {categoryName:'Rental',color:'violet', imgUrl:'https://res.cloudinary.com/dvuefu0mx/image/upload/v1714913301/miete_uir2sk.png'},
+    {categoryName:'Insurance',color:'yellow', imgUrl:'https://res.cloudinary.com/dvuefu0mx/image/upload/v1714913306/versicherung_kxah4r.png'},
+    {categoryName:'Leisure',color:'orange', imgUrl:'https://res.cloudinary.com/dvuefu0mx/image/upload/v1714913312/drachen_jgjonm.png'},
 ]
 
 const defaultIncomeCategories = [
-    {categoryName:'Salary',color:'red', imgUrl:'https://res-console.cloudinary.com/dvuefu0mx/thumbnails/v1/image/upload/v1714913257/c2FsYXJ5X2lpbGljcw==/drilldown'},
-    {categoryName:'Bonus',color:'blue', imgUrl:'https://res-console.cloudinary.com/dvuefu0mx/thumbnails/v1/image/upload/v1714913231/Qm9udXNfaTF3eDBz/drilldown'},
-    {categoryName:'Pocket money',color:'green', imgUrl:'https://res-console.cloudinary.com/dvuefu0mx/thumbnails/v1/image/upload/v1714913262/cG9ja2V0TW9uZXlfZnVlbHc1/drilldown'},
-    {categoryName:'Cashback',color:'violet', imgUrl:'https://res-console.cloudinary.com/dvuefu0mx/thumbnails/v1/image/upload/v1714913268/Y2FzaGJhY2tfZXpkZXZk/drilldown'},
-    {categoryName:'Part-time job',color:'yellow', imgUrl:'https://res-console.cloudinary.com/dvuefu0mx/thumbnails/v1/image/upload/v1714913277/cGFydC10aW1lX2hrNHhldQ==/drilldown'},
-    {categoryName:'Sales',color:'orange', imgUrl:'https://res-console.cloudinary.com/dvuefu0mx/thumbnails/v1/image/upload/v1714913226/c2FsZXNfeHF1ODFx/drilldown'},
+    {categoryName:'Salary',color:'red', imgUrl:'https://res.cloudinary.com/dvuefu0mx/image/upload/v1714913257/salary_iilics.png'},
+    {categoryName:'Bonus',color:'blue', imgUrl:'https://res.cloudinary.com/dvuefu0mx/image/upload/v1714913231/Bonus_i1wx0s.png'},
+    {categoryName:'Pocket money',color:'green', imgUrl:'https://res.cloudinary.com/dvuefu0mx/image/upload/v1714913262/pocketMoney_fuelw5.png'},
+    {categoryName:'Cashback',color:'violet', imgUrl:'https://res.cloudinary.com/dvuefu0mx/image/upload/v1714913268/cashback_ezdevd.png'},
+    {categoryName:'Part-time job',color:'yellow', imgUrl:'https://res.cloudinary.com/dvuefu0mx/image/upload/v1714913277/part-time_hk4xeu.png'},
+    {categoryName:'Sales',color:'orange', imgUrl:'https://res.cloudinary.com/dvuefu0mx/image/upload/v1714913226/sales_xqu81q.png'},
 ]
 
 const userSchema =new Schema({

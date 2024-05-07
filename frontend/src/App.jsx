@@ -38,7 +38,7 @@ function App() {
         <Route path='/reset-password' element={<ResetPassword/>}/>
         <Route path='/editUser' element={<EditUser />} />
         <Route path='/faq' element={<Faq />} />
-        <Route path='/termsandservices' element={<TermsAndServices />} />
+        <Route path='/terms-and-services' element={<TermsAndServices />} />
       </Routes>
         
     </>

@@ -34,21 +34,9 @@ const SettingsForm = () => {
   };
 
   return (
-    <section className="py-5 px-4 h-dvh">
-      <h1 className="text-2xl text-center font-bold pt-5 text-[#0097B2] dark:text-[#FFDE59]">Settings</h1>
-      {/* <Card className='flex flex-col gap-4 px-2 w-full pb-20'>
-        <CardContent className='bg-accent rounded-lg p-4 flex flex-col gap-7 w-full'>
-            <div className='w-12 h-12 rounded-full flex justify-center items-center bg-gradient-to-b from-[#FFDE59] to-[#FF9900]'>
-                <img src={user.pictureUrl}/>
-            </div>
-            <div className='flex flex-col gap-3'>
-                <h3>Income</h3>
-                <p className='text-xl'>+ $ {allIncome}</p>
-            </div>
-        </CardContent>
-      </Card> */}
-      <div className=" ml-6 mr-6 mt-12 rounded-lg h-6 flex flex-col">
-        <div className="mb-6 flex flex-col bg-card rounded-lg ">
+    <>
+      <div className="px-2 flex flex-col">
+        <div className="pb-6 flex flex-col bg-card rounded-lg ">
           <div className="text-lg border h-12 items-center rounded-md flex justify-between bg-accent text-primary-foreground hover:bg-primary/90">
             <div className="flex items-center mx-4">
               <img
@@ -112,7 +100,7 @@ const SettingsForm = () => {
           </Button>
         </div>
       </div>
-    </section>
+    </>
   );
 };
 

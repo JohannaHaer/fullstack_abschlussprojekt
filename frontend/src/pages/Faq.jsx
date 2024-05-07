@@ -1,11 +1,15 @@
+import NavBar from '@/components/NavBar';
+import HeaderNormal from '@/components/header/HeaderNormal';
 import React from 'react';
 
 const Faq = () => {
   return (
     <>
-      <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Häufig gestellte Fragen</h1>
-
+    <HeaderNormal />
+      <div className=" py-5 px-4">
+        
+      <h1 className="text-2xl text-center font-bold pt-5 pb-2 text-[#0097B2] dark:text-[#FFDE59]">Häufig gestellte Fragen</h1>
+      
       <div className="mb-4">
         <h2 className="text-lg font-bold mb-2">1. Wie kann ich ein Konto eröffnen?</h2>
         <p>Sie können ein Konto direkt über unsere App eröffnen. Gehen Sie einfach zur Registerkarte "Konto eröffnen" und folgen Sie den Anweisungen.</p>
@@ -31,11 +35,13 @@ const Faq = () => {
         <p>Wenn Sie Ihr Passwort vergessen haben, können Sie auf "Passwort vergessen" auf der Anmeldeseite klicken und den Anweisungen folgen, um Ihr Passwort zurückzusetzen.</p>
       </div>
 
-      <div className="mb-4">
+      <div className="mb-24">
         <h2 className="text-lg font-bold mb-2">6. Wie kann ich den Kundenservice kontaktieren?</h2>
         <p>Sie können unseren Kundenservice rund um die Uhr per Telefon unter der Nummer XXX-XXX-XXXX oder per E-Mail unter support@bankapp.com erreichen.</p>
       </div>
     </div>
+    <NavBar />
+    
     </>
   );
 };

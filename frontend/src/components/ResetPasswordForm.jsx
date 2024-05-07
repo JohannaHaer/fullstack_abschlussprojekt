@@ -63,7 +63,7 @@ const ResetPasswordForm = () => {
     }
 
     return (
-        <>                          //!DAS FORM ÜBERMITTELT DEN CODE NICHT BITTE ALS "code" IN VALUES SPEICHERN
+        <>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 flex flex-col">
                     {/* onSubmit={form.handleSubmit(onSubmit)} */}
@@ -97,7 +97,7 @@ const ResetPasswordForm = () => {
                         render={({ field }) => (
                             <FormItem>
                                 <FormControl>
-                                    <Input placeholder="New password" {...field} required/>
+                                    <Input type='password' placeholder="New password" {...field} required/>
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -109,7 +109,7 @@ const ResetPasswordForm = () => {
                         render={({ field }) => (
                             <FormItem>
                                 <FormControl>
-                                    <Input placeholder="Confirm password" {...field} required/>
+                                    <Input type='password' placeholder="Confirm password" {...field} required/>
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>

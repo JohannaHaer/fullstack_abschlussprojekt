@@ -22,7 +22,7 @@ export const login = async(req, res) => {
         res.status(401).json("Falsches Passwort");
     } else {
       const token = jwt.sign({ id: user._id, username: user.username }, process.env.JWT_SECRET);
-      res.cookie("token", token, { httpOnly: true });
+      res.cookie("token", token, { httpOnly: true, secure: true, sameSite: 'none' });
       res.json({ status: "ok", token: token });
     }
   } catch (error) {

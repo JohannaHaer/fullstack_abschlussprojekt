@@ -13,6 +13,9 @@ import Landingpage from './pages/Landingpage'
 import Settings from './pages/Settings'
 import ForgotPassword from './pages/ForgotPassword'
 import ResetPassword from './pages/ResetPassword'
+import EditUser from './components/EditUser'
+import Faq from './pages/Faq'
+import TermsAndServices from './pages/TermsAndServices'
 
 
 function App() {
@@ -33,6 +36,9 @@ function App() {
         <Route path='/settings' element={<Settings/>}/>
         <Route path='/forgot-password' element={<ForgotPassword/>}/>
         <Route path='/reset-password' element={<ResetPassword/>}/>
+        <Route path='/editUser' element={<EditUser />} />
+        <Route path='/faq' element={<Faq />} />
+        <Route path='/termsandservices' element={<TermsAndServices />} />
       </Routes>
         
     </>

@@ -11,7 +11,7 @@ const avatarVariants = cva(
   {variants: {
     variant: {
       default: "h-10 w-10",
-      preview: "h-15 w-15"
+      preview: "h-13 w-13"
     }
   }
   }

@@ -10,15 +10,10 @@ import {
     FormItem,
     FormMessage,
     FormLabel,
-    FormDescription
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { addExpenseCategory, addIncomeCategory } from '@/functions/fetches/addCategoryFetch'
 import { editUser } from '@/functions/fetches/editUserFetches'
-
-
-
-
+import ChangeUserImage from './ChangeUserImage'
 
 const usernameFormSchema = z.object({
     username: z.string()
@@ -28,8 +23,7 @@ const emailFormSchema = z.object({
     email: z.string()
 })
 
-
-const EditUser = ({type}) => {
+const EditUserForm = ({type}) => {
     const usernameForm = useForm({
         resolver: zodResolver(usernameFormSchema),
         defaultValues: {
@@ -49,7 +43,7 @@ const EditUser = ({type}) => {
     }
 
     return (
-        <div>
+        <div className='flex flex-col gap-10 pb-20'>
             <Form {...usernameForm} >
                 <form onSubmit={usernameForm.handleSubmit(handleEditUserSubmit)} className="space-y-6 flex flex-col">
                 <FormField
@@ -57,9 +51,9 @@ const EditUser = ({type}) => {
                         name="username"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>new Username</FormLabel>
+                                <FormLabel>Add your new Username</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="new Username" {...field}/>
+                                    <Input placeholder="New Username" {...field}/>
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -75,9 +69,9 @@ const EditUser = ({type}) => {
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>new Email</FormLabel>
+                                <FormLabel>Add your new Email</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="new Email" {...field}/>
+                                    <Input placeholder="New Email" {...field}/>
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -86,8 +80,9 @@ const EditUser = ({type}) => {
                     <Button type="submit" className='text-lg' id='transactionButton'>Change Email</Button>
                 </form>
             </Form>
+            <ChangeUserImage/>
         </div>
     )
 }
 
-export default EditUser
+export default EditUserForm
